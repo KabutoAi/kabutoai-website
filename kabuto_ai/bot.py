@@ -505,11 +505,6 @@ def send_whatsapp_message(to_number: str, body_text: str) -> None:
 WEBHOOK_PATH = f"/telegram/{TELEGRAM_API_TOKEN}"
 
 
-@app.route("/")
-def index():
-    """Serve the main KabutoAI landing page."""
-    return render_template("index.html")
-
 @app.get("/health")
 def health():
     """Health check endpoint for Render."""
