@@ -222,10 +222,8 @@
       </div>
     </div>
   </section>
-   <!-- LEGAL SECTIONS -->
-   <!--  Commented out legal sections: the actual imprint, privacy and terms content is now in separate pages -->
-   <!--
-  <!-- Imprint / Impressum Section -->
+   <!-- LEGAL SECTIONS (commented out; separate pages are used instead) -->
+   <!-- Imprint / Impressum Section - hidden -->
   <section id="imprint" class="relative py-16 hidden">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-2xl sm:text-3xl font-bold mb-4 lang" data-en="Imprint" data-de="Impressum">Impressum</h2>
@@ -326,7 +324,6 @@
       </p>
     </div>
   </section>
-   --> <!-- End legal sections -->
    <!-- FEATURES -->
   <section id="features" class="relative" data-aos="fade-up" data-aos-duration="900">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
@@ -406,178 +403,177 @@
     </div>
   </section>
   <!-- PRICING (Einmal) -->
-  <section id="pricing" class="relative" data-aos="fade-up" data-aos-duration="900">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-      <div class="text-center max-w-3xl mx-auto">
-        <h2 class="text-3xl sm:text-4xl font-extrabold">
-          <span class="lang" data-en="Pricing that " data-de="Preise, die sich "></span><span class="text-fuchsia-400 lang" data-en="works" data-de="rechnen">works</span>
-        </h2>
-        <p class="mt-3 text-zinc-300/90 lang" data-en="One-time setup. Optional monthly care below." data-de="Einmalige Einrichtung. Optional: monatliche Betreuung darunter.">
-          One-time setup. Optional monthly care below.
-        </p>
-      </div>
-      <div class="mt-10 grid md:grid-cols-3 gap-6">
-        <!-- Starter -->
-        <div class="rounded-3xl glass p-6 border border-white/10">
-          <div class="text-sm text-zinc-400 lang" data-en="Starter" data-de="Starter">Starter</div>
-          <div class="mt-2 text-3xl font-bold price" data-eur="999">€ 999</div>
-          <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm">
-            <li class="lang" data-en="• 1 channel (Telegram or WhatsApp)" data-de="• 1 Kanal (Telegram oder WhatsApp)">• 1 channel (Telegram or WhatsApp)</li>
-            <li class="lang" data-en="• Base prompt & 10 FAQs" data-de="• Basisprompt & 10 FAQs">• Base prompt & 10 FAQs </li>
-            <li class="lang" data-en="• Simple website widget" data-de="• Einfaches Website-Widget">• Simple website widget</li>
-            <li class="lang" data-en="• Quick guide" data-de="• Kurzanleitung">• Quick guide</li>
-          </ul>
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form" data-eur="999">
-            <!-- Set your PayPal merchant email so payments are routed to the correct PayPal account -->
-            <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
-            <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="item_name" value="Kabuto AI Starter Package">
-            <input type="hidden" name="amount" value="999.00">
-            <input type="hidden" name="currency_code" value="EUR">
-            <button type="submit" class="w-full inline-block px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 transition text-sm font-semibold lang" data-en="Buy now" data-de="Jetzt kaufen">Buy now</button>
-          </form>
-        </div>
-        <!-- Pro -->
-        <div class="rounded-3xl glass p-6 border-2 border-fuchsia-400/50 scale-[1.02]">
-          <div class="text-sm text-fuchsia-300 lang" data-en="Pro (popular)" data-de="Pro (beliebt)">Pro (popular)</div>
-          <div class="mt-2 text-3xl font-bold price" data-eur="1999">€ 1.999</div>
-          <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm">
-            <li class="lang" data-en="• 2 channels (Telegram + WhatsApp)" data-de="• 2 Kanäle (Telegram + WhatsApp)">• 2 channels (Telegram + WhatsApp)</li>
-            <li class="lang" data-en="• Branding, multilingual" data-de="• Branding, Mehrsprachigkeit">• Branding, multilingual</li>
-            <li class="lang" data-en="• Lead form & booking links" data-de="• Lead-Formular & Termin-Links">• Lead form & booking links</li>
-            <li class="lang" data-en="• 30 FAQs + knowledge base" data-de="• 30 FAQs + Wissensbasis">• 30 FAQs + knowledge base</li>
-            <li class="lang" data-en="• Launch support" data-de="• Launch-Begleitung">• Launch support</li>
-          </ul>
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form" data-eur="1999">
-            <!-- Set your PayPal merchant email so payments are routed to the correct PayPal account -->
-            <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
-            <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="item_name" value="Kabuto AI Pro Package">
-            <input type="hidden" name="amount" value="1999.00">
-            <input type="hidden" name="currency_code" value="EUR">
-            <button type="submit" class="w-full inline-block px-4 py-2 rounded-xl bg-fuchsia-600 hover:bg-fuchsia-500 transition text-sm font-semibold lang" data-en="Buy now" data-de="Jetzt kaufen">Buy now</button>
-          </form>
-        </div>
-        <!-- Enterprise -->
-        <div class="rounded-3xl glass p-6 border border-white/10">
-          <div class="text-sm text-zinc-400 lang" data-en="Enterprise" data-de="Enterprise">Enterprise</div>
-          <div class="mt-2 text-3xl font-bold price" data-eur="2999">ab € 2.999</div>
-          <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm">
-            <li class="lang" data-en="• All channels + web widget" data-de="• Alle Kanäle + Web-Widget">• All channels + web widget</li>
-            <li class="lang" data-en="• Custom workflows & CRM" data-de="• Individuelle Workflows & CRM">• Custom workflows & CRM</li>
-            <li class="lang" data-en="• SLA, audit & team training" data-de="• SLA, Audit & Team-Schulungen">• SLA, audit & team training</li>
-            <li class="lang" data-en="• Reporting & optimization" data-de="• Reporting & Optimierung">• Reporting & optimization</li>
-          </ul>
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form" data-eur="2999">
-            <!-- Set your PayPal merchant email so payments are routed to the correct PayPal account -->
-            <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
-            <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="item_name" value="Kabuto AI Enterprise Package">
-            <input type="hidden" name="amount" value="2999.00">
-            <input type="hidden" name="currency_code" value="EUR">
-            <button type="submit" class="w-full inline-block px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 transition text-sm font-semibold lang" data-en="Buy now" data-de="Jetzt kaufen">Buy now</button>
-          </form>
-        </div>
-      </div>
-      <p class="text-xs text-center text-zinc-500 mt-4 lang" data-en="plus ongoing costs (e.g., hosting, Twilio) as needed." data-de="zzgl. laufende Kosten (z. B. Hosting, Twilio) nach Bedarf.">
-        plus ongoing costs (e.g., hosting, Twilio) as needed.
+<section id="pricing" class="relative" data-aos="fade-up" data-aos-duration="900">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <div class="text-center max-w-3xl mx-auto">
+      <h2 class="text-3xl sm:text-4xl font-extrabold">
+        <span class="lang" data-en="Choose your launch power" data-de="Wähle deine Startpower">Wähle deine Startpower</span>
+      </h2>
+      <p class="mt-3 text-zinc-300/90 lang" data-en="One-time setup. Your AI Agent – ready to perform." data-de="Einmalige Einrichtung. Dein AI-Agent – einsatzbereit und skalierbar.">
+        Einmalige Einrichtung. Dein AI-Agent – einsatzbereit und skalierbar.
       </p>
     </div>
-  </section>
-  <!-- Divider -->
-  <div class="glow-divider mx-auto max-w-7xl"></div>
-  <!-- MONTHLY PLANS -->
-  <section id="monthly" class="relative" data-aos="fade-up" data-aos-duration="900">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-      <div class="text-center max-w-3xl mx-auto">
-        <h3 class="text-2xl sm:text-3xl font-bold lang" data-en="💫 Monthly Plans – for teams that prefer flexibility" data-de="💫 Monatliche Pakete – für Teams, die flexibel bleiben">
-          💫 Monthly Plans – for teams that prefer flexibility
-        </h3>
-        <p class="mt-2 text-zinc-300/90 lang" data-en="Cancel monthly. Hosting & support included." data-de="Monatlich kündbar. Hosting & Support inklusive.">
-          Cancel monthly. Hosting & support included.
-        </p>
+
+    <div class="mt-10 grid md:grid-cols-3 gap-6">
+      <!-- Starter -->
+      <div class="rounded-3xl glass p-6 border border-white/10 hover:border-fuchsia-400/40 hover:scale-[1.02] transition">
+        <div class="text-sm text-zinc-400 lang" data-en="Starter" data-de="Starter">Starter</div>
+        <div class="mt-2 text-3xl font-bold price" data-eur="999">€ 999</div>
+        <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm leading-relaxed">
+          <li class="lang" data-en="• 1 channel (Telegram or WhatsApp)" data-de="• 1 Kanal (Telegram oder WhatsApp)">• 1 Kanal (Telegram oder WhatsApp)</li>
+          <li class="lang" data-en="• Custom base prompt + 10 FAQ answers" data-de="• Individuell angepasster Basisprompt + 10 FAQ-Antworten">• Individuell angepasster Basisprompt + 10 FAQ-Antworten</li>
+          <li class="lang" data-en="• Simple website integration (widget included)" data-de="• Einfache Website-Integration (Widget inklusive)">• Einfache Website-Integration (Widget inklusive)</li>
+          <li class="lang" data-en="• Quick-start guide for instant setup" data-de="• Kurzanleitung für sofortigen Start">• Kurzanleitung für sofortigen Start</li>
+        </ul>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form" data-eur="999">
+          <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="item_name" value="Kabuto AI Starter Package">
+          <input type="hidden" name="amount" value="999.00">
+          <input type="hidden" name="currency_code" value="EUR">
+          <button type="submit" class="w-full inline-block px-4 py-2 rounded-xl bg-white/10 hover:bg-fuchsia-600/70 border border-white/15 transition text-sm font-semibold lang" data-en="Buy now" data-de="Jetzt kaufen">Jetzt kaufen</button>
+        </form>
       </div>
-      <div class="mt-8 grid md:grid-cols-3 gap-6">
-        <!-- Starter sub -->
-        <div class="rounded-2xl glass p-6 border border-white/10 hover:border-fuchsia-400/40 transition group">
-          <div class="flex items-center gap-2 text-sm text-zinc-400">
-            <i data-lucide="sparkles" class="w-4 h-4 text-fuchsia-400"></i>
-            <span class="lang" data-en="Starter Subscription" data-de="Starter-Abo">Starter Subscription</span>
-          </div>
-          <div class="mt-2 text-2xl font-bold price" data-eur="99">€ 99 <span class="text-sm text-zinc-500 lang" data-en="/ month" data-de="/ Monat">/ month</span></div>
-          <ul class="mt-3 space-y-1.5 text-sm text-zinc-300/90">
-            <li class="lang" data-en="• 24/7 hosting on Render" data-de="• 24/7 Hosting auf Render">• 24/7 hosting on Render</li>
-            <li class="lang" data-en="• Small fixes & checks" data-de="• Kleine Fixes & Checks">• Small fixes & checks </li>
-            <li class="lang" data-en="• Email support (48h)" data-de="• E-Mail-Support (48h)">• Email support (48h)</li>
-          </ul>
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-5 paypal-form" data-eur="99">
-            <!-- Set your PayPal merchant email so subscription payments go to the correct PayPal account -->
-            <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
-            <input type="hidden" name="cmd" value="_xclick-subscriptions">
-            <input type="hidden" name="item_name" value="Kabuto AI Starter Subscription">
-            <input type="hidden" name="currency_code" value="EUR">
-            <input type="hidden" name="a3" value="99.00">
-            <input type="hidden" name="p3" value="1">
-            <input type="hidden" name="t3" value="M">
-            <input type="hidden" name="src" value="1">
-            <button type="submit" class="w-full inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 transition text-sm font-semibold lang" data-en="Subscribe" data-de="Abonnieren">Subscribe</button>
-          </form>
-        </div>
-        <!-- Pro sub -->
-        <div class="rounded-2xl glass p-6 border-2 border-fuchsia-400/50 scale-[1.01] shadow-lg shadow-fuchsia-500/10">
-          <div class="flex items-center gap-2 text-sm text-fuchsia-300">
-            <i data-lucide="shield" class="w-4 h-4"></i>
-            <span class="lang" data-en="Pro Subscription (popular)" data-de="Pro-Abo (beliebt)">Pro Subscription (popular)</span>
-          </div>
-          <div class="mt-2 text-2xl font-bold price" data-eur="199">€ 199 <span class="text-sm text-zinc-500 lang" data-en="/ month" data-de="/ Monat">/ month</span></div>
-          <ul class="mt-3 space-y-1.5 text-sm text-zinc-300/90">
-            <li class="lang" data-en="• Monitoring & performance" data-de="• Monitoring & Performance">• Monitoring & performance</li>
-            <li class="lang" data-en="• Prompt optimizations" data-de="• Prompt-Optimierungen">• Prompt optimizations </li>
-            <li class="lang" data-en="• Mini updates included" data-de="• Mini-Updates inkl.">• Mini updates included </li>
-            <li class="lang" data-en="• 24h support" data-de="• 24h-Support">• 24h support</li>
-          </ul>
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-5 paypal-form" data-eur="199">
-            <!-- Set your PayPal merchant email so subscription payments go to the correct PayPal account -->
-            <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
-            <input type="hidden" name="cmd" value="_xclick-subscriptions">
-            <input type="hidden" name="item_name" value="Kabuto AI Pro Subscription">
-            <input type="hidden" name="currency_code" value="EUR">
-            <input type="hidden" name="a3" value="199.00">
-            <input type="hidden" name="p3" value="1">
-            <input type="hidden" name="t3" value="M">
-            <input type="hidden" name="src" value="1">
-            <button type="submit" class="w-full inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-fuchsia-600 hover:bg-fuchsia-500 transition text-sm font-semibold lang" data-en="Subscribe" data-de="Abonnieren">Subscribe</button>
-          </form>
-        </div>
-        <!-- Enterprise sub -->
-        <div class="rounded-2xl glass p-6 border border-white/10 hover:border-fuchsia-400/40 transition group">
-          <div class="flex items-center gap-2 text-sm text-zinc-400">
-            <i data-lucide="rocket" class="w-4 h-4 text-fuchsia-400"></i>
-            <span class="lang" data-en="Enterprise Subscription" data-de="Enterprise-Abo">Enterprise Subscription</span>
-          </div>
-          <div class="mt-2 text-2xl font-bold price" data-eur="399">€ 399 <span class="text-sm text-zinc-500 lang" data-en="/ month" data-de="/ Monat">/ month</span></div>
-          <ul class="mt-3 space-y-1.5 text-sm text-zinc-300/90">
-            <li class="lang" data-en="• SLA & priority support" data-de="• SLA & Prioritätssupport">• SLA & priority support</li>
-            <li class="lang" data-en="• Growth reports" data-de="• Wachstums-Reports">• Growth reports</li>
-            <li class="lang" data-en="• Unlimited adjustments" data-de="• Unlimited Anpassungen">• Unlimited adjustments </li>
-            <li class="lang" data-en="• Personal contact" data-de="• Persönlicher Kontakt">• Personal contact</li>
-          </ul>
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-5 paypal-form" data-eur="399">
-            <!-- Set your PayPal merchant email so subscription payments go to the correct PayPal account -->
-            <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
-            <input type="hidden" name="cmd" value="_xclick-subscriptions">
-            <input type="hidden" name="item_name" value="Kabuto AI Enterprise Subscription">
-            <input type="hidden" name="currency_code" value="EUR">
-            <input type="hidden" name="a3" value="399.00">
-            <input type="hidden" name="p3" value="1">
-            <input type="hidden" name="t3" value="M">
-            <input type="hidden" name="src" value="1">
-            <button type="submit" class="w-full inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 transition text-sm font-semibold lang" data-en="Subscribe" data-de="Abonnieren">Subscribe</button>
-          </form>
-        </div>
+
+      <!-- Pro -->
+      <div class="rounded-3xl glass p-6 border-2 border-fuchsia-400/50 shadow-lg shadow-fuchsia-500/10 scale-[1.02]">
+        <div class="text-sm text-fuchsia-300 lang" data-en="Pro (popular)" data-de="Pro (beliebt)">Pro (beliebt)</div>
+        <div class="mt-2 text-3xl font-bold price" data-eur="1999">€ 1.999</div>
+        <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm leading-relaxed">
+          <li class="lang" data-en="• Telegram + WhatsApp integration" data-de="• Telegram + WhatsApp-Integration">• Telegram + WhatsApp-Integration</li>
+          <li class="lang" data-en="• Full branding & multilingual AI answers" data-de="• Branding & mehrsprachige KI-Antworten">• Branding & mehrsprachige KI-Antworten</li>
+          <li class="lang" data-en="• Lead forms + auto booking links" data-de="• Lead-Formulare + automatische Terminlinks">• Lead-Formulare + automatische Terminlinks</li>
+          <li class="lang" data-en="• 30 FAQ answers & knowledge base" data-de="• 30 FAQ-Antworten & Wissensbasis">• 30 FAQ-Antworten & Wissensbasis</li>
+          <li class="lang" data-en="• Personal launch guidance for your start" data-de="• Persönliche Launch-Begleitung für deinen Start">• Persönliche Launch-Begleitung für deinen Start</li>
+        </ul>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form" data-eur="1999">
+          <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="item_name" value="Kabuto AI Pro Package">
+          <input type="hidden" name="amount" value="1999.00">
+          <input type="hidden" name="currency_code" value="EUR">
+          <button type="submit" class="w-full inline-block px-4 py-2 rounded-xl bg-fuchsia-600 hover:bg-fuchsia-500 transition text-sm font-semibold lang" data-en="Buy now" data-de="Jetzt kaufen">Jetzt kaufen</button>
+        </form>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="rounded-3xl glass p-6 border border-white/10 hover:border-fuchsia-400/40 hover:scale-[1.02] transition">
+        <div class="text-sm text-zinc-400 lang" data-en="Enterprise" data-de="Enterprise">Enterprise</div>
+        <div class="mt-2 text-3xl font-bold price" data-eur="2999">ab € 2.999</div>
+        <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm leading-relaxed">
+          <li class="lang" data-en="• Telegram, WhatsApp & Web widget included" data-de="• Telegram, WhatsApp & Website-Widget inklusive">• Telegram, WhatsApp & Website-Widget inklusive</li>
+          <li class="lang" data-en="• Custom automations, workflows & CRM" data-de="• Individuelle Automationen, Workflows & CRM-Anbindung">• Individuelle Automationen, Workflows & CRM-Anbindung</li>
+          <li class="lang" data-en="• SLA, team training & performance audits" data-de="• SLA, Team-Trainings & Performance-Audits">• SLA, Team-Trainings & Performance-Audits</li>
+          <li class="lang" data-en="• Ongoing reporting & AI optimization" data-de="• Laufendes Reporting & KI-Optimierung">• Laufendes Reporting & KI-Optimierung</li>
+        </ul>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form" data-eur="2999">
+          <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="item_name" value="Kabuto AI Enterprise Package">
+          <input type="hidden" name="amount" value="2999.00">
+          <input type="hidden" name="currency_code" value="EUR">
+          <button type="submit" class="w-full inline-block px-4 py-2 rounded-xl bg-white/10 hover:bg-fuchsia-600/70 border border-white/15 transition text-sm font-semibold lang" data-en="Buy now" data-de="Jetzt kaufen">Jetzt kaufen</button>
+        </form>
       </div>
     </div>
-  </section>
+
+    <p class="text-xs text-center text-zinc-500 mt-4 lang" data-en="Plus possible ongoing costs (e.g., hosting, Twilio) depending on usage." data-de="Zzgl. mögliche laufende Kosten (z. B. Hosting, Twilio) je nach Nutzung.">
+      Zzgl. mögliche laufende Kosten (z. B. Hosting, Twilio) je nach Nutzung.
+    </p>
+  </div>
+</section>
+
+  <!-- Divider -->
+  <div class="glow-divider mx-auto max-w-7xl"></div>
+  
+ <!-- MONTHLY PLANS -->
+<section id="monthly" class="relative" data-aos="fade-up" data-aos-duration="900">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <div class="text-center max-w-3xl mx-auto">
+      <h2 class="text-3xl sm:text-4xl font-extrabold">
+        <span class="lang" data-en="Monthly Growth Plans" data-de="Monatliche Wachstums-Pakete">Monatliche Wachstums-Pakete</span>
+      </h2>
+      <p class="mt-3 text-zinc-300/90 lang" data-en="Stay flexible. Hosting & AI optimization included." data-de="Bleib flexibel. Hosting & KI-Optimierung inklusive.">
+        Bleib flexibel. Hosting & KI-Optimierung inklusive.
+      </p>
+    </div>
+
+    <div class="mt-10 grid md:grid-cols-3 gap-6">
+      <!-- Starter Subscription -->
+      <div class="rounded-3xl glass p-6 border border-white/10 hover:border-fuchsia-400/40 hover:scale-[1.02] transition">
+        <div class="text-sm text-zinc-400 lang" data-en="Starter Subscription" data-de="Starter-Abo">Starter-Abo</div>
+        <div class="mt-2 text-3xl font-bold price" data-eur="99">€ 99 <span class="text-sm text-zinc-500 lang" data-en="/ month" data-de="/ Monat">/ Monat</span></div>
+        <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm leading-relaxed">
+          <li class="lang" data-en="• 24/7 hosting on Render" data-de="• 24/7 Hosting auf Render">• 24/7 Hosting auf Render</li>
+          <li class="lang" data-en="• Small fixes & system checks" data-de="• Kleine Fixes & Systemprüfungen">• Kleine Fixes & Systemprüfungen</li>
+          <li class="lang" data-en="• Email support within 48h" data-de="• E-Mail-Support innerhalb 48h">• E-Mail-Support innerhalb 48h</li>
+        </ul>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form" data-eur="99">
+          <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
+          <input type="hidden" name="cmd" value="_xclick-subscriptions">
+          <input type="hidden" name="item_name" value="Kabuto AI Starter Subscription">
+          <input type="hidden" name="currency_code" value="EUR">
+          <input type="hidden" name="a3" value="99.00">
+          <input type="hidden" name="p3" value="1">
+          <input type="hidden" name="t3" value="M">
+          <input type="hidden" name="src" value="1">
+          <button type="submit" class="w-full inline-block px-4 py-2 rounded-xl bg-white/10 hover:bg-fuchsia-600/70 border border-white/15 transition text-sm font-semibold lang" data-en="Subscribe" data-de="Abonnieren">Abonnieren</button>
+        </form>
+      </div>
+
+      <!-- Pro Subscription -->
+      <div class="rounded-3xl glass p-6 border-2 border-fuchsia-400/50 shadow-lg shadow-fuchsia-500/10 scale-[1.02]">
+        <div class="text-sm text-fuchsia-300 lang" data-en="Pro Subscription (popular)" data-de="Pro-Abo (beliebt)">Pro-Abo (beliebt)</div>
+        <div class="mt-2 text-3xl font-bold price" data-eur="199">€ 199 <span class="text-sm text-zinc-500 lang" data-en="/ month" data-de="/ Monat">/ Monat</span></div>
+        <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm leading-relaxed">
+          <li class="lang" data-en="• Monitoring & performance reports" data-de="• Monitoring & Performance-Reports">• Monitoring & Performance-Reports</li>
+          <li class="lang" data-en="• Prompt & AI optimizations" data-de="• Prompt- & KI-Optimierungen">• Prompt- & KI-Optimierungen</li>
+          <li class="lang" data-en="• Mini updates included" data-de="• Mini-Updates inklusive">• Mini-Updates inklusive</li>
+          <li class="lang" data-en="• Priority 24h support" data-de="• Priorisierter 24h-Support">• Priorisierter 24h-Support</li>
+        </ul>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form" data-eur="199">
+          <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
+          <input type="hidden" name="cmd" value="_xclick-subscriptions">
+          <input type="hidden" name="item_name" value="Kabuto AI Pro Subscription">
+          <input type="hidden" name="currency_code" value="EUR">
+          <input type="hidden" name="a3" value="199.00">
+          <input type="hidden" name="p3" value="1">
+          <input type="hidden" name="t3" value="M">
+          <input type="hidden" name="src" value="1">
+          <button type="submit" class="w-full inline-block px-4 py-2 rounded-xl bg-fuchsia-600 hover:bg-fuchsia-500 transition text-sm font-semibold lang" data-en="Subscribe" data-de="Abonnieren">Abonnieren</button>
+        </form>
+      </div>
+
+      <!-- Enterprise Subscription -->
+      <div class="rounded-3xl glass p-6 border border-white/10 hover:border-fuchsia-400/40 hover:scale-[1.02] transition">
+        <div class="text-sm text-zinc-400 lang" data-en="Enterprise Subscription" data-de="Enterprise-Abo">Enterprise-Abo</div>
+        <div class="mt-2 text-3xl font-bold price" data-eur="399">€ 399 <span class="text-sm text-zinc-500 lang" data-en="/ month" data-de="/ Monat">/ Monat</span></div>
+        <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm leading-relaxed">
+          <li class="lang" data-en="• SLA & priority support" data-de="• SLA & Prioritätssupport">• SLA & Prioritätssupport</li>
+          <li class="lang" data-en="• Growth & performance reports" data-de="• Wachstums- & Performance-Reports">• Wachstums- & Performance-Reports</li>
+          <li class="lang" data-en="• Unlimited updates & adjustments" data-de="• Unbegrenzte Updates & Anpassungen">• Unbegrenzte Updates & Anpassungen</li>
+          <li class="lang" data-en="• Personal contact & strategic calls" data-de="• Persönlicher Kontakt & Strategie-Calls">• Persönlicher Kontakt & Strategie-Calls</li>
+        </ul>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form" data-eur="399">
+          <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
+          <input type="hidden" name="cmd" value="_xclick-subscriptions">
+          <input type="hidden" name="item_name" value="Kabuto AI Enterprise Subscription">
+          <input type="hidden" name="currency_code" value="EUR">
+          <input type="hidden" name="a3" value="399.00">
+          <input type="hidden" name="p3" value="1">
+          <input type="hidden" name="t3" value="M">
+          <input type="hidden" name="src" value="1">
+          <button type="submit" class="w-full inline-block px-4 py-2 rounded-xl bg-white/10 hover:bg-fuchsia-600/70 border border-white/15 transition text-sm font-semibold lang" data-en="Subscribe" data-de="Abonnieren">Abonnieren</button>
+        </form>
+      </div>
+    </div>
+
+    <p class="text-xs text-center text-zinc-500 mt-4 lang" data-en="All plans include hosting & support. Cancel anytime." data-de="Alle Pakete inkl. Hosting & Support. Jederzeit kündbar.">
+      Alle Pakete inkl. Hosting & Support. Jederzeit kündbar.
+    </p>
+  </div>
+</section>
+
   <!-- DEMO / WIDGET -->
   <section id="demo" class="relative" data-aos="fade-up" data-aos-duration="900">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
