@@ -134,13 +134,45 @@
       #fab-wrapper button, #fab-wrapper a { padding-left: 12px; padding-right: 12px; }
       #fab-wrapper span { display: none; }
     }
-  </style>
+/* ✨ Mystic Glow Effect for the Intro Slogan */
+#intro-slogan::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(168,85,247,0.15), transparent 60%);
+  animation: pulseGlow 6s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+</style>
 </head>
 <body class="noise text-zinc-100 selection:bg-fuchsia-500/40 selection:text-white">
   <!-- Orbs -->
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
   <div class="orb orb-3"></div>
+  <!-- EPIC INTRO SLOGAN -->
+<section id="intro-slogan" class="relative flex items-center justify-center text-center py-24 px-4">
+  <div data-aos="fade-up" data-aos-duration="1000">
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-violet-400 to-sky-400 drop-shadow-[0_0_25px_rgba(168,85,247,0.35)]">
+      ⚔️ In silence, we build. In precision, we conquer.
+    </h1>
+    <p class="mt-4 text-zinc-300/90 text-lg max-w-2xl mx-auto leading-relaxed">
+      Where mystic automation meets strategy — <span class="text-fuchsia-400">KabutoAI</span> builds digital warriors that never sleep.
+    </p>
+  </div>
+</section>
+
   <!-- NAV -->
   <header class="sticky top-0 z-40">
     <nav class="glass">
