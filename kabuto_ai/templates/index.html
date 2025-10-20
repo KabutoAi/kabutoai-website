@@ -146,7 +146,7 @@
     <nav class="glass">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         <div class="flex items-center gap-3 logo-wrap">
-          <img src="https://kabutoai-v1.onrender.com/static/kabutoailogo.png" alt="KabutoAI" class="w-9 h-9 rounded-xl object-contain" />
+          <img src="/static/kabutoailogo.png" alt="KabutoAI" class="w-9 h-9 rounded-xl object-contain" />
           <span class="text-lg sm:text-xl font-semibold tracking-wide">Kabuto<span class="text-fuchsia-400">AI</span></span>
         </div>
         <div class="hidden md:flex items-center gap-8 text-sm">
@@ -201,7 +201,7 @@
             <div class="rounded-2xl bg-black/40 border border-white/10 p-5">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                  <img src="https://kabutoai-v1.onrender.com/static/kabutoailogo.png" alt="KabutoAI" class="w-10 h-10 rounded-xl" />
+                  <img src="/static/kabutoailogo.png" alt="KabutoAI" class="w-10 h-10 rounded-xl" />
                 </div>
                 <span class="text-xs text-zinc-400 lang" data-en="Live chat" data-de="Live-Chat">Live chat</span>
               </div>
@@ -906,7 +906,7 @@
         bubble.className = `kabuto-bubble ${role}`;
         let avatar = '';
         if (role === 'bot') {
-          avatar = `<img src="https://kabutoai-v1.onrender.com/static/kabutoailogo.png" alt="Bot" />`;
+          avatar = `<img src="/static/kabutoailogo.png" alt="Bot" />`;
         }
         bubble.innerHTML = `${role === 'bot' ? avatar : ''}<div class="bubble-content">${text}</div>`;
         if (role === 'user') {
