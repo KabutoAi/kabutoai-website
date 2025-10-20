@@ -39,41 +39,46 @@
       Die durch uns erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des Autors.
     </p>
   </div>
-  <script>
-    // Simple translation script for this standalone page
-    let currentLang = (navigator.language && navigator.language.toLowerCase().startsWith('de')) ? 'de' : 'en';
-    const toggleBtn = document.getElementById('toggleLang');
-    const langText = document.getElementById('langText');
-    const flag = document.getElementById('flag');
-    const elements = document.querySelectorAll('.lang');
-    function updateLanguage(lang) {
-      elements.forEach(el => {
-        const t = el.dataset[lang];
-        if (typeof t === 'string') el.textContent = t;
-      });
-      document.documentElement.lang = lang;
-    }
-    toggleBtn.addEventListener('click', () => {
-      if (currentLang === 'en') {
-        currentLang = 'de';
-        langText.textContent = 'English';
-        flag.textContent = '🇬🇧';
-      } else {
-        currentLang = 'en';
-        langText.textContent = 'Deutsch';
-        flag.textContent = '🇩🇪';
-      }
-      updateLanguage(currentLang);
+<script>
+  // 🔹 Always start with English as default
+  let currentLang = localStorage.getItem('kabutoLang') || 'en';
+
+  const toggleBtn = document.getElementById('toggleLang');
+  const langText = document.getElementById('langText');
+  const flag = document.getElementById('flag');
+  const elements = document.querySelectorAll('.lang');
+
+  function updateLanguage(lang) {
+    elements.forEach(el => {
+      const t = el.dataset[lang];
+      if (typeof t === 'string') el.textContent = t;
     });
-    // Initialize
-    if (currentLang === 'de') {
+    document.documentElement.lang = lang;
+    localStorage.setItem('kabutoLang', lang); // 💾 Speichern der Sprache im Browser
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    if (currentLang === 'en') {
+      currentLang = 'de';
       langText.textContent = 'English';
       flag.textContent = '🇬🇧';
     } else {
+      currentLang = 'en';
       langText.textContent = 'Deutsch';
       flag.textContent = '🇩🇪';
     }
     updateLanguage(currentLang);
-  </script>
+  });
+
+  // 🏁 Initial Setup
+  if (currentLang === 'de') {
+    langText.textContent = 'English';
+    flag.textContent = '🇬🇧';
+  } else {
+    langText.textContent = 'Deutsch';
+    flag.textContent = '🇩🇪';
+  }
+  updateLanguage(currentLang);
+</script>
 </body>
 </html>

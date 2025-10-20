@@ -67,42 +67,46 @@
   </div>
 
   <!-- Language Toggle Script -->
-  <script>
-    let currentLang = (navigator.language && navigator.language.toLowerCase().startsWith('de')) ? 'de' : 'en';
-    const toggleBtn = document.getElementById('toggleLang');
-    const langText = document.getElementById('langText');
-    const flag = document.getElementById('flag');
-    const elements = document.querySelectorAll('.lang');
+<script>
+  // 🔹 Always start with English as default
+  let currentLang = localStorage.getItem('kabutoLang') || 'en';
 
-    function updateLanguage(lang) {
-      elements.forEach(el => {
-        const t = el.dataset[lang];
-        if (typeof t === 'string') el.textContent = t;
-      });
-      document.documentElement.lang = lang;
-    }
+  const toggleBtn = document.getElementById('toggleLang');
+  const langText = document.getElementById('langText');
+  const flag = document.getElementById('flag');
+  const elements = document.querySelectorAll('.lang');
 
-    toggleBtn.addEventListener('click', () => {
-      if (currentLang === 'en') {
-        currentLang = 'de';
-        langText.textContent = 'English';
-        flag.textContent = '🇬🇧';
-      } else {
-        currentLang = 'en';
-        langText.textContent = 'Deutsch';
-        flag.textContent = '🇩🇪';
-      }
-      updateLanguage(currentLang);
+  function updateLanguage(lang) {
+    elements.forEach(el => {
+      const t = el.dataset[lang];
+      if (typeof t === 'string') el.textContent = t;
     });
+    document.documentElement.lang = lang;
+    localStorage.setItem('kabutoLang', lang); // 💾 Speichern der Sprache im Browser
+  }
 
-    if (currentLang === 'de') {
+  toggleBtn.addEventListener('click', () => {
+    if (currentLang === 'en') {
+      currentLang = 'de';
       langText.textContent = 'English';
       flag.textContent = '🇬🇧';
     } else {
+      currentLang = 'en';
       langText.textContent = 'Deutsch';
       flag.textContent = '🇩🇪';
     }
     updateLanguage(currentLang);
-  </script>
+  });
+
+  // 🏁 Initial Setup
+  if (currentLang === 'de') {
+    langText.textContent = 'English';
+    flag.textContent = '🇬🇧';
+  } else {
+    langText.textContent = 'Deutsch';
+    flag.textContent = '🇩🇪';
+  }
+  updateLanguage(currentLang);
+</script>
 </body>
 </html>

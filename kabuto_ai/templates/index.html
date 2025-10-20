@@ -805,77 +805,81 @@
       document.getElementById('year').textContent = new Date().getFullYear();
       AOS.init({ once:true, offset:80 });
     });
-    // Determine default language from the visitor's browser (defaults to English if not German)
-    let currentLang = (navigator.language && navigator.language.toLowerCase().startsWith('de')) ? 'de' : 'en';
-    const toggleBtn = document.getElementById('toggleLang');
-    const langText = document.getElementById('langText');
-    const flag = document.getElementById('flag');
-    const elements = document.querySelectorAll('.lang');
-    const priceEls = document.querySelectorAll('.price');
-    // Collect all PayPal forms to update currency and amounts
-    const paypalForms = document.querySelectorAll('.paypal-form');
-    function updateLanguage(lang){
-      document.body.classList.add('fade');
-      setTimeout(() => {
-        elements.forEach(el => {
-          const t = el.dataset[lang];
-          if (typeof t === 'string') el.textContent = t;
-        });
-        // --- Currency Switch ---
-        priceEls.forEach(p => {
-          const eur = parseFloat(p.dataset.eur);
-          const usd = (eur * 1.08).toFixed(0);
-          if(lang === 'en'){
-            p.textContent = "$" + Number(usd).toLocaleString() + " USD";
-          } else {
-            p.textContent = "€ " + eur.toLocaleString('de-DE');
-          }
-        });
+    // 🔹 Always start with English as default, or load saved language
+let currentLang = localStorage.getItem('kabutoLang') || 'en';
 
-        // --- Update PayPal form hidden values (currency & amount) ---
-        paypalForms.forEach(form => {
-          const eurVal = parseFloat(form.dataset.eur);
-          const usdVal = (eurVal * 1.08).toFixed(2);
-          // amount (Buy Now) or subscription amount a3
-          const amountFields = form.querySelectorAll('input[name="amount"], input[name="a3"]');
-          amountFields.forEach(input => {
-            if (lang === 'en') {
-              input.value = usdVal;
-            } else {
-              input.value = eurVal.toFixed(2);
-            }
-          });
-          const currencyInput = form.querySelector('input[name="currency_code"]');
-          if (currencyInput) {
-            currencyInput.value = (lang === 'en') ? 'USD' : 'EUR';
-          }
-        });
-        document.documentElement.lang = lang;
-        document.body.classList.remove('fade');
-      },150);
-    }
-    toggleBtn.addEventListener('click', () => {
-      if (currentLang === 'en'){
-        currentLang = 'de';
-        langText.textContent = 'English';
-        flag.textContent = '🇬🇧';
-      } else {
-        currentLang = 'en';
-        langText.textContent = 'Deutsch';
-        flag.textContent = '🇩🇪';
-      }
-      updateLanguage(currentLang);
+const toggleBtn = document.getElementById('toggleLang');
+const langText = document.getElementById('langText');
+const flag = document.getElementById('flag');
+const elements = document.querySelectorAll('.lang');
+const priceEls = document.querySelectorAll('.price');
+const paypalForms = document.querySelectorAll('.paypal-form');
+
+function updateLanguage(lang){
+  document.body.classList.add('fade');
+  setTimeout(() => {
+    elements.forEach(el => {
+      const t = el.dataset[lang];
+      if (typeof t === 'string') el.textContent = t;
     });
-    // initialise language toggle display and update content
-    if (currentLang === 'de') {
-      langText.textContent = 'English';
-      flag.textContent = '🇬🇧';
-    } else {
-      langText.textContent = 'Deutsch';
-      flag.textContent = '🇩🇪';
-    }
-    updateLanguage(currentLang);
-  </script>
+
+    // --- Currency Switch ---
+    priceEls.forEach(p => {
+      const eur = parseFloat(p.dataset.eur);
+      const usd = (eur * 1.08).toFixed(0);
+      if(lang === 'en'){
+        p.textContent = "$" + Number(usd).toLocaleString() + " USD";
+      } else {
+        p.textContent = "€ " + eur.toLocaleString('de-DE');
+      }
+    });
+
+    // --- Update PayPal form hidden values ---
+    paypalForms.forEach(form => {
+      const eurVal = parseFloat(form.dataset.eur);
+      const usdVal = (eurVal * 1.08).toFixed(2);
+      const amountFields = form.querySelectorAll('input[name="amount"], input[name="a3"]');
+      amountFields.forEach(input => {
+        input.value = (lang === 'en') ? usdVal : eurVal.toFixed(2);
+      });
+      const currencyInput = form.querySelector('input[name="currency_code"]');
+      if (currencyInput) {
+        currencyInput.value = (lang === 'en') ? 'USD' : 'EUR';
+      }
+    });
+
+    // 💾 Sprache speichern
+    localStorage.setItem('kabutoLang', lang);
+
+    document.documentElement.lang = lang;
+    document.body.classList.remove('fade');
+  },150);
+}
+
+toggleBtn.addEventListener('click', () => {
+  if (currentLang === 'en'){
+    currentLang = 'de';
+    langText.textContent = 'English';
+    flag.textContent = '🇬🇧';
+  } else {
+    currentLang = 'en';
+    langText.textContent = 'Deutsch';
+    flag.textContent = '🇩🇪';
+  }
+  updateLanguage(currentLang);
+});
+
+// 🏁 Initial Setup
+if (currentLang === 'de') {
+  langText.textContent = 'English';
+  flag.textContent = '🇬🇧';
+} else {
+  langText.textContent = 'Deutsch';
+  flag.textContent = '🇩🇪';
+}
+updateLanguage(currentLang);
+</script>
+
   <!-- Custom chat logic: Connect the Website Chat button to the server API and manage mobile demo links. -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
