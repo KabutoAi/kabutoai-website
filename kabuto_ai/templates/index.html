@@ -351,6 +351,41 @@
         0 0 20px rgba(93, 173, 255, 0.5),
         0 0 40px rgba(155, 99, 255, 0.4);
     }
+
+    /* === HERO LOGO FLOAT EFFECT === */
+    .hero-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: -20px;
+      margin-bottom: 40px;
+      animation: heroFloat 8s ease-in-out infinite;
+    }
+
+    .hero-logo img {
+      width: 180px;
+      /* du kannst 200px probieren, wenn du es noch größer willst */
+      height: auto;
+      filter: drop-shadow(0 0 25px rgba(93, 173, 255, 0.4)) drop-shadow(0 0 60px rgba(155, 99, 255, 0.25));
+      transition: transform .6s ease, filter .6s ease;
+    }
+
+    .hero-logo img:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 40px rgba(168, 85, 247, 0.6)) drop-shadow(0 0 80px rgba(93, 173, 255, 0.5));
+    }
+
+    @keyframes heroFloat {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-6px);
+      }
+    }
   </style>
 </head>
 
@@ -375,6 +410,12 @@
       </p>
     </div>
   </section>
+
+  <!-- HERO LOGO CENTER -->
+  <div class="hero-logo" data-aos="zoom-in" data-aos-delay="300">
+    <img src="/static/kabutoailogo.png" alt="KabutoAI Logo">
+  </div>
+
 
   <!-- NAV -->
   <header class="sticky top-0 z-40">
