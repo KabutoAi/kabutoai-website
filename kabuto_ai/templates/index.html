@@ -355,39 +355,37 @@
         0 0 40px rgba(155, 99, 255, 0.4);
     }
 
-    /* === HERO LOGO FLOAT EFFECT === */
-    .hero-logo {
-      display: flex;
-      justify-content: center;
+    /* === Kabuto Floating Buttons === */
+    .kabuto-btn {
+      display: inline-flex;
       align-items: center;
-      margin-top: -20px;
-      margin-bottom: 40px;
-      animation: heroFloat 8s ease-in-out infinite;
+      gap: 6px;
+      background: linear-gradient(135deg, rgba(93, 173, 255, 0.25), rgba(155, 99, 255, 0.25));
+      border: 1px solid rgba(155, 99, 255, 0.35);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 12px rgba(155, 99, 255, 0.25);
+      transition: all 0.3s ease;
     }
 
-    .hero-logo img {
-      width: 180px;
-      /* du kannst 200px probieren, wenn du es noch größer willst */
-      height: auto;
-      filter: drop-shadow(0 0 25px rgba(93, 173, 255, 0.4)) drop-shadow(0 0 60px rgba(155, 99, 255, 0.25));
-      transition: transform .6s ease, filter .6s ease;
+    .kabuto-btn:hover {
+      background: linear-gradient(135deg, rgba(93, 173, 255, 0.35), rgba(155, 99, 255, 0.45));
+      box-shadow: 0 0 25px rgba(155, 99, 255, 0.5), 0 0 50px rgba(93, 173, 255, 0.4);
+      transform: translateY(-2px);
     }
 
-    .hero-logo img:hover {
-      transform: scale(1.05);
-      filter: drop-shadow(0 0 40px rgba(168, 85, 247, 0.6)) drop-shadow(0 0 80px rgba(93, 173, 255, 0.5));
+    .kabuto-btn i {
+      opacity: 0.85;
+      transition: opacity 0.3s ease;
     }
 
-    @keyframes heroFloat {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-6px);
-      }
+    .kabuto-btn:hover i {
+      opacity: 1;
     }
   </style>
 </head>
@@ -395,30 +393,6 @@
 <body class="noise text-zinc-100 selection:bg-fuchsia-500/40 selection:text-white">
   <div class="energy-layer"></div>
   <div class="reflex-shader"></div>
-
-  <!-- Orbs -->
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-  <!-- EPIC INTRO SLOGAN -->
-  <section id="intro-slogan" class="relative flex items-center justify-center text-center py-16 px-4">
-    <div data-aos="fade-up" data-aos-duration="1000">
-      <h1
-        class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-violet-400 to-sky-400 drop-shadow-[0_0_25px_rgba(168,85,247,0.35)]">
-        ⚔️ In silence, we build. In precision, we conquer.
-      </h1>
-      <p class="mt-4 text-zinc-300/90 text-lg max-w-2xl mx-auto leading-relaxed">
-        Where mystic automation meets strategy — <span class="text-fuchsia-400">KabutoAI</span> builds digital warriors
-        that never sleep.
-      </p>
-    </div>
-  </section>
-
-  <!-- HERO LOGO CENTER -->
-  <div class="hero-logo" data-aos="zoom-in" data-aos-delay="300">
-    <img src="/static/kabutoailogo.png" alt="KabutoAI Logo">
-  </div>
-
 
   <!-- NAV -->
   <header class="sticky top-0 z-40">
@@ -453,6 +427,31 @@
       </div>
     </nav>
   </header>
+
+  <!-- Orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <!-- EPIC INTRO SLOGAN -->
+  <section id="intro-slogan" class="relative flex flex-col items-center justify-center text-center py-10 px-6">
+    <div data-aos="fade-up" data-aos-duration="1000">
+      <h1
+        class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-sky-400 via-fuchsia-400 to-violet-400 bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(168,85,247,0.35)]">
+        ⚔️ In silence, we build.<br class="hidden sm:block"> In precision, we conquer.
+      </h1>
+      <p class="mt-6 text-zinc-300/90 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
+        Where mystic automation meets strategy —
+        <span class="text-fuchsia-400 font-semibold">KabutoAI</span> builds digital warriors that never sleep.
+      </p>
+    </div>
+
+    <!-- Sanfter Glow-Hintergrund -->
+    <div class="absolute inset-0 pointer-events-none opacity-40 blur-3xl"
+      style="background: radial-gradient(circle at 50% 60%, rgba(155,99,255,0.25), transparent 70%); animation: pulseGlow 10s ease-in-out infinite;">
+    </div>
+  </section>
+
+
   <!-- HERO -->
   <section class="relative overflow-hidden">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-24">
@@ -1294,28 +1293,19 @@
     </div>
   </footer>
   <!-- Floating Action Buttons: Stacked WhatsApp & Telegram demos -->
-  <div class="fixed right-4 bottom-24 z-60 flex flex-col gap-2" id="fab-wrapper">
-    <!-- New button to trigger the chat widget and (on mobile) toggle demo links -->
-    <button id="open-chat-btn"
-      class="flex items-center gap-2 px-5 py-3 rounded-full bg-violet-600 hover:bg-violet-500 transition shadow-xl border border-white/10">
-      <i data-lucide="message-square" class="w-4 h-4"></i>
-      <span class="text-sm font-semibold lang" data-en="Website Chat" data-de="Website-Chat">Website Chat</span>
-    </button>
-    <!-- Container for external demo links (WhatsApp & Telegram).  On mobile, this is hidden by default and toggled by the chat button. -->
-    <div id="demo-links" class="flex flex-col gap-2">
-      <a href="https://wa.me/12185793912" target="_blank"
-        class="flex items-center gap-2 px-5 py-3 rounded-full bg-green-600 hover:bg-green-500 transition shadow-xl border border-white/10">
-        <i data-lucide="phone" class="w-4 h-4"></i>
-        <span class="text-sm font-semibold lang" data-en="Demo on WhatsApp" data-de="Demo auf WhatsApp">Demo on
-          WhatsApp</span>
-      </a>
-      <a href="https://t.me/kabutomediabot" target="_blank"
-        class="flex items-center gap-2 px-5 py-3 rounded-full bg-fuchsia-600 hover:bg-fuchsia-500 transition shadow-xl border border-white/10">
-        <i data-lucide="send" class="w-4 h-4"></i>
-        <span class="text-sm font-semibold lang" data-en="Demo on Telegram" data-de="Demo auf Telegram">Demo on
-          Telegram</span>
-      </a>
-    </div>
+  <div id="fab-wrapper" class="fixed right-4 bottom-24 z-60 flex flex-col gap-2 items-end">
+    <a href="#demo" class="kabuto-btn">
+      <i data-lucide="globe" class="w-4 h-4 mr-2"></i>
+      Website-Chat
+    </a>
+    <a href="https://wa.me/12185793912" target="_blank" class="kabuto-btn">
+      <i data-lucide="message-square" class="w-4 h-4 mr-2"></i>
+      Demo auf WhatsApp
+    </a>
+    <a href="https://t.me/kabutomediabot" target="_blank" class="kabuto-btn">
+      <i data-lucide="send" class="w-4 h-4 mr-2"></i>
+      Demo auf Telegram
+    </a>
   </div>
   <!-- Init & Language Toggle with currency -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
