@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kabuto AI – Mystic Automation Bots</title>
-  <meta name="description" content="Kabuto AI: Telegram-, WhatsApp- & Website-Chatbots. More leads, less support – in a mystic, epic style." />
+  <meta name="theme-color" content="#1E1E2F" />
+  <link rel="icon" href="/static/favicon.ico">
+  <meta property="og:title" content="Kabuto AI – Mystic Automation Bots" />
+  <meta property="og:description"
+    content="Bots mit mystischer Präzision – Telegram, WhatsApp, Website. Mehr Leads, weniger Support." />
+  <meta property="og:image" content="/static/og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <meta name="description"
+    content="Kabuto AI: Telegram-, WhatsApp- & Website-Chatbots. More leads, less support – in a mystic, epic style." />
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons -->
@@ -14,21 +24,62 @@
   <style>
     :root {
       color-scheme: dark;
+      --lapis: 93, 173, 255;
+      /* leuchtendes Blau */
+      --amethyst: 155, 99, 255;
+      /* mystisches Violett */
+      --lapis-glow: rgba(93, 173, 255, .35);
+      --amethyst-glow: rgba(155, 99, 255, .35);
     }
+
     html {
       scroll-behavior: smooth;
     }
+
     body {
-      --bg1: 28 24 44;
-      --bg3: 24 24 27;
+      --bg1: 15 17 34;
+      /* #0F1122 */
+      --bg2: 30 30 47;
+      /* #1E1E2F */
       background:
-        radial-gradient(1200px 700px at 20% -10%, rgba(147, 51, 234, .25), transparent 60%),
-        radial-gradient(800px 600px at 110% 10%, rgba(99, 102, 241, .20), transparent 60%),
-        radial-gradient(900px 700px at 50% 120%, rgba(236, 72, 153, .12), transparent 60%),
-        linear-gradient(180deg, rgb(var(--bg1)) 0%, rgb(var(--bg3)) 100%);
+        radial-gradient(1200px 600px at 70% -10%, rgba(60, 155, 234, .18), transparent 60%),
+        /* azure */
+        radial-gradient(900px 500px at 10% 0%, rgba(123, 44, 191, .22), transparent 55%),
+        /* purple */
+        linear-gradient(180deg, rgb(var(--bg1)) 0%, rgb(var(--bg2)) 60%, rgb(var(--bg1)) 100%);
       min-height: 100vh;
       transition: opacity .25s ease;
     }
+
+    .energy-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(800px 600px at 50% 50%, rgba(93, 173, 255, 0.08), transparent 70%),
+        radial-gradient(900px 700px at 80% 30%, rgba(155, 99, 255, 0.07), transparent 70%);
+      animation: auraFlow 20s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes auraFlow {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.5;
+      }
+
+      50% {
+        transform: translate(-2%, 2%) scale(1.05);
+        opacity: 0.65;
+      }
+
+      100% {
+        transform: translate(2%, -2%) scale(1);
+        opacity: 0.5;
+      }
+    }
+
     .noise::before {
       content: "";
       position: fixed;
@@ -38,25 +89,45 @@
       mix-blend-mode: overlay;
       background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.35"/></svg>');
     }
+
     .glass {
       backdrop-filter: blur(10px);
       background: rgba(17, 17, 27, .55);
       border: 1px solid rgba(255, 255, 255, .08);
     }
+
     .logo-wrap img {
-      filter: drop-shadow(0 0 18px rgba(168, 85, 247, .35));
+      filter: drop-shadow(0 0 18px rgba(60, 155, 234, .35)) drop-shadow(0 0 8px rgba(123, 44, 191, .25));
+      animation: kbPulse 3.5s ease-in-out infinite;
     }
+
+    @keyframes kbPulse {
+
+      0%,
+      100% {
+        filter: drop-shadow(0 0 12px rgba(60, 155, 234, .35)) drop-shadow(0 0 6px rgba(123, 44, 191, .25));
+      }
+
+      50% {
+        filter: drop-shadow(0 0 20px rgba(60, 155, 234, .55)) drop-shadow(0 0 12px rgba(123, 44, 191, .35));
+      }
+    }
+
+
+
     .logo-wrap img:hover {
       transform: translateY(-1px) scale(1.02);
       transition: .35s ease;
       filter: drop-shadow(0 0 22px rgba(168, 85, 247, .55));
     }
+
     .orb {
       filter: blur(40px);
       opacity: .35;
       position: absolute;
       border-radius: 9999px;
     }
+
     .orb-1 {
       width: 380px;
       height: 380px;
@@ -65,6 +136,7 @@
       left: -80px;
       animation: float1 14s ease-in-out infinite;
     }
+
     .orb-2 {
       width: 300px;
       height: 300px;
@@ -73,6 +145,7 @@
       right: 5%;
       animation: float2 16s ease-in-out infinite;
     }
+
     .orb-3 {
       width: 260px;
       height: 260px;
@@ -81,112 +154,190 @@
       right: 20%;
       animation: float3 18s ease-in-out infinite;
     }
+
     @keyframes float1 {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translateY(0) translateX(0);
       }
+
       50% {
         transform: translateY(20px) translateX(15px);
       }
     }
+
     @keyframes float2 {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translateY(0) translateX(0);
       }
+
       50% {
         transform: translateY(-25px) translateX(-20px);
       }
     }
+
     @keyframes float3 {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translateY(0) translateX(0);
       }
+
       50% {
         transform: translateY(22px) translateX(10px);
       }
     }
+
     .glow-divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(217, 70, 239, .45), transparent);
     }
+
     .fab {
       position: fixed;
       right: 18px;
       bottom: 18px;
       z-index: 60;
     }
+
     /* Language fade */
     .fade {
       opacity: .2;
     }
+
     .lang-toggle button {
       transition: all .25s ease;
     }
+
     .lang-toggle button:hover {
       filter: drop-shadow(0 0 6px rgba(168, 85, 247, .7));
     }
+
     /* Responsive adjustments for floating action buttons on small screens */
     @media (max-width: 640px) {
-      /* Hide demo links until toggled */
-      #demo-links { display: none; position: absolute; bottom: 64px; right: 0; }
-      #demo-links.show { display: flex; }
-      /* Reduce padding on buttons to save space */
-      #fab-wrapper button, #fab-wrapper a { padding-left: 12px; padding-right: 12px; }
-      #fab-wrapper span { display: none; }
-    }
-/* ✨ Mystic Glow Effect for the Intro Slogan */
-#intro-slogan::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(168,85,247,0.15), transparent 60%);
-  animation: pulseGlow 6s ease-in-out infinite;
-  z-index: -1;
-}
 
-@keyframes pulseGlow {
-  0%, 100% {
-    opacity: 0.4;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.7;
-    transform: scale(1.05);
-  }
-}
-</style>
+      /* Hide demo links until toggled */
+      #demo-links {
+        display: none;
+        position: absolute;
+        bottom: 64px;
+        right: 0;
+      }
+
+      #demo-links.show {
+        display: flex;
+      }
+
+      /* Reduce padding on buttons to save space */
+      #fab-wrapper button,
+      #fab-wrapper a {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      #fab-wrapper span {
+        display: none;
+      }
+    }
+
+    /* ✨ Mystic Glow Effect for the Intro Slogan */
+    #intro-slogan::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(168, 85, 247, 0.15), transparent 60%);
+      animation: pulseGlow 6s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    @keyframes pulseGlow {
+
+      0%,
+      100% {
+        opacity: 0.4;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.7;
+        transform: scale(1.05);
+      }
+    }
+
+    /* ===== Lapis-Amethyst Hover System ===== */
+
+    a:hover,
+    button:hover {
+      color: rgb(var(--lapis));
+      text-shadow: 0 0 12px var(--lapis-glow), 0 0 24px var(--amethyst-glow);
+      transition: all .3s ease;
+    }
+
+    button {
+      transition: all .3s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, rgb(var(--lapis)), rgb(var(--amethyst)));
+      color: white;
+      border: none;
+      box-shadow: 0 0 20px rgba(93, 173, 255, .15);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 25px rgba(93, 173, 255, .35), 0 0 40px rgba(155, 99, 255, .25);
+      transform: translateY(-2px);
+    }
+  </style>
 </head>
+
 <body class="noise text-zinc-100 selection:bg-fuchsia-500/40 selection:text-white">
+  <div class="energy-layer"></div>
+
   <!-- Orbs -->
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
   <div class="orb orb-3"></div>
   <!-- EPIC INTRO SLOGAN -->
-<section id="intro-slogan" class="relative flex items-center justify-center text-center py-16 px-4">
-  <div data-aos="fade-up" data-aos-duration="1000">
-    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-violet-400 to-sky-400 drop-shadow-[0_0_25px_rgba(168,85,247,0.35)]">
-      ⚔️ In silence, we build. In precision, we conquer.
-    </h1>
-    <p class="mt-4 text-zinc-300/90 text-lg max-w-2xl mx-auto leading-relaxed">
-      Where mystic automation meets strategy — <span class="text-fuchsia-400">KabutoAI</span> builds digital warriors that never sleep.
-    </p>
-  </div>
-</section>
+  <section id="intro-slogan" class="relative flex items-center justify-center text-center py-16 px-4">
+    <div data-aos="fade-up" data-aos-duration="1000">
+      <h1
+        class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-violet-400 to-sky-400 drop-shadow-[0_0_25px_rgba(168,85,247,0.35)]">
+        ⚔️ In silence, we build. In precision, we conquer.
+      </h1>
+      <p class="mt-4 text-zinc-300/90 text-lg max-w-2xl mx-auto leading-relaxed">
+        Where mystic automation meets strategy — <span class="text-fuchsia-400">KabutoAI</span> builds digital warriors
+        that never sleep.
+      </p>
+    </div>
+  </section>
 
   <!-- NAV -->
   <header class="sticky top-0 z-40">
     <nav class="glass">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         <div class="flex items-center gap-3 logo-wrap">
-          <img src="/static/kabutoailogo.png" alt="KabutoAI" class="w-9 h-9 rounded-xl object-contain" />
-          <span class="text-lg sm:text-xl font-semibold tracking-wide">Kabuto<span class="text-fuchsia-400">AI</span></span>
+          <div class="logo-wrap">
+            <img src="/static/kabutoailogo.png" alt="Kabuto AI Logo" class="w-10 h-10 rounded-xl object-contain" />
+          </div>
+          <div class="glow-divider"></div>
+
+          <span class="text-lg sm:text-xl font-semibold tracking-wide">Kabuto<span
+              class="text-fuchsia-400">AI</span></span>
         </div>
         <div class="hidden md:flex items-center gap-8 text-sm">
-          <a href="#features" class="hover:text-fuchsia-300 transition lang" data-en="Features" data-de="Features">Features</a>
-          <a href="#how" class="hover:text-fuchsia-300 transition lang" data-en="How it works" data-de="Ablauf">How it works</a>
-          <a href="#pricing" class="hover:text-fuchsia-300 transition lang" data-en="Pricing" data-de="Preise">Pricing</a>
+          <a href="#features" class="hover:text-fuchsia-300 transition lang" data-en="Features"
+            data-de="Features">Features</a>
+          <a href="#how" class="hover:text-fuchsia-300 transition lang" data-en="How it works" data-de="Ablauf">How it
+            works</a>
+          <a href="#pricing" class="hover:text-fuchsia-300 transition lang" data-en="Pricing"
+            data-de="Preise">Pricing</a>
           <a href="#faq" class="hover:text-fuchsia-300 transition lang" data-en="FAQ" data-de="FAQ">FAQ</a>
-          <a href="#contact" class="px-4 py-2 rounded-xl bg-fuchsia-600/80 hover:bg-fuchsia-500 transition lang" data-en="Contact" data-de="Kontakt">Contact</a>
+          <a href="#contact" class="px-4 py-2 rounded-xl bg-fuchsia-600/80 hover:bg-fuchsia-500 transition lang"
+            data-en="Contact" data-de="Kontakt">Contact</a>
         </div>
         <!-- Language toggle -->
         <div class="lang-toggle flex items-center gap-2">
@@ -202,28 +353,42 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-24">
       <div class="grid lg:grid-cols-2 gap-10 items-center" data-aos="fade-up" data-aos-duration="900">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-zinc-300 mb-5">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-zinc-300 mb-5">
             <span class="h-2 w-2 rounded-full bg-fuchsia-400 animate-pulse"></span>
-            <span class="lang" data-en="Always-On Automation • Multi-Language • 24/7" data-de="Always-On Automation • Mehrsprachig • 24/7">Always-On Automation • Multi-Language • 24/7</span>
+            <span class="lang" data-en="Always-On Automation • Multi-Language • 24/7"
+              data-de="Always-On Automation • Mehrsprachig • 24/7">Always-On Automation • Multi-Language • 24/7</span>
           </div>
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight">
             <span class="lang" data-en="Mystic " data-de="Mystische ">Mystic </span>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-violet-400 to-sky-400">AI Agents</span>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-violet-400 to-sky-400">AI
+              Agents</span>
             <span class="lang" data-en=" for " data-de=" für "> for </span>
             <br class="hidden sm:block" />
-            <span class="lang" data-en="Telegram, WhatsApp & Web" data-de="Telegram, WhatsApp & Web">Telegram, WhatsApp & Web</span>
+            <span class="lang" data-en="Telegram, WhatsApp & Web" data-de="Telegram, WhatsApp & Web">Telegram, WhatsApp
+              & Web</span>
           </h1>
-          <p class="mt-5 text-zinc-300/90 text-lg max-w-2xl lang" data-en="Win time, leads and revenue. KabutoAI answers DMs, qualifies requests and sells – in your brand voice, multilingual and lightning-fast." data-de="Gewinne Zeit, Leads und Umsatz. KabutoAI beantwortet DMs, qualifiziert Anfragen und verkauft – in deinem Branding, mehrsprachig und blitzschnell.">
-            Win time, leads and revenue. KabutoAI answers DMs, qualifies requests and sells – in your brand voice, multilingual and lightning-fast.
+          <p class="mt-5 text-zinc-300/90 text-lg max-w-2xl lang"
+            data-en="Win time, leads and revenue. KabutoAI answers DMs, qualifies requests and sells – in your brand voice, multilingual and lightning-fast."
+            data-de="Gewinne Zeit, Leads und Umsatz. KabutoAI beantwortet DMs, qualifiziert Anfragen und verkauft – in deinem Branding, mehrsprachig und blitzschnell.">
+            Win time, leads and revenue. KabutoAI answers DMs, qualifies requests and sells – in your brand voice,
+            multilingual and lightning-fast.
           </p>
           <div class="mt-8 flex flex-wrap gap-4">
-            <a href="#pricing" class="px-5 py-3 rounded-xl bg-fuchsia-600 hover:bg-fuchsia-500 transition font-semibold lang" data-en="View packages" data-de="Jetzt Pakete ansehen">View packages</a>
-            <a href="#demo" class="px-5 py-3 rounded-xl border border-white/15 hover:border-fuchsia-400/60 transition lang" data-en="Live demo" data-de="Live-Demo">Live demo</a>
+            <a href="#pricing"
+              class="px-5 py-3 rounded-xl bg-fuchsia-600 hover:bg-fuchsia-500 transition font-semibold lang"
+              data-en="View packages" data-de="Jetzt Pakete ansehen">View packages</a>
+            <a href="#demo"
+              class="px-5 py-3 rounded-xl border border-white/15 hover:border-fuchsia-400/60 transition lang"
+              data-en="Live demo" data-de="Live-Demo">Live demo</a>
           </div>
           <div class="mt-6 flex items-center gap-5 text-sm text-zinc-400">
-            <div class="flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4"></i> <span class="lang" data-en="Reply in seconds" data-de="Antwort in Sekunden">Reply in seconds</span></div>
-            <div class="flex items-center gap-2"><i data-lucide="shield" class="w-4 h-4"></i> <span class="lang" data-en="GDPR-friendly*" data-de="DSGVO-freundlich*">GDPR-friendly*</span></div>
-            <div class="flex items-center gap-2"><i data-lucide="languages" class="w-4 h-4"></i> <span class="lang" data-en="Auto language" data-de="Auto-Sprache">Auto language</span></div>
+            <div class="flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4"></i> <span class="lang"
+                data-en="Reply in seconds" data-de="Antwort in Sekunden">Reply in seconds</span></div>
+            <div class="flex items-center gap-2"><i data-lucide="shield" class="w-4 h-4"></i> <span class="lang"
+                data-en="GDPR-friendly*" data-de="DSGVO-freundlich*">GDPR-friendly*</span></div>
+            <div class="flex items-center gap-2"><i data-lucide="languages" class="w-4 h-4"></i> <span class="lang"
+                data-en="Auto language" data-de="Auto-Sprache">Auto language</span></div>
           </div>
         </div>
         <!-- Showcase card -->
@@ -238,47 +403,82 @@
                 <span class="text-xs text-zinc-400 lang" data-en="Live chat" data-de="Live-Chat">Live chat</span>
               </div>
               <div class="mt-4 space-y-3">
-                <div class="p-3 rounded-xl bg-white/5 w-4/5 lang" data-en="Hey! 👋 How can I help today – Telegram, WhatsApp or Website widget?" data-de="Hey! 👋 Wie kann ich dir heute helfen – Telegram, WhatsApp oder Website-Widget?"> Hey! 👋 How can I help today – Telegram, WhatsApp or Website widget? </div>
-                <div class="p-3 rounded-xl bg-fuchsia-600/20 border border-fuchsia-500/30 ml-auto w-3/4 lang" data-en="I'd like an offer for my coaching account." data-de="Ich möchte ein Angebot für meinen Coaching-Account."> I'd like an offer for my coaching account. </div>
-                <div class="p-3 rounded-xl bg-white/5 w-4/5 lang" data-en="Nice! Do you want to capture leads, book calls or sell directly? I have 3 packages – Starter, Pro, Enterprise." data-de="Nice! Willst du Leads sammeln, Termine buchen oder direkt verkaufen? Ich habe 3 Pakete – Starter, Pro, Enterprise."> Nice! Do you want to capture leads, book calls or sell directly? I have 3 packages – Starter, Pro, Enterprise. </div>
+                <div class="p-3 rounded-xl bg-white/5 w-4/5 lang"
+                  data-en="Hey! 👋 How can I help today – Telegram, WhatsApp or Website widget?"
+                  data-de="Hey! 👋 Wie kann ich dir heute helfen – Telegram, WhatsApp oder Website-Widget?"> Hey! 👋 How
+                  can I help today – Telegram, WhatsApp or Website widget? </div>
+                <div class="p-3 rounded-xl bg-fuchsia-600/20 border border-fuchsia-500/30 ml-auto w-3/4 lang"
+                  data-en="I'd like an offer for my coaching account."
+                  data-de="Ich möchte ein Angebot für meinen Coaching-Account."> I'd like an offer for my coaching
+                  account. </div>
+                <div class="p-3 rounded-xl bg-white/5 w-4/5 lang"
+                  data-en="Nice! Do you want to capture leads, book calls or sell directly? I have 3 packages – Starter, Pro, Enterprise."
+                  data-de="Nice! Willst du Leads sammeln, Termine buchen oder direkt verkaufen? Ich habe 3 Pakete – Starter, Pro, Enterprise.">
+                  Nice! Do you want to capture leads, book calls or sell directly? I have 3 packages – Starter, Pro,
+                  Enterprise. </div>
               </div>
               <div class="mt-4 flex gap-2">
-                <a href="#pricing" class="px-4 py-2 rounded-xl bg-fuchsia-600 hover:bg-fuchsia-500 transition text-sm lang" data-en="View packages" data-de="Pakete ansehen">View packages</a>
+                <a href="#pricing"
+                  class="px-4 py-2 rounded-xl bg-fuchsia-600 hover:bg-fuchsia-500 transition text-sm lang"
+                  data-en="View packages" data-de="Pakete ansehen">View packages</a>
                 <!-- Removed Documentation button since the chat widget is always visible -->
                 <!-- <a href="#demo" class="px-4 py-2 rounded-xl border border-white/15 hover:border-fuchsia-400/60 transition text-sm lang" data-en="Documentation" data-de="Dokumentation">Documentation</a> -->
               </div>
             </div>
-            <p class="text-xs text-zinc-500 mt-3 lang" data-en="*Note: Hosting & implementation may require privacy adjustments." data-de="*Hinweis: Umsetzung & Hosting können datenschutzrechtliche Anpassungen erfordern.">*Note: Hosting & implementation may require privacy adjustments.</p>
+            <p class="text-xs text-zinc-500 mt-3 lang"
+              data-en="*Note: Hosting & implementation may require privacy adjustments."
+              data-de="*Hinweis: Umsetzung & Hosting können datenschutzrechtliche Anpassungen erfordern.">*Note: Hosting
+              & implementation may require privacy adjustments.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
-   <!-- LEGAL SECTIONS (commented out; separate pages are used instead) -->
-   <!-- Imprint / Impressum Section - hidden -->
+  <!-- LEGAL SECTIONS (commented out; separate pages are used instead) -->
+  <!-- Imprint / Impressum Section - hidden -->
   <section id="imprint" class="relative py-16 hidden">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-2xl sm:text-3xl font-bold mb-4 lang" data-en="Imprint" data-de="Impressum">Impressum</h2>
-      <p class="lang mb-2" data-en="Information according to § 5 TMG: Kabuto AI, Lange Straße 86, 18356 Barth, Germany." data-de="Angaben gemäß § 5 TMG: Kabuto AI, Lange Straße 86, 18356 Barth, Deutschland.">
+      <p class="lang mb-2" data-en="Information according to § 5 TMG: Kabuto AI, Lange Straße 86, 18356 Barth, Germany."
+        data-de="Angaben gemäß § 5 TMG: Kabuto AI, Lange Straße 86, 18356 Barth, Deutschland.">
         Angaben gemäß § 5 TMG: Kabuto AI, Lange Straße 86, 18356 Barth, Deutschland.
       </p>
-      <p class="lang mb-2" data-en="Contact: E‑mail: kabuto.ai.business@gmail.com" data-de="Kontakt: E‑Mail: kabuto.ai.business@gmail.com">
+      <p class="lang mb-2" data-en="Contact: E‑mail: kabuto.ai.business@gmail.com"
+        data-de="Kontakt: E‑Mail: kabuto.ai.business@gmail.com">
         Kontakt: E‑Mail: kabuto.ai.business@gmail.com
       </p>
-      <p class="lang mb-6" data-en="Responsible for the content according to § 55 Abs. 2 RStV: Kabuto AI." data-de="Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: Kabuto AI.">
+      <p class="lang mb-6" data-en="Responsible for the content according to § 55 Abs. 2 RStV: Kabuto AI."
+        data-de="Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: Kabuto AI.">
         Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: Kabuto AI.
       </p>
-      <h3 class="text-xl font-semibold mb-2 lang" data-en="Disclaimer" data-de="Haftungsausschluss">Haftungsausschluss</h3>
-      <p class="lang mb-2" data-en="We endeavour to keep the contents of our pages up to date. Despite careful editing, we do not assume any liability for the correctness of the contents. As a service provider, we are responsible for our own content on these pages in accordance with § 7 para. 1 TMG. According to §§ 8 to 10 TMG, we are not obliged to monitor transmitted or stored third‑party information. If we become aware of any infringements, we will remove this content immediately. However, liability in this respect is only assumed from the time of knowledge of a concrete infringement." data-de="Wir sind bemüht, die Inhalte unserer Seiten stets aktuell zu halten. Trotz sorgfältiger Bearbeitung übernehmen wir keine Gewähr für die Richtigkeit der bereitgestellten Inhalte. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten verantwortlich. Nach §§ 8 bis 10 TMG sind wir jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen. Bei Bekanntwerden von Rechtsverletzungen werden wir diese Inhalte umgehend entfernen. Eine diesbezügliche Haftung übernehmen wir erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung.">
-        Wir sind bemüht, die Inhalte unserer Seiten stets aktuell zu halten. Trotz sorgfältiger Bearbeitung übernehmen wir keine Gewähr für die Richtigkeit der bereitgestellten Inhalte. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten verantwortlich. Nach §§ 8 bis 10 TMG sind wir jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen. Bei Bekanntwerden von Rechtsverletzungen werden wir diese Inhalte umgehend entfernen. Eine diesbezügliche Haftung übernehmen wir erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung.
+      <h3 class="text-xl font-semibold mb-2 lang" data-en="Disclaimer" data-de="Haftungsausschluss">Haftungsausschluss
+      </h3>
+      <p class="lang mb-2"
+        data-en="We endeavour to keep the contents of our pages up to date. Despite careful editing, we do not assume any liability for the correctness of the contents. As a service provider, we are responsible for our own content on these pages in accordance with § 7 para. 1 TMG. According to §§ 8 to 10 TMG, we are not obliged to monitor transmitted or stored third‑party information. If we become aware of any infringements, we will remove this content immediately. However, liability in this respect is only assumed from the time of knowledge of a concrete infringement."
+        data-de="Wir sind bemüht, die Inhalte unserer Seiten stets aktuell zu halten. Trotz sorgfältiger Bearbeitung übernehmen wir keine Gewähr für die Richtigkeit der bereitgestellten Inhalte. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten verantwortlich. Nach §§ 8 bis 10 TMG sind wir jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen. Bei Bekanntwerden von Rechtsverletzungen werden wir diese Inhalte umgehend entfernen. Eine diesbezügliche Haftung übernehmen wir erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung.">
+        Wir sind bemüht, die Inhalte unserer Seiten stets aktuell zu halten. Trotz sorgfältiger Bearbeitung übernehmen
+        wir keine Gewähr für die Richtigkeit der bereitgestellten Inhalte. Als Diensteanbieter sind wir gemäß
+        § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten verantwortlich. Nach §§ 8 bis 10 TMG sind wir jedoch nicht
+        verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen. Bei Bekanntwerden von
+        Rechtsverletzungen werden wir diese Inhalte umgehend entfernen. Eine diesbezügliche Haftung übernehmen wir erst
+        ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung.
       </p>
-      <h3 class="text-xl font-semibold mb-2 lang" data-en="Liability for links" data-de="Haftung für Links">Haftung für Links</h3>
-      <p class="lang mb-2" data-en="Our offer contains links to external websites of third parties. We have no influence on the contents of these external sites. The respective provider or operator is always responsible for the contents of the linked pages. No liability is assumed for the content and correctness of the information on linked websites of third party information providers." data-de="Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Für die Inhalte und die Richtigkeit der Informationen auf verlinkten Webseiten Dritter wird keine Gewähr übernommen.">
-        Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Für die Inhalte und die Richtigkeit der Informationen auf verlinkten Webseiten Dritter wird keine Gewähr übernommen.
+      <h3 class="text-xl font-semibold mb-2 lang" data-en="Liability for links" data-de="Haftung für Links">Haftung für
+        Links</h3>
+      <p class="lang mb-2"
+        data-en="Our offer contains links to external websites of third parties. We have no influence on the contents of these external sites. The respective provider or operator is always responsible for the contents of the linked pages. No liability is assumed for the content and correctness of the information on linked websites of third party information providers."
+        data-de="Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Für die Inhalte und die Richtigkeit der Informationen auf verlinkten Webseiten Dritter wird keine Gewähr übernommen.">
+        Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die
+        Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Für die
+        Inhalte und die Richtigkeit der Informationen auf verlinkten Webseiten Dritter wird keine Gewähr übernommen.
       </p>
       <h3 class="text-xl font-semibold mb-2 lang" data-en="Copyright" data-de="Urheberrecht">Urheberrecht</h3>
-      <p class="lang" data-en="The contents and works created by us on these pages are subject to German copyright law. The duplication, processing, distribution and any kind of exploitation outside the limits of copyright require the written consent of the author." data-de="Die durch uns erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des Autors.">
-        Die durch uns erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des Autors.
+      <p class="lang"
+        data-en="The contents and works created by us on these pages are subject to German copyright law. The duplication, processing, distribution and any kind of exploitation outside the limits of copyright require the written consent of the author."
+        data-de="Die durch uns erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des Autors.">
+        Die durch uns erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die
+        Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts
+        bedürfen der schriftlichen Zustimmung des Autors.
       </p>
     </div>
   </section>
@@ -286,30 +486,58 @@
   <!-- Privacy / Datenschutz Section -->
   <section id="privacy" class="relative py-16 hidden">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-4 lang" data-en="Privacy Policy" data-de="Datenschutzerklärung">Datenschutzerklärung</h2>
-      <h3 class="text-xl font-semibold mb-2 lang" data-en="1. Controller" data-de="1. Verantwortlicher">1. Verantwortlicher</h3>
-      <p class="lang mb-4" data-en="Kabuto AI, Lange Straße 86, 18356 Barth, Germany (email: kabuto.ai.business@gmail.com) is responsible for processing personal data." data-de="Kabuto AI, Lange Straße 86, 18356 Barth, Deutschland (E-Mail: kabuto.ai.business@gmail.com) ist für die Verarbeitung personenbezogener Daten verantwortlich.">
-        Kabuto AI, Lange Straße 86, 18356 Barth, Deutschland (E-Mail: kabuto.ai.business@gmail.com) ist für die Verarbeitung personenbezogener Daten verantwortlich.
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4 lang" data-en="Privacy Policy" data-de="Datenschutzerklärung">
+        Datenschutzerklärung</h2>
+      <h3 class="text-xl font-semibold mb-2 lang" data-en="1. Controller" data-de="1. Verantwortlicher">1.
+        Verantwortlicher</h3>
+      <p class="lang mb-4"
+        data-en="Kabuto AI, Lange Straße 86, 18356 Barth, Germany (email: kabuto.ai.business@gmail.com) is responsible for processing personal data."
+        data-de="Kabuto AI, Lange Straße 86, 18356 Barth, Deutschland (E-Mail: kabuto.ai.business@gmail.com) ist für die Verarbeitung personenbezogener Daten verantwortlich.">
+        Kabuto AI, Lange Straße 86, 18356 Barth, Deutschland (E-Mail: kabuto.ai.business@gmail.com) ist für die
+        Verarbeitung personenbezogener Daten verantwortlich.
       </p>
-      <h3 class="text-xl font-semibold mb-2 lang" data-en="2. Data collection on this website" data-de="2. Datenerfassung auf dieser Website">2. Datenerfassung auf dieser Website</h3>
-      <p class="lang mb-4" data-en="We only collect the personal data that you provide to us via the contact form (name, email address and your message). These data are used solely for processing your request and to contact you. The legal basis for processing is Art. 6(1)(b) GDPR (performance of a contract or steps prior to entering into a contract)." data-de="Wir erheben nur die personenbezogenen Daten, die Sie uns über das Kontaktformular mitteilen (Name, E‑Mail-Adresse und Ihre Nachricht). Diese Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage und zur Kontaktaufnahme verwendet. Rechtsgrundlage für die Verarbeitung ist Art. 6 Abs. 1 lit. b DSGVO (Erfüllung eines Vertrags oder vorvertragliche Maßnahmen).">
-        Wir erheben nur die personenbezogenen Daten, die Sie uns über das Kontaktformular mitteilen (Name, E‑Mail-Adresse und Ihre Nachricht). Diese Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage und zur Kontaktaufnahme verwendet. Rechtsgrundlage für die Verarbeitung ist Art. 6 Abs. 1 lit. b DSGVO (Erfüllung eines Vertrags oder vorvertragliche Maßnahmen).
+      <h3 class="text-xl font-semibold mb-2 lang" data-en="2. Data collection on this website"
+        data-de="2. Datenerfassung auf dieser Website">2. Datenerfassung auf dieser Website</h3>
+      <p class="lang mb-4"
+        data-en="We only collect the personal data that you provide to us via the contact form (name, email address and your message). These data are used solely for processing your request and to contact you. The legal basis for processing is Art. 6(1)(b) GDPR (performance of a contract or steps prior to entering into a contract)."
+        data-de="Wir erheben nur die personenbezogenen Daten, die Sie uns über das Kontaktformular mitteilen (Name, E‑Mail-Adresse und Ihre Nachricht). Diese Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage und zur Kontaktaufnahme verwendet. Rechtsgrundlage für die Verarbeitung ist Art. 6 Abs. 1 lit. b DSGVO (Erfüllung eines Vertrags oder vorvertragliche Maßnahmen).">
+        Wir erheben nur die personenbezogenen Daten, die Sie uns über das Kontaktformular mitteilen (Name,
+        E‑Mail-Adresse und Ihre Nachricht). Diese Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage und zur
+        Kontaktaufnahme verwendet. Rechtsgrundlage für die Verarbeitung ist Art. 6 Abs. 1 lit. b DSGVO (Erfüllung eines
+        Vertrags oder vorvertragliche Maßnahmen).
       </p>
-      <h3 class="text-xl font-semibold mb-2 lang" data-en="3. Storage and deletion" data-de="3. Speicherdauer">3. Speicherdauer</h3>
-      <p class="lang mb-4" data-en="We store your data only as long as necessary to process your inquiry and as required by statutory retention periods. Afterwards, your data will be deleted." data-de="Ihre Daten werden nur so lange gespeichert, wie es zur Bearbeitung Ihrer Anfrage erforderlich ist und wie es gesetzliche Aufbewahrungsfristen vorsehen. Danach werden Ihre Daten gelöscht.">
-        Ihre Daten werden nur so lange gespeichert, wie es zur Bearbeitung Ihrer Anfrage erforderlich ist und wie es gesetzliche Aufbewahrungsfristen vorsehen. Danach werden Ihre Daten gelöscht.
+      <h3 class="text-xl font-semibold mb-2 lang" data-en="3. Storage and deletion" data-de="3. Speicherdauer">3.
+        Speicherdauer</h3>
+      <p class="lang mb-4"
+        data-en="We store your data only as long as necessary to process your inquiry and as required by statutory retention periods. Afterwards, your data will be deleted."
+        data-de="Ihre Daten werden nur so lange gespeichert, wie es zur Bearbeitung Ihrer Anfrage erforderlich ist und wie es gesetzliche Aufbewahrungsfristen vorsehen. Danach werden Ihre Daten gelöscht.">
+        Ihre Daten werden nur so lange gespeichert, wie es zur Bearbeitung Ihrer Anfrage erforderlich ist und wie es
+        gesetzliche Aufbewahrungsfristen vorsehen. Danach werden Ihre Daten gelöscht.
       </p>
-      <h3 class="text-xl font-semibold mb-2 lang" data-en="4. Transfer to third parties" data-de="4. Weitergabe an Dritte">4. Weitergabe an Dritte</h3>
-      <p class="lang mb-4" data-en="Your data will not be transmitted to third parties without your express consent, unless there is a legal obligation to do so." data-de="Eine Übermittlung Ihrer Daten an Dritte erfolgt nicht ohne Ihre ausdrückliche Einwilligung, es sei denn, es besteht eine gesetzliche Verpflichtung.">
-        Eine Übermittlung Ihrer Daten an Dritte erfolgt nicht ohne Ihre ausdrückliche Einwilligung, es sei denn, es besteht eine gesetzliche Verpflichtung.
+      <h3 class="text-xl font-semibold mb-2 lang" data-en="4. Transfer to third parties"
+        data-de="4. Weitergabe an Dritte">4. Weitergabe an Dritte</h3>
+      <p class="lang mb-4"
+        data-en="Your data will not be transmitted to third parties without your express consent, unless there is a legal obligation to do so."
+        data-de="Eine Übermittlung Ihrer Daten an Dritte erfolgt nicht ohne Ihre ausdrückliche Einwilligung, es sei denn, es besteht eine gesetzliche Verpflichtung.">
+        Eine Übermittlung Ihrer Daten an Dritte erfolgt nicht ohne Ihre ausdrückliche Einwilligung, es sei denn, es
+        besteht eine gesetzliche Verpflichtung.
       </p>
       <h3 class="text-xl font-semibold mb-2 lang" data-en="5. Your rights" data-de="5. Ihre Rechte">5. Ihre Rechte</h3>
-      <p class="lang mb-4" data-en="You have the right to obtain information about the personal data stored about you, its origin and recipients and the purpose of data processing. You also have the right to request rectification, blocking or deletion of your data. For this and other questions on the subject of personal data, you can contact us at any time at the address given in the imprint." data-de="Sie haben das Recht auf Auskunft über die bei uns gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung. Außerdem haben Sie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit an uns über die im Impressum angegebene Adresse wenden.">
-        Sie haben das Recht auf Auskunft über die bei uns gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung. Außerdem haben Sie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit an uns über die im Impressum angegebene Adresse wenden.
+      <p class="lang mb-4"
+        data-en="You have the right to obtain information about the personal data stored about you, its origin and recipients and the purpose of data processing. You also have the right to request rectification, blocking or deletion of your data. For this and other questions on the subject of personal data, you can contact us at any time at the address given in the imprint."
+        data-de="Sie haben das Recht auf Auskunft über die bei uns gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung. Außerdem haben Sie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit an uns über die im Impressum angegebene Adresse wenden.">
+        Sie haben das Recht auf Auskunft über die bei uns gespeicherten personenbezogenen Daten, deren Herkunft und
+        Empfänger und den Zweck der Datenverarbeitung. Außerdem haben Sie ein Recht auf Berichtigung, Sperrung oder
+        Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich
+        jederzeit an uns über die im Impressum angegebene Adresse wenden.
       </p>
-      <h3 class="text-xl font-semibold mb-2 lang" data-en="6. Encryption" data-de="6. Verschlüsselung">6. Verschlüsselung</h3>
-      <p class="lang" data-en="For security reasons and to protect the transmission of personal data, this site uses SSL/TLS encryption." data-de="Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL-/TLS-Verschlüsselung.">
-        Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL-/TLS-Verschlüsselung.
+      <h3 class="text-xl font-semibold mb-2 lang" data-en="6. Encryption" data-de="6. Verschlüsselung">6.
+        Verschlüsselung</h3>
+      <p class="lang"
+        data-en="For security reasons and to protect the transmission of personal data, this site uses SSL/TLS encryption."
+        data-de="Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL-/TLS-Verschlüsselung.">
+        Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine
+        SSL-/TLS-Verschlüsselung.
       </p>
     </div>
   </section>
@@ -317,46 +545,84 @@
   <!-- Terms / AGB Section -->
   <section id="terms" class="relative py-16 hidden">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-4 lang" data-en="Terms and Conditions" data-de="Allgemeine Geschäftsbedingungen">Allgemeine Geschäftsbedingungen</h2>
-      <h3 class="text-xl font-semibold mb-2 lang" data-en="1. Scope" data-de="1. Geltungsbereich">1. Geltungsbereich</h3>
-      <p class="lang mb-4" data-en="These terms and conditions govern the provision of AI chatbot services by Kabuto AI. By ordering a package or subscription you agree to these terms." data-de="Diese AGB regeln die Bereitstellung von AI‑Chatbot‑Services durch Kabuto AI. Durch die Bestellung eines Pakets oder Abonnements erkennen Sie diese Bedingungen an.">
-        Diese AGB regeln die Bereitstellung von AI‑Chatbot‑Services durch Kabuto AI. Durch die Bestellung eines Pakets oder Abonnements erkennen Sie diese Bedingungen an.
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4 lang" data-en="Terms and Conditions"
+        data-de="Allgemeine Geschäftsbedingungen">Allgemeine Geschäftsbedingungen</h2>
+      <h3 class="text-xl font-semibold mb-2 lang" data-en="1. Scope" data-de="1. Geltungsbereich">1. Geltungsbereich
+      </h3>
+      <p class="lang mb-4"
+        data-en="These terms and conditions govern the provision of AI chatbot services by Kabuto AI. By ordering a package or subscription you agree to these terms."
+        data-de="Diese AGB regeln die Bereitstellung von AI‑Chatbot‑Services durch Kabuto AI. Durch die Bestellung eines Pakets oder Abonnements erkennen Sie diese Bedingungen an.">
+        Diese AGB regeln die Bereitstellung von AI‑Chatbot‑Services durch Kabuto AI. Durch die Bestellung eines Pakets
+        oder Abonnements erkennen Sie diese Bedingungen an.
       </p>
       <h3 class="text-xl font-semibold mb-2 lang" data-en="2. Services" data-de="2. Leistungen">2. Leistungen</h3>
-      <p class="lang mb-4" data-en="Kabuto AI provides custom chatbot setup for Telegram, WhatsApp and websites, including prompt creation, FAQ integration, design and training. Details of the services are defined in the selected package or subscription." data-de="Kabuto AI bietet die Einrichtung individueller Chatbots für Telegram, WhatsApp und Websites, einschließlich Prompt‑Erstellung, FAQ‑Integration, Design und Training. Die Leistungsdetails ergeben sich aus dem gewählten Paket oder Abonnement.">
-        Kabuto AI bietet die Einrichtung individueller Chatbots für Telegram, WhatsApp und Websites, einschließlich Prompt‑Erstellung, FAQ‑Integration, Design und Training. Die Leistungsdetails ergeben sich aus dem gewählten Paket oder Abonnement.
+      <p class="lang mb-4"
+        data-en="Kabuto AI provides custom chatbot setup for Telegram, WhatsApp and websites, including prompt creation, FAQ integration, design and training. Details of the services are defined in the selected package or subscription."
+        data-de="Kabuto AI bietet die Einrichtung individueller Chatbots für Telegram, WhatsApp und Websites, einschließlich Prompt‑Erstellung, FAQ‑Integration, Design und Training. Die Leistungsdetails ergeben sich aus dem gewählten Paket oder Abonnement.">
+        Kabuto AI bietet die Einrichtung individueller Chatbots für Telegram, WhatsApp und Websites, einschließlich
+        Prompt‑Erstellung, FAQ‑Integration, Design und Training. Die Leistungsdetails ergeben sich aus dem gewählten
+        Paket oder Abonnement.
       </p>
-      <h3 class="text-xl font-semibold mb-2 lang" data-en="3. Conclusion of contract" data-de="3. Vertragsschluss">3. Vertragsschluss</h3>
-      <p class="lang mb-4" data-en="The contract is concluded when you order a package or subscription via our website or in writing and we confirm the order. Our prices include a one-time setup fee and optional monthly subscriptions as displayed on this website." data-de="Der Vertrag kommt zustande, wenn Sie ein Paket oder Abonnement über unsere Website oder schriftlich bestellen und wir die Bestellung bestätigen. Unsere Preise umfassen eine einmalige Einrichtungsgebühr sowie optionale monatliche Abonnements, wie auf dieser Website dargestellt.">
-        Der Vertrag kommt zustande, wenn Sie ein Paket oder Abonnement über unsere Website oder schriftlich bestellen und wir die Bestellung bestätigen. Unsere Preise umfassen eine einmalige Einrichtungsgebühr sowie optionale monatliche Abonnements, wie auf dieser Website dargestellt.
+      <h3 class="text-xl font-semibold mb-2 lang" data-en="3. Conclusion of contract" data-de="3. Vertragsschluss">3.
+        Vertragsschluss</h3>
+      <p class="lang mb-4"
+        data-en="The contract is concluded when you order a package or subscription via our website or in writing and we confirm the order. Our prices include a one-time setup fee and optional monthly subscriptions as displayed on this website."
+        data-de="Der Vertrag kommt zustande, wenn Sie ein Paket oder Abonnement über unsere Website oder schriftlich bestellen und wir die Bestellung bestätigen. Unsere Preise umfassen eine einmalige Einrichtungsgebühr sowie optionale monatliche Abonnements, wie auf dieser Website dargestellt.">
+        Der Vertrag kommt zustande, wenn Sie ein Paket oder Abonnement über unsere Website oder schriftlich bestellen
+        und wir die Bestellung bestätigen. Unsere Preise umfassen eine einmalige Einrichtungsgebühr sowie optionale
+        monatliche Abonnements, wie auf dieser Website dargestellt.
       </p>
       <h3 class="text-xl font-semibold mb-2 lang" data-en="4. Payment" data-de="4. Zahlung">4. Zahlung</h3>
-      <p class="lang mb-4" data-en="Payment is due in advance. You can pay securely via PayPal. The setup fee is charged once; subscriptions are billed monthly. Prices are in euros and include statutory taxes where applicable." data-de="Die Zahlung erfolgt im Voraus. Sie können sicher per PayPal bezahlen. Die Einrichtungsgebühr wird einmalig berechnet; Abonnements werden monatlich abgerechnet. Die Preise sind in Euro und enthalten die gesetzlichen Steuern, sofern anwendbar.">
-        Die Zahlung erfolgt im Voraus. Sie können sicher per PayPal bezahlen. Die Einrichtungsgebühr wird einmalig berechnet; Abonnements werden monatlich abgerechnet. Die Preise sind in Euro und enthalten die gesetzlichen Steuern, sofern anwendbar.
+      <p class="lang mb-4"
+        data-en="Payment is due in advance. You can pay securely via PayPal. The setup fee is charged once; subscriptions are billed monthly. Prices are in euros and include statutory taxes where applicable."
+        data-de="Die Zahlung erfolgt im Voraus. Sie können sicher per PayPal bezahlen. Die Einrichtungsgebühr wird einmalig berechnet; Abonnements werden monatlich abgerechnet. Die Preise sind in Euro und enthalten die gesetzlichen Steuern, sofern anwendbar.">
+        Die Zahlung erfolgt im Voraus. Sie können sicher per PayPal bezahlen. Die Einrichtungsgebühr wird einmalig
+        berechnet; Abonnements werden monatlich abgerechnet. Die Preise sind in Euro und enthalten die gesetzlichen
+        Steuern, sofern anwendbar.
       </p>
-      <h3 class="text-xl font-semibold mb-2 lang" data-en="5. Delivery and setup" data-de="5. Lieferung und Einrichtung">5. Lieferung und Einrichtung</h3>
-      <p class="lang mb-4" data-en="After receipt of payment and required information, we will configure your chatbot within the agreed time frame. You are obliged to cooperate and provide the necessary information." data-de="Nach Zahlungseingang und Bereitstellung der erforderlichen Informationen konfigurieren wir Ihren Chatbot innerhalb des vereinbarten Zeitrahmens. Sie sind zur Mitwirkung verpflichtet und stellen die notwendigen Informationen bereit.">
-        Nach Zahlungseingang und Bereitstellung der erforderlichen Informationen konfigurieren wir Ihren Chatbot innerhalb des vereinbarten Zeitrahmens. Sie sind zur Mitwirkung verpflichtet und stellen die notwendigen Informationen bereit.
+      <h3 class="text-xl font-semibold mb-2 lang" data-en="5. Delivery and setup"
+        data-de="5. Lieferung und Einrichtung">5. Lieferung und Einrichtung</h3>
+      <p class="lang mb-4"
+        data-en="After receipt of payment and required information, we will configure your chatbot within the agreed time frame. You are obliged to cooperate and provide the necessary information."
+        data-de="Nach Zahlungseingang und Bereitstellung der erforderlichen Informationen konfigurieren wir Ihren Chatbot innerhalb des vereinbarten Zeitrahmens. Sie sind zur Mitwirkung verpflichtet und stellen die notwendigen Informationen bereit.">
+        Nach Zahlungseingang und Bereitstellung der erforderlichen Informationen konfigurieren wir Ihren Chatbot
+        innerhalb des vereinbarten Zeitrahmens. Sie sind zur Mitwirkung verpflichtet und stellen die notwendigen
+        Informationen bereit.
       </p>
       <h3 class="text-xl font-semibold mb-2 lang" data-en="6. Liability" data-de="6. Haftung">6. Haftung</h3>
-      <p class="lang mb-4" data-en="We aim to provide reliable and up-to-date services. However, we cannot guarantee continuous availability or correctness of responses. We are liable only in cases of intent or gross negligence. Liability for indirect damages and loss of profits is excluded." data-de="Wir bemühen uns, zuverlässige und aktuelle Leistungen zu erbringen. Eine dauerhafte Verfügbarkeit oder Fehlerfreiheit der Antworten können wir jedoch nicht garantieren. Wir haften nur bei Vorsatz oder grober Fahrlässigkeit. Eine Haftung für indirekte Schäden und entgangenen Gewinn ist ausgeschlossen.">
-        Wir bemühen uns, zuverlässige und aktuelle Leistungen zu erbringen. Eine dauerhafte Verfügbarkeit oder Fehlerfreiheit der Antworten können wir jedoch nicht garantieren. Wir haften nur bei Vorsatz oder grober Fahrlässigkeit. Eine Haftung für indirekte Schäden und entgangenen Gewinn ist ausgeschlossen.
+      <p class="lang mb-4"
+        data-en="We aim to provide reliable and up-to-date services. However, we cannot guarantee continuous availability or correctness of responses. We are liable only in cases of intent or gross negligence. Liability for indirect damages and loss of profits is excluded."
+        data-de="Wir bemühen uns, zuverlässige und aktuelle Leistungen zu erbringen. Eine dauerhafte Verfügbarkeit oder Fehlerfreiheit der Antworten können wir jedoch nicht garantieren. Wir haften nur bei Vorsatz oder grober Fahrlässigkeit. Eine Haftung für indirekte Schäden und entgangenen Gewinn ist ausgeschlossen.">
+        Wir bemühen uns, zuverlässige und aktuelle Leistungen zu erbringen. Eine dauerhafte Verfügbarkeit oder
+        Fehlerfreiheit der Antworten können wir jedoch nicht garantieren. Wir haften nur bei Vorsatz oder grober
+        Fahrlässigkeit. Eine Haftung für indirekte Schäden und entgangenen Gewinn ist ausgeschlossen.
       </p>
-      <h3 class="text-xl font-semibold mb-2 lang" data-en="7. Data protection" data-de="7. Datenschutz">7. Datenschutz</h3>
-      <p class="lang mb-4" data-en="We process your personal data in accordance with our privacy policy and applicable data protection laws." data-de="Wir verarbeiten Ihre personenbezogenen Daten gemäß unserer Datenschutzerklärung und den geltenden Datenschutzgesetzen.">
-        Wir verarbeiten Ihre personenbezogenen Daten gemäß unserer Datenschutzerklärung und den geltenden Datenschutzgesetzen.
+      <h3 class="text-xl font-semibold mb-2 lang" data-en="7. Data protection" data-de="7. Datenschutz">7. Datenschutz
+      </h3>
+      <p class="lang mb-4"
+        data-en="We process your personal data in accordance with our privacy policy and applicable data protection laws."
+        data-de="Wir verarbeiten Ihre personenbezogenen Daten gemäß unserer Datenschutzerklärung und den geltenden Datenschutzgesetzen.">
+        Wir verarbeiten Ihre personenbezogenen Daten gemäß unserer Datenschutzerklärung und den geltenden
+        Datenschutzgesetzen.
       </p>
       <h3 class="text-xl font-semibold mb-2 lang" data-en="8. Termination" data-de="8. Kündigung">8. Kündigung</h3>
-      <p class="lang mb-4" data-en="Subscriptions can be cancelled monthly at the end of the term. The one-time setup fee is non-refundable after the chatbot has been delivered." data-de="Abonnements können monatlich zum Ende der Laufzeit gekündigt werden. Die einmalige Einrichtungsgebühr ist nach Lieferung des Chatbots nicht erstattungsfähig.">
-        Abonnements können monatlich zum Ende der Laufzeit gekündigt werden. Die einmalige Einrichtungsgebühr ist nach Lieferung des Chatbots nicht erstattungsfähig.
+      <p class="lang mb-4"
+        data-en="Subscriptions can be cancelled monthly at the end of the term. The one-time setup fee is non-refundable after the chatbot has been delivered."
+        data-de="Abonnements können monatlich zum Ende der Laufzeit gekündigt werden. Die einmalige Einrichtungsgebühr ist nach Lieferung des Chatbots nicht erstattungsfähig.">
+        Abonnements können monatlich zum Ende der Laufzeit gekündigt werden. Die einmalige Einrichtungsgebühr ist nach
+        Lieferung des Chatbots nicht erstattungsfähig.
       </p>
-      <h3 class="text-xl font-semibold mb-2 lang" data-en="9. Final provisions" data-de="9. Schlussbestimmungen">9. Schlussbestimmungen</h3>
-      <p class="lang" data-en="German law applies. The place of jurisdiction is our registered office, if you are a merchant. If individual provisions are invalid, the validity of the remaining provisions shall remain unaffected." data-de="Es gilt deutsches Recht. Gerichtsstand ist unser Geschäftssitz, sofern Sie Kaufmann sind. Sollten einzelne Bestimmungen unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.">
-        Es gilt deutsches Recht. Gerichtsstand ist unser Geschäftssitz, sofern Sie Kaufmann sind. Sollten einzelne Bestimmungen unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.
+      <h3 class="text-xl font-semibold mb-2 lang" data-en="9. Final provisions" data-de="9. Schlussbestimmungen">9.
+        Schlussbestimmungen</h3>
+      <p class="lang"
+        data-en="German law applies. The place of jurisdiction is our registered office, if you are a merchant. If individual provisions are invalid, the validity of the remaining provisions shall remain unaffected."
+        data-de="Es gilt deutsches Recht. Gerichtsstand ist unser Geschäftssitz, sofern Sie Kaufmann sind. Sollten einzelne Bestimmungen unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.">
+        Es gilt deutsches Recht. Gerichtsstand ist unser Geschäftssitz, sofern Sie Kaufmann sind. Sollten einzelne
+        Bestimmungen unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.
       </p>
     </div>
   </section>
-   <!-- FEATURES -->
+  <!-- FEATURES -->
   <section id="features" class="relative" data-aos="fade-up" data-aos-duration="900">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
       <div class="grid md:grid-cols-3 gap-6">
@@ -365,30 +631,40 @@
             <i data-lucide="send" class="w-5 h-5 text-fuchsia-400"></i>
             <h3 class="font-semibold tracking-wide">Telegram Bot</h3>
           </div>
-          <p class="mt-3 text-zinc-300/90 lang" data-en="Auto replies in DMs & groups, lead forms, media, commands, anti-spam & logs." data-de="Auto-Antworten in DMs & Gruppen, Lead-Formulare, Medien, Commands (/help, /start), Anti-Spam & Logs.">
+          <p class="mt-3 text-zinc-300/90 lang"
+            data-en="Auto replies in DMs & groups, lead forms, media, commands, anti-spam & logs."
+            data-de="Auto-Antworten in DMs & Gruppen, Lead-Formulare, Medien, Commands (/help, /start), Anti-Spam & Logs.">
             Auto replies in DMs & groups, lead forms, media, commands, anti-spam & logs.
           </p>
-          <div class="mt-4 text-sm text-zinc-400 lang" data-en="Built for coach DMs & community support." data-de="Bereit für Coach-DMs & Community-Support.">Built for coach DMs & community support.</div>
+          <div class="mt-4 text-sm text-zinc-400 lang" data-en="Built for coach DMs & community support."
+            data-de="Bereit für Coach-DMs & Community-Support.">Built for coach DMs & community support.</div>
         </div>
         <div class="glass rounded-2xl p-6 border border-white/10 hover:border-fuchsia-400/40 transition">
           <div class="flex items-center gap-3">
             <i data-lucide="phone" class="w-5 h-5 text-fuchsia-400"></i>
             <h3 class="font-semibold tracking-wide">WhatsApp (Twilio)</h3>
           </div>
-          <p class="mt-3 text-zinc-300/90 lang" data-en="Business number, branding, templates, multilingual, reliable 24/7 hosting." data-de="Business-Nummer, Branding, Vorlagen, Mehrsprachigkeit, zuverlässiges 24/7-Hosting.">
+          <p class="mt-3 text-zinc-300/90 lang"
+            data-en="Business number, branding, templates, multilingual, reliable 24/7 hosting."
+            data-de="Business-Nummer, Branding, Vorlagen, Mehrsprachigkeit, zuverlässiges 24/7-Hosting.">
             Business number, branding, templates, multilingual, reliable 24/7 hosting.
           </p>
-          <div class="mt-4 text-sm text-zinc-400 lang" data-en="Verification & opt-in guide included." data-de="Verifizierung & Opt-in inklusive Anleitung.">Verification & opt-in guide included.</div>
+          <div class="mt-4 text-sm text-zinc-400 lang" data-en="Verification & opt-in guide included."
+            data-de="Verifizierung & Opt-in inklusive Anleitung.">Verification & opt-in guide included.</div>
         </div>
         <div class="glass rounded-2xl p-6 border border-white/10 hover:border-fuchsia-400/40 transition">
           <div class="flex items-center gap-3">
             <i data-lucide="globe" class="w-5 h-5 text-fuchsia-400"></i>
-            <h3 class="font-semibold tracking-wide lang" data-en="Website Widget" data-de="Website-Widget">Website Widget</h3>
+            <h3 class="font-semibold tracking-wide lang" data-en="Website Widget" data-de="Website-Widget">Website
+              Widget</h3>
           </div>
-          <p class="mt-3 text-zinc-300/90 lang" data-en="Embeddable chat widget incl. lead capture, booking links & answers in your tone." data-de="Einbettbares Chat-Widget inkl. Lead-Capture, Termin-Links & Antworten in deiner Tonalität.">
+          <p class="mt-3 text-zinc-300/90 lang"
+            data-en="Embeddable chat widget incl. lead capture, booking links & answers in your tone."
+            data-de="Einbettbares Chat-Widget inkl. Lead-Capture, Termin-Links & Antworten in deiner Tonalität.">
             Embeddable chat widget incl. lead capture, booking links & answers in your tone.
           </p>
-          <div class="mt-4 text-sm text-zinc-400 lang" data-en="Snippets for HTML, React & CMS." data-de="Snippets für HTML, React & CMS.">Snippets for HTML, React & CMS.</div>
+          <div class="mt-4 text-sm text-zinc-400 lang" data-en="Snippets for HTML, React & CMS."
+            data-de="Snippets für HTML, React & CMS.">Snippets for HTML, React & CMS.</div>
         </div>
       </div>
     </div>
@@ -404,29 +680,38 @@
         <div class="mt-6 grid md:grid-cols-4 gap-6">
           <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
             <div class="text-sm text-zinc-400 lang" data-en="Step 1" data-de="Schritt 1">Step 1</div>
-            <div class="font-semibold mt-1 lang" data-en="Goals & Branding" data-de="Ziele & Branding">Goals & Branding </div>
-            <p class="text-zinc-300/90 mt-2 lang" data-en="We clarify goals & tone, collect examples and decide focus: leads, support or sales." data-de="Wir klären Ziele & Ton, sammeln Beispiele und legen den Fokus fest: Leads, Support oder Verkauf.">
+            <div class="font-semibold mt-1 lang" data-en="Goals & Branding" data-de="Ziele & Branding">Goals & Branding
+            </div>
+            <p class="text-zinc-300/90 mt-2 lang"
+              data-en="We clarify goals & tone, collect examples and decide focus: leads, support or sales."
+              data-de="Wir klären Ziele & Ton, sammeln Beispiele und legen den Fokus fest: Leads, Support oder Verkauf.">
               We clarify goals & tone, collect examples and decide focus: leads, support or sales.
             </p>
           </div>
           <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
             <div class="text-sm text-zinc-400 lang" data-en="Step 2" data-de="Schritt 2">Step 2</div>
-            <div class="font-semibold mt-1 lang" data-en="Setup & Training" data-de="Setup & Trainings">Setup & Training </div>
-            <p class="text-zinc-300/90 mt-2 lang" data-en="Connect channels (Telegram/WhatsApp), build knowledge base and train answers." data-de="Kanäle verbinden (Telegram/WhatsApp), Wissensbasis aufbauen und Antworten trainieren.">
+            <div class="font-semibold mt-1 lang" data-en="Setup & Training" data-de="Setup & Trainings">Setup & Training
+            </div>
+            <p class="text-zinc-300/90 mt-2 lang"
+              data-en="Connect channels (Telegram/WhatsApp), build knowledge base and train answers."
+              data-de="Kanäle verbinden (Telegram/WhatsApp), Wissensbasis aufbauen und Antworten trainieren.">
               Connect channels (Telegram/WhatsApp), build knowledge base and train answers.
             </p>
           </div>
           <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
             <div class="text-sm text-zinc-400 lang" data-en="Step 3" data-de="Schritt 3">Step 3</div>
             <div class="font-semibold mt-1 lang" data-en="Launch & Tests" data-de="Launch & Tests">Launch & Tests</div>
-            <p class="text-zinc-300/90 mt-2 lang" data-en="Test chats, polish, privacy notes and go live with your branding." data-de="Test-Chats, Feinschliff, DSGVO-Hinweise und Go-Live mit deinem Branding.">
+            <p class="text-zinc-300/90 mt-2 lang"
+              data-en="Test chats, polish, privacy notes and go live with your branding."
+              data-de="Test-Chats, Feinschliff, DSGVO-Hinweise und Go-Live mit deinem Branding.">
               Test chats, polish, privacy notes and go live with your branding.
             </p>
           </div>
           <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
             <div class="text-sm text-zinc-400 lang" data-en="Step 4" data-de="Schritt 4">Step 4</div>
             <div class="font-semibold mt-1 lang" data-en="Scale" data-de="Skalierung">Scale</div>
-            <p class="text-zinc-300/90 mt-2 lang" data-en="Reporting, A/B prompts, funnels – we optimize continuously." data-de="Reporting, A/B-Prompts, Funnels – wir optimieren laufend.">
+            <p class="text-zinc-300/90 mt-2 lang" data-en="Reporting, A/B prompts, funnels – we optimize continuously."
+              data-de="Reporting, A/B-Prompts, Funnels – wir optimieren laufend.">
               Reporting, A/B prompts, funnels – we optimize continuously.
             </p>
           </div>
@@ -434,191 +719,260 @@
       </div>
     </div>
   </section>
-<!-- PRICING (Einmal) -->
-<section id="pricing" class="relative" data-aos="fade-up" data-aos-duration="900">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-    <div class="text-center max-w-3xl mx-auto">
-      <h2 class="text-3xl sm:text-4xl font-extrabold">
-        <span class="lang" data-en="Choose your launch power" data-de="Wähle deine Startpower">Wähle deine Startpower</span>
-      </h2>
-      <p class="mt-3 text-zinc-300/90 lang"
-         data-en="Every journey begins with a one-time setup – the foundation of your AI Agent. Continuous care, hosting and performance upgrades are optional below."
-         data-de="Jede Reise beginnt mit einer einmaligen Einrichtung – dem Fundament deines KI-Agents. Laufende Betreuung, Hosting und Performance-Upgrades sind optional in den Paketen darunter.">
-         Jede Reise beginnt mit einer einmaligen Einrichtung – dem Fundament deines KI-Agents. Laufende Betreuung, Hosting und Performance-Upgrades sind optional in den Paketen darunter.
+  <!-- PRICING (Einmal) -->
+  <section id="pricing" class="relative" data-aos="fade-up" data-aos-duration="900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-extrabold">
+          <span class="lang" data-en="Choose your launch power" data-de="Wähle deine Startpower">Wähle deine
+            Startpower</span>
+        </h2>
+        <p class="mt-3 text-zinc-300/90 lang"
+          data-en="Every journey begins with a one-time setup – the foundation of your AI Agent. Continuous care, hosting and performance upgrades are optional below."
+          data-de="Jede Reise beginnt mit einer einmaligen Einrichtung – dem Fundament deines KI-Agents. Laufende Betreuung, Hosting und Performance-Upgrades sind optional in den Paketen darunter.">
+          Jede Reise beginnt mit einer einmaligen Einrichtung – dem Fundament deines KI-Agents. Laufende Betreuung,
+          Hosting und Performance-Upgrades sind optional in den Paketen darunter.
+        </p>
+      </div>
+
+
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <!-- Starter -->
+        <div
+          class="rounded-3xl glass p-6 border border-white/10 hover:border-fuchsia-400/40 hover:scale-[1.02] transition">
+          <div class="text-sm text-zinc-400 lang" data-en="⚔️ Starter" data-de="⚔️ Starter">⚔️ Starter</div>
+          <div class="mt-2 text-3xl font-bold price" data-eur="999">€ 999</div>
+          <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm leading-relaxed">
+            <li class="lang" data-en="• 1 channel (Telegram or WhatsApp)" data-de="• 1 Kanal (Telegram oder WhatsApp)">•
+              1 Kanal (Telegram oder WhatsApp)</li>
+            <li class="lang" data-en="• Custom base prompt + 10 FAQ answers"
+              data-de="• Individuell angepasster Basisprompt + 10 FAQ-Antworten">• Individuell angepasster Basisprompt +
+              10 FAQ-Antworten</li>
+            <li class="lang" data-en="• Simple website integration (widget included)"
+              data-de="• Einfache Website-Integration (Widget inklusive)">• Einfache Website-Integration (Widget
+              inklusive)</li>
+            <li class="lang" data-en="• Quick-start guide for instant setup"
+              data-de="• Kurzanleitung für sofortigen Start">• Kurzanleitung für sofortigen Start</li>
+          </ul>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form"
+            data-eur="999">
+            <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="item_name" value="Kabuto AI Starter Package">
+            <input type="hidden" name="amount" value="999.00">
+            <input type="hidden" name="currency_code" value="EUR">
+            <button type="submit"
+              class="w-full inline-block px-4 py-2 rounded-xl bg-white/10 hover:bg-fuchsia-600/70 border border-white/15 transition text-sm font-semibold lang"
+              data-en="Buy now" data-de="Jetzt kaufen">Jetzt kaufen</button>
+          </form>
+        </div>
+
+        <!-- Pro -->
+        <div class="rounded-3xl glass p-6 border-2 border-fuchsia-400/50 shadow-lg shadow-fuchsia-500/10 scale-[1.02]">
+          <div class="text-sm text-fuchsia-300 lang" data-en="🔮 Pro (popular)" data-de="🔮 Pro (beliebt)">🔮 Pro
+            (beliebt)</div>
+          <div class="mt-2 text-3xl font-bold price" data-eur="1999">€ 1.999</div>
+          <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm leading-relaxed">
+            <li class="lang" data-en="• Telegram + WhatsApp integration" data-de="• Telegram + WhatsApp-Integration">•
+              Telegram + WhatsApp-Integration</li>
+            <li class="lang" data-en="• Full branding & multilingual AI answers"
+              data-de="• Branding & mehrsprachige KI-Antworten">• Branding & mehrsprachige KI-Antworten</li>
+            <li class="lang" data-en="• Lead forms + auto booking links"
+              data-de="• Lead-Formulare + automatische Terminlinks">• Lead-Formulare + automatische Terminlinks</li>
+            <li class="lang" data-en="• 30 FAQ answers & knowledge base" data-de="• 30 FAQ-Antworten & Wissensbasis">•
+              30 FAQ-Antworten & Wissensbasis</li>
+            <li class="lang" data-en="• Personal launch guidance for your start"
+              data-de="• Persönliche Launch-Begleitung für deinen Start">• Persönliche Launch-Begleitung für deinen
+              Start</li>
+          </ul>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form"
+            data-eur="1999">
+            <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="item_name" value="Kabuto AI Pro Package">
+            <input type="hidden" name="amount" value="1999.00">
+            <input type="hidden" name="currency_code" value="EUR">
+            <button type="submit"
+              class="w-full inline-block px-4 py-2 rounded-xl bg-fuchsia-600 hover:bg-fuchsia-500 transition text-sm font-semibold lang"
+              data-en="Buy now" data-de="Jetzt kaufen">Jetzt kaufen</button>
+          </form>
+        </div>
+
+        <!-- Enterprise -->
+        <div
+          class="rounded-3xl glass p-6 border border-white/10 hover:border-fuchsia-400/40 hover:scale-[1.02] transition">
+          <div class="text-sm text-zinc-400 lang" data-en="🧠 Enterprise" data-de="🧠 Enterprise">🧠 Enterprise</div>
+          <div class="mt-2 text-3xl font-bold price" data-eur="2999">ab € 2.999</div>
+          <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm leading-relaxed">
+            <li class="lang" data-en="• Telegram, WhatsApp & Web widget included"
+              data-de="• Telegram, WhatsApp & Website-Widget inklusive">• Telegram, WhatsApp & Website-Widget inklusive
+            </li>
+            <li class="lang" data-en="• Custom automations, workflows & CRM"
+              data-de="• Individuelle Automationen, Workflows & CRM-Anbindung">• Individuelle Automationen, Workflows &
+              CRM-Anbindung</li>
+            <li class="lang" data-en="• SLA, team training & performance audits"
+              data-de="• SLA, Team-Trainings & Performance-Audits">• SLA, Team-Trainings & Performance-Audits</li>
+            <li class="lang" data-en="• Ongoing reporting & AI optimization"
+              data-de="• Laufendes Reporting & KI-Optimierung">• Laufendes Reporting & KI-Optimierung</li>
+          </ul>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form"
+            data-eur="2999">
+            <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="item_name" value="Kabuto AI Enterprise Package">
+            <input type="hidden" name="amount" value="2999.00">
+            <input type="hidden" name="currency_code" value="EUR">
+            <button type="submit"
+              class="w-full inline-block px-4 py-2 rounded-xl bg-white/10 hover:bg-fuchsia-600/70 border border-white/15 transition text-sm font-semibold lang"
+              data-en="Buy now" data-de="Jetzt kaufen">Jetzt kaufen</button>
+          </form>
+        </div>
+      </div>
+
+      <p class="text-xs text-center text-zinc-500 mt-4 lang"
+        data-en="Plus possible ongoing costs (e.g., hosting, Twilio) depending on usage."
+        data-de="Zzgl. mögliche laufende Kosten (z. B. Hosting, Twilio) je nach Nutzung.">
+        Zzgl. mögliche laufende Kosten (z. B. Hosting, Twilio) je nach Nutzung.
       </p>
     </div>
-
-
-    <div class="mt-10 grid md:grid-cols-3 gap-6">
-      <!-- Starter -->
-      <div class="rounded-3xl glass p-6 border border-white/10 hover:border-fuchsia-400/40 hover:scale-[1.02] transition">
-        <div class="text-sm text-zinc-400 lang" data-en="⚔️ Starter" data-de="⚔️ Starter">⚔️ Starter</div>
-        <div class="mt-2 text-3xl font-bold price" data-eur="999">€ 999</div>
-        <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm leading-relaxed">
-          <li class="lang" data-en="• 1 channel (Telegram or WhatsApp)" data-de="• 1 Kanal (Telegram oder WhatsApp)">• 1 Kanal (Telegram oder WhatsApp)</li>
-          <li class="lang" data-en="• Custom base prompt + 10 FAQ answers" data-de="• Individuell angepasster Basisprompt + 10 FAQ-Antworten">• Individuell angepasster Basisprompt + 10 FAQ-Antworten</li>
-          <li class="lang" data-en="• Simple website integration (widget included)" data-de="• Einfache Website-Integration (Widget inklusive)">• Einfache Website-Integration (Widget inklusive)</li>
-          <li class="lang" data-en="• Quick-start guide for instant setup" data-de="• Kurzanleitung für sofortigen Start">• Kurzanleitung für sofortigen Start</li>
-        </ul>
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form" data-eur="999">
-          <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
-          <input type="hidden" name="cmd" value="_xclick">
-          <input type="hidden" name="item_name" value="Kabuto AI Starter Package">
-          <input type="hidden" name="amount" value="999.00">
-          <input type="hidden" name="currency_code" value="EUR">
-          <button type="submit" class="w-full inline-block px-4 py-2 rounded-xl bg-white/10 hover:bg-fuchsia-600/70 border border-white/15 transition text-sm font-semibold lang" data-en="Buy now" data-de="Jetzt kaufen">Jetzt kaufen</button>
-        </form>
-      </div>
-
-      <!-- Pro -->
-      <div class="rounded-3xl glass p-6 border-2 border-fuchsia-400/50 shadow-lg shadow-fuchsia-500/10 scale-[1.02]">
-        <div class="text-sm text-fuchsia-300 lang" data-en="🔮 Pro (popular)" data-de="🔮 Pro (beliebt)">🔮 Pro (beliebt)</div>
-        <div class="mt-2 text-3xl font-bold price" data-eur="1999">€ 1.999</div>
-        <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm leading-relaxed">
-          <li class="lang" data-en="• Telegram + WhatsApp integration" data-de="• Telegram + WhatsApp-Integration">• Telegram + WhatsApp-Integration</li>
-          <li class="lang" data-en="• Full branding & multilingual AI answers" data-de="• Branding & mehrsprachige KI-Antworten">• Branding & mehrsprachige KI-Antworten</li>
-          <li class="lang" data-en="• Lead forms + auto booking links" data-de="• Lead-Formulare + automatische Terminlinks">• Lead-Formulare + automatische Terminlinks</li>
-          <li class="lang" data-en="• 30 FAQ answers & knowledge base" data-de="• 30 FAQ-Antworten & Wissensbasis">• 30 FAQ-Antworten & Wissensbasis</li>
-          <li class="lang" data-en="• Personal launch guidance for your start" data-de="• Persönliche Launch-Begleitung für deinen Start">• Persönliche Launch-Begleitung für deinen Start</li>
-        </ul>
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form" data-eur="1999">
-          <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
-          <input type="hidden" name="cmd" value="_xclick">
-          <input type="hidden" name="item_name" value="Kabuto AI Pro Package">
-          <input type="hidden" name="amount" value="1999.00">
-          <input type="hidden" name="currency_code" value="EUR">
-          <button type="submit" class="w-full inline-block px-4 py-2 rounded-xl bg-fuchsia-600 hover:bg-fuchsia-500 transition text-sm font-semibold lang" data-en="Buy now" data-de="Jetzt kaufen">Jetzt kaufen</button>
-        </form>
-      </div>
-
-      <!-- Enterprise -->
-      <div class="rounded-3xl glass p-6 border border-white/10 hover:border-fuchsia-400/40 hover:scale-[1.02] transition">
-        <div class="text-sm text-zinc-400 lang" data-en="🧠 Enterprise" data-de="🧠 Enterprise">🧠 Enterprise</div>
-        <div class="mt-2 text-3xl font-bold price" data-eur="2999">ab € 2.999</div>
-        <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm leading-relaxed">
-          <li class="lang" data-en="• Telegram, WhatsApp & Web widget included" data-de="• Telegram, WhatsApp & Website-Widget inklusive">• Telegram, WhatsApp & Website-Widget inklusive</li>
-          <li class="lang" data-en="• Custom automations, workflows & CRM" data-de="• Individuelle Automationen, Workflows & CRM-Anbindung">• Individuelle Automationen, Workflows & CRM-Anbindung</li>
-          <li class="lang" data-en="• SLA, team training & performance audits" data-de="• SLA, Team-Trainings & Performance-Audits">• SLA, Team-Trainings & Performance-Audits</li>
-          <li class="lang" data-en="• Ongoing reporting & AI optimization" data-de="• Laufendes Reporting & KI-Optimierung">• Laufendes Reporting & KI-Optimierung</li>
-        </ul>
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form" data-eur="2999">
-          <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
-          <input type="hidden" name="cmd" value="_xclick">
-          <input type="hidden" name="item_name" value="Kabuto AI Enterprise Package">
-          <input type="hidden" name="amount" value="2999.00">
-          <input type="hidden" name="currency_code" value="EUR">
-          <button type="submit" class="w-full inline-block px-4 py-2 rounded-xl bg-white/10 hover:bg-fuchsia-600/70 border border-white/15 transition text-sm font-semibold lang" data-en="Buy now" data-de="Jetzt kaufen">Jetzt kaufen</button>
-        </form>
-      </div>
-    </div>
-
-    <p class="text-xs text-center text-zinc-500 mt-4 lang" data-en="Plus possible ongoing costs (e.g., hosting, Twilio) depending on usage." data-de="Zzgl. mögliche laufende Kosten (z. B. Hosting, Twilio) je nach Nutzung.">
-      Zzgl. mögliche laufende Kosten (z. B. Hosting, Twilio) je nach Nutzung.
-    </p>
-  </div>
-</section>
+  </section>
 
   <!-- Divider -->
   <div class="glow-divider mx-auto max-w-7xl"></div>
-  
- <!-- MONTHLY PLANS -->
-<section id="monthly" class="relative" data-aos="fade-up" data-aos-duration="900">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-    <div class="text-center max-w-3xl mx-auto">
-      <h2 class="text-3xl sm:text-4xl font-extrabold">
-        <span class="lang" data-en="Monthly Growth Plans" data-de="Monatliche Wachstums-Pakete">Monatliche Wachstums-Pakete</span>
-      </h2>
-      <p class="mt-3 text-zinc-300/90 lang" data-en="Stay flexible. Hosting & AI optimization included." data-de="Bleib flexibel. Hosting & KI-Optimierung inklusive.">
-        Bleib flexibel. Hosting & KI-Optimierung inklusive.
+
+  <!-- MONTHLY PLANS -->
+  <section id="monthly" class="relative" data-aos="fade-up" data-aos-duration="900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-extrabold">
+          <span class="lang" data-en="Monthly Growth Plans" data-de="Monatliche Wachstums-Pakete">Monatliche
+            Wachstums-Pakete</span>
+        </h2>
+        <p class="mt-3 text-zinc-300/90 lang" data-en="Stay flexible. Hosting & AI optimization included."
+          data-de="Bleib flexibel. Hosting & KI-Optimierung inklusive.">
+          Bleib flexibel. Hosting & KI-Optimierung inklusive.
+        </p>
+      </div>
+
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <!-- Starter Subscription -->
+        <div
+          class="rounded-3xl glass p-6 border border-white/10 hover:border-fuchsia-400/40 hover:scale-[1.02] transition">
+          <div class="text-sm text-zinc-400 lang" data-en="⚔️ Starter Subscription" data-de="⚔️ Starter-Abo">⚔️
+            Starter-Abo</div>
+          <div class="mt-2 text-3xl font-bold price" data-eur="99">€ 99 <span class="text-sm text-zinc-500 lang"
+              data-en="/ month" data-de="/ Monat">/ Monat</span></div>
+          <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm leading-relaxed">
+            <li class="lang" data-en="• 24/7 hosting on Render" data-de="• 24/7 Hosting auf Render">• 24/7 Hosting auf
+              Render</li>
+            <li class="lang" data-en="• Small fixes & system checks" data-de="• Kleine Fixes & Systemprüfungen">• Kleine
+              Fixes & Systemprüfungen</li>
+            <li class="lang" data-en="• Email support within 48h" data-de="• E-Mail-Support innerhalb 48h">•
+              E-Mail-Support innerhalb 48h</li>
+          </ul>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form"
+            data-eur="99">
+            <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
+            <input type="hidden" name="cmd" value="_xclick-subscriptions">
+            <input type="hidden" name="item_name" value="Kabuto AI Starter Subscription">
+            <input type="hidden" name="currency_code" value="EUR">
+            <input type="hidden" name="a3" value="99.00">
+            <input type="hidden" name="p3" value="1">
+            <input type="hidden" name="t3" value="M">
+            <input type="hidden" name="src" value="1">
+            <button type="submit"
+              class="w-full inline-block px-4 py-2 rounded-xl bg-white/10 hover:bg-fuchsia-600/70 border border-white/15 transition text-sm font-semibold lang"
+              data-en="Subscribe" data-de="Abonnieren">Abonnieren</button>
+          </form>
+        </div>
+
+        <!-- Pro Subscription -->
+        <div class="rounded-3xl glass p-6 border-2 border-fuchsia-400/50 shadow-lg shadow-fuchsia-500/10 scale-[1.02]">
+          <div class="text-sm text-fuchsia-300 lang" data-en="🔮 Pro Subscription (popular)"
+            data-de="🔮 Pro-Abo (beliebt)">🔮 Pro-Abo (beliebt)</div>
+          <div class="mt-2 text-3xl font-bold price" data-eur="199">€ 199 <span class="text-sm text-zinc-500 lang"
+              data-en="/ month" data-de="/ Monat">/ Monat</span></div>
+          <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm leading-relaxed">
+            <li class="lang" data-en="• Monitoring & performance reports" data-de="• Monitoring & Performance-Reports">•
+              Monitoring & Performance-Reports</li>
+            <li class="lang" data-en="• Prompt & AI optimizations" data-de="• Prompt- & KI-Optimierungen">• Prompt- &
+              KI-Optimierungen</li>
+            <li class="lang" data-en="• Mini updates included" data-de="• Mini-Updates inklusive">• Mini-Updates
+              inklusive</li>
+            <li class="lang" data-en="• Priority 24h support" data-de="• Priorisierter 24h-Support">• Priorisierter
+              24h-Support</li>
+          </ul>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form"
+            data-eur="199">
+            <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
+            <input type="hidden" name="cmd" value="_xclick-subscriptions">
+            <input type="hidden" name="item_name" value="Kabuto AI Pro Subscription">
+            <input type="hidden" name="currency_code" value="EUR">
+            <input type="hidden" name="a3" value="199.00">
+            <input type="hidden" name="p3" value="1">
+            <input type="hidden" name="t3" value="M">
+            <input type="hidden" name="src" value="1">
+            <button type="submit"
+              class="w-full inline-block px-4 py-2 rounded-xl bg-fuchsia-600 hover:bg-fuchsia-500 transition text-sm font-semibold lang"
+              data-en="Subscribe" data-de="Abonnieren">Abonnieren</button>
+          </form>
+        </div>
+
+        <!-- Enterprise Subscription -->
+        <div
+          class="rounded-3xl glass p-6 border border-white/10 hover:border-fuchsia-400/40 hover:scale-[1.02] transition">
+          <div class="text-sm text-zinc-400 lang" data-en="🧠 Enterprise Subscription" data-de="🧠 Enterprise-Abo">🧠
+            Enterprise-Abo</div>
+          <div class="mt-2 text-3xl font-bold price" data-eur="399">€ 399 <span class="text-sm text-zinc-500 lang"
+              data-en="/ month" data-de="/ Monat">/ Monat</span></div>
+          <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm leading-relaxed">
+            <li class="lang" data-en="• SLA & priority support" data-de="• SLA & Prioritätssupport">• SLA &
+              Prioritätssupport</li>
+            <li class="lang" data-en="• Growth & performance reports" data-de="• Wachstums- & Performance-Reports">•
+              Wachstums- & Performance-Reports</li>
+            <li class="lang" data-en="• Unlimited updates & adjustments" data-de="• Unbegrenzte Updates & Anpassungen">•
+              Unbegrenzte Updates & Anpassungen</li>
+            <li class="lang" data-en="• Personal contact & strategic calls"
+              data-de="• Persönlicher Kontakt & Strategie-Calls">• Persönlicher Kontakt & Strategie-Calls</li>
+          </ul>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form"
+            data-eur="399">
+            <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
+            <input type="hidden" name="cmd" value="_xclick-subscriptions">
+            <input type="hidden" name="item_name" value="Kabuto AI Enterprise Subscription">
+            <input type="hidden" name="currency_code" value="EUR">
+            <input type="hidden" name="a3" value="399.00">
+            <input type="hidden" name="p3" value="1">
+            <input type="hidden" name="t3" value="M">
+            <input type="hidden" name="src" value="1">
+            <button type="submit"
+              class="w-full inline-block px-4 py-2 rounded-xl bg-white/10 hover:bg-fuchsia-600/70 border border-white/15 transition text-sm font-semibold lang"
+              data-en="Subscribe" data-de="Abonnieren">Abonnieren</button>
+          </form>
+        </div>
+      </div>
+
+      <p class="text-xs text-center text-zinc-500 mt-4 lang"
+        data-en="All plans include hosting & support. Cancel anytime."
+        data-de="Alle Pakete inkl. Hosting & Support. Jederzeit kündbar.">
+        Alle Pakete inkl. Hosting & Support. Jederzeit kündbar.
       </p>
     </div>
-
-    <div class="mt-10 grid md:grid-cols-3 gap-6">
-      <!-- Starter Subscription -->
-      <div class="rounded-3xl glass p-6 border border-white/10 hover:border-fuchsia-400/40 hover:scale-[1.02] transition">
-        <div class="text-sm text-zinc-400 lang" data-en="⚔️ Starter Subscription" data-de="⚔️ Starter-Abo">⚔️ Starter-Abo</div>
-        <div class="mt-2 text-3xl font-bold price" data-eur="99">€ 99 <span class="text-sm text-zinc-500 lang" data-en="/ month" data-de="/ Monat">/ Monat</span></div>
-        <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm leading-relaxed">
-          <li class="lang" data-en="• 24/7 hosting on Render" data-de="• 24/7 Hosting auf Render">• 24/7 Hosting auf Render</li>
-          <li class="lang" data-en="• Small fixes & system checks" data-de="• Kleine Fixes & Systemprüfungen">• Kleine Fixes & Systemprüfungen</li>
-          <li class="lang" data-en="• Email support within 48h" data-de="• E-Mail-Support innerhalb 48h">• E-Mail-Support innerhalb 48h</li>
-        </ul>
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form" data-eur="99">
-          <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
-          <input type="hidden" name="cmd" value="_xclick-subscriptions">
-          <input type="hidden" name="item_name" value="Kabuto AI Starter Subscription">
-          <input type="hidden" name="currency_code" value="EUR">
-          <input type="hidden" name="a3" value="99.00">
-          <input type="hidden" name="p3" value="1">
-          <input type="hidden" name="t3" value="M">
-          <input type="hidden" name="src" value="1">
-          <button type="submit" class="w-full inline-block px-4 py-2 rounded-xl bg-white/10 hover:bg-fuchsia-600/70 border border-white/15 transition text-sm font-semibold lang" data-en="Subscribe" data-de="Abonnieren">Abonnieren</button>
-        </form>
-      </div>
-
-      <!-- Pro Subscription -->
-      <div class="rounded-3xl glass p-6 border-2 border-fuchsia-400/50 shadow-lg shadow-fuchsia-500/10 scale-[1.02]">
-        <div class="text-sm text-fuchsia-300 lang" data-en="🔮 Pro Subscription (popular)" data-de="🔮 Pro-Abo (beliebt)">🔮 Pro-Abo (beliebt)</div>
-        <div class="mt-2 text-3xl font-bold price" data-eur="199">€ 199 <span class="text-sm text-zinc-500 lang" data-en="/ month" data-de="/ Monat">/ Monat</span></div>
-        <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm leading-relaxed">
-          <li class="lang" data-en="• Monitoring & performance reports" data-de="• Monitoring & Performance-Reports">• Monitoring & Performance-Reports</li>
-          <li class="lang" data-en="• Prompt & AI optimizations" data-de="• Prompt- & KI-Optimierungen">• Prompt- & KI-Optimierungen</li>
-          <li class="lang" data-en="• Mini updates included" data-de="• Mini-Updates inklusive">• Mini-Updates inklusive</li>
-          <li class="lang" data-en="• Priority 24h support" data-de="• Priorisierter 24h-Support">• Priorisierter 24h-Support</li>
-        </ul>
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form" data-eur="199">
-          <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
-          <input type="hidden" name="cmd" value="_xclick-subscriptions">
-          <input type="hidden" name="item_name" value="Kabuto AI Pro Subscription">
-          <input type="hidden" name="currency_code" value="EUR">
-          <input type="hidden" name="a3" value="199.00">
-          <input type="hidden" name="p3" value="1">
-          <input type="hidden" name="t3" value="M">
-          <input type="hidden" name="src" value="1">
-          <button type="submit" class="w-full inline-block px-4 py-2 rounded-xl bg-fuchsia-600 hover:bg-fuchsia-500 transition text-sm font-semibold lang" data-en="Subscribe" data-de="Abonnieren">Abonnieren</button>
-        </form>
-      </div>
-
-      <!-- Enterprise Subscription -->
-      <div class="rounded-3xl glass p-6 border border-white/10 hover:border-fuchsia-400/40 hover:scale-[1.02] transition">
-        <div class="text-sm text-zinc-400 lang" data-en="🧠 Enterprise Subscription" data-de="🧠 Enterprise-Abo">🧠 Enterprise-Abo</div>
-        <div class="mt-2 text-3xl font-bold price" data-eur="399">€ 399 <span class="text-sm text-zinc-500 lang" data-en="/ month" data-de="/ Monat">/ Monat</span></div>
-        <ul class="mt-4 space-y-2 text-zinc-300/90 text-sm leading-relaxed">
-          <li class="lang" data-en="• SLA & priority support" data-de="• SLA & Prioritätssupport">• SLA & Prioritätssupport</li>
-          <li class="lang" data-en="• Growth & performance reports" data-de="• Wachstums- & Performance-Reports">• Wachstums- & Performance-Reports</li>
-          <li class="lang" data-en="• Unlimited updates & adjustments" data-de="• Unbegrenzte Updates & Anpassungen">• Unbegrenzte Updates & Anpassungen</li>
-          <li class="lang" data-en="• Personal contact & strategic calls" data-de="• Persönlicher Kontakt & Strategie-Calls">• Persönlicher Kontakt & Strategie-Calls</li>
-        </ul>
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-6 paypal-form" data-eur="399">
-          <input type="hidden" name="business" value="kabuto.ai.business@gmail.com">
-          <input type="hidden" name="cmd" value="_xclick-subscriptions">
-          <input type="hidden" name="item_name" value="Kabuto AI Enterprise Subscription">
-          <input type="hidden" name="currency_code" value="EUR">
-          <input type="hidden" name="a3" value="399.00">
-          <input type="hidden" name="p3" value="1">
-          <input type="hidden" name="t3" value="M">
-          <input type="hidden" name="src" value="1">
-          <button type="submit" class="w-full inline-block px-4 py-2 rounded-xl bg-white/10 hover:bg-fuchsia-600/70 border border-white/15 transition text-sm font-semibold lang" data-en="Subscribe" data-de="Abonnieren">Abonnieren</button>
-        </form>
-      </div>
-    </div>
-
-    <p class="text-xs text-center text-zinc-500 mt-4 lang" data-en="All plans include hosting & support. Cancel anytime." data-de="Alle Pakete inkl. Hosting & Support. Jederzeit kündbar.">
-      Alle Pakete inkl. Hosting & Support. Jederzeit kündbar.
-    </p>
-  </div>
-</section>
+  </section>
 
   <!-- DEMO / WIDGET -->
   <section id="demo" class="relative" data-aos="fade-up" data-aos-duration="900">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
       <!-- Simplified chat widget container: always visible without extra description -->
-      <div class="rounded-2xl bg-black/30 border border-white/10 p-6 min-h-[360px] max-w-md mx-auto flex flex-col items-center justify-center">
+      <div
+        class="rounded-2xl bg-black/30 border border-white/10 p-6 min-h-[360px] max-w-md mx-auto flex flex-col items-center justify-center">
         <!-- Chat container will be injected here by the script -->
         <div id="kabuto-chat-widget" class="w-full"></div>
       </div>
       <!-- Minimal caption encouraging users to try the widget -->
-      <p class="mt-4 text-center text-zinc-400 lang" data-en="Try it out, this could be on your website, with your branding." data-de="Probiere es aus, das könnte auf deiner Website mit deinem Branding sein.">
+      <p class="mt-4 text-center text-zinc-400 lang"
+        data-en="Try it out, this could be on your website, with your branding."
+        data-de="Probiere es aus, das könnte auf deiner Website mit deinem Branding sein.">
         Try it out, this could be on your website, with your branding.
       </p>
     </div>
@@ -630,79 +984,106 @@
       <div class="grid md:grid-cols-2 gap-4">
         <details class="glass rounded-2xl p-5 border border-white/10">
           <summary class="flex items-center justify-between cursor-pointer list-none">
-            <span class="lang" data-en="Is KabutoAI GDPR-compliant?" data-de="Ist KabutoAI DSGVO-konform?">Is KabutoAI GDPR-compliant?</span>
+            <span class="lang" data-en="Is KabutoAI GDPR-compliant?" data-de="Ist KabutoAI DSGVO-konform?">Is KabutoAI
+              GDPR-compliant?</span>
             <svg class="w-5 h-5 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M6 9l6 6 6-6" />
             </svg>
           </summary>
-          <p class="mt-3 text-zinc-300/90 lang" data-en="We host data-sparingly, enable deletion & opt-out and advise on legal texts. Exact implementation depends on package & use case." data-de="Wir hosten datensparsam, ermöglichen Datenlöschung & Opt-Out und beraten bei Rechtstexten. Konkrete Umsetzung je nach Paket & Use-Case.">
-            We host data-sparingly, enable deletion & opt-out and advise on legal texts. Exact implementation depends on package & use case.
+          <p class="mt-3 text-zinc-300/90 lang"
+            data-en="We host data-sparingly, enable deletion & opt-out and advise on legal texts. Exact implementation depends on package & use case."
+            data-de="Wir hosten datensparsam, ermöglichen Datenlöschung & Opt-Out und beraten bei Rechtstexten. Konkrete Umsetzung je nach Paket & Use-Case.">
+            We host data-sparingly, enable deletion & opt-out and advise on legal texts. Exact implementation depends on
+            package & use case.
           </p>
         </details>
         <!-- Additional FAQ entries to provide more clarity -->
         <details class="glass rounded-2xl p-5 border border-white/10">
           <summary class="flex items-center justify-between cursor-pointer list-none">
-            <span class="lang" data-en="What info do you need to set up my bot?" data-de="Welche Infos benötigst du zur Einrichtung meines Bots?">What info do you need to set up my bot?</span>
+            <span class="lang" data-en="What info do you need to set up my bot?"
+              data-de="Welche Infos benötigst du zur Einrichtung meines Bots?">What info do you need to set up my
+              bot?</span>
             <svg class="w-5 h-5 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M6 9l6 6 6-6" />
             </svg>
           </summary>
-          <p class="mt-3 text-zinc-300/90 lang" data-en="We ask for a short description of your business, your goals (leads, support or sales), a handful of typical customer questions and answers and any special workflows or integrations you need. This allows us to train the bot in your tone and to set up custom flows." data-de="Wir benötigen eine kurze Beschreibung deines Unternehmens, deine Ziele (Leads, Support oder Verkauf), einige typische Kundenfragen und -antworten sowie spezielle Workflows oder Integrationen. So können wir den Bot in deiner Tonalität trainieren und individuelle Abläufe einrichten.">
-            We ask for a short description of your business, your goals (leads, support or sales), a handful of typical customer questions and answers and any special workflows or integrations you need. This allows us to train the bot in your tone and to set up custom flows.
+          <p class="mt-3 text-zinc-300/90 lang"
+            data-en="We ask for a short description of your business, your goals (leads, support or sales), a handful of typical customer questions and answers and any special workflows or integrations you need. This allows us to train the bot in your tone and to set up custom flows."
+            data-de="Wir benötigen eine kurze Beschreibung deines Unternehmens, deine Ziele (Leads, Support oder Verkauf), einige typische Kundenfragen und -antworten sowie spezielle Workflows oder Integrationen. So können wir den Bot in deiner Tonalität trainieren und individuelle Abläufe einrichten.">
+            We ask for a short description of your business, your goals (leads, support or sales), a handful of typical
+            customer questions and answers and any special workflows or integrations you need. This allows us to train
+            the bot in your tone and to set up custom flows.
           </p>
         </details>
         <details class="glass rounded-2xl p-5 border border-white/10">
           <summary class="flex items-center justify-between cursor-pointer list-none">
-            <span class="lang" data-en="Do you offer training and support?" data-de="Bietest du Schulung und Support an?">Do you offer training and support?</span>
+            <span class="lang" data-en="Do you offer training and support?"
+              data-de="Bietest du Schulung und Support an?">Do you offer training and support?</span>
             <svg class="w-5 h-5 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M6 9l6 6 6-6" />
             </svg>
           </summary>
-          <p class="mt-3 text-zinc-300/90 lang" data-en="Yes. Every package includes a quick-start guide. Our monthly plans include ongoing email or chat support, prompt optimisations and small updates depending on the tier." data-de="Ja. Jedes Paket beinhaltet eine Kurzanleitung. Unsere monatlichen Pakete bieten fortlaufenden E‑Mail- oder Chat-Support, Prompt-Optimierungen und kleinere Updates je nach Paket.">
-            Yes. Every package includes a quick-start guide. Our monthly plans include ongoing email or chat support, prompt optimisations and small updates depending on the tier.
+          <p class="mt-3 text-zinc-300/90 lang"
+            data-en="Yes. Every package includes a quick-start guide. Our monthly plans include ongoing email or chat support, prompt optimisations and small updates depending on the tier."
+            data-de="Ja. Jedes Paket beinhaltet eine Kurzanleitung. Unsere monatlichen Pakete bieten fortlaufenden E‑Mail- oder Chat-Support, Prompt-Optimierungen und kleinere Updates je nach Paket.">
+            Yes. Every package includes a quick-start guide. Our monthly plans include ongoing email or chat support,
+            prompt optimisations and small updates depending on the tier.
           </p>
         </details>
         <details class="glass rounded-2xl p-5 border border-white/10">
           <summary class="flex items-center justify-between cursor-pointer list-none">
-            <span class="lang" data-en="Can I test the bot before committing?" data-de="Kann ich den Bot vorab testen?">Can I test the bot before committing?</span>
+            <span class="lang" data-en="Can I test the bot before committing?"
+              data-de="Kann ich den Bot vorab testen?">Can I test the bot before committing?</span>
             <svg class="w-5 h-5 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M6 9l6 6 6-6" />
             </svg>
           </summary>
-          <p class="mt-3 text-zinc-300/90 lang" data-en="Our live demo shows the core functionality. For a personalised pilot with your content we can set up a paid trial – the cost will be deducted from your package if you proceed." data-de="Unsere Live-Demo zeigt die Kernfunktionen. Für einen personalisierten Pilot mit deinen Inhalten können wir eine kostenpflichtige Testphase einrichten – die Kosten werden bei Buchung des Pakets angerechnet.">
-            Our live demo shows the core functionality. For a personalised pilot with your content we can set up a paid trial – the cost will be deducted from your package if you proceed.
+          <p class="mt-3 text-zinc-300/90 lang"
+            data-en="Our live demo shows the core functionality. For a personalised pilot with your content we can set up a paid trial – the cost will be deducted from your package if you proceed."
+            data-de="Unsere Live-Demo zeigt die Kernfunktionen. Für einen personalisierten Pilot mit deinen Inhalten können wir eine kostenpflichtige Testphase einrichten – die Kosten werden bei Buchung des Pakets angerechnet.">
+            Our live demo shows the core functionality. For a personalised pilot with your content we can set up a paid
+            trial – the cost will be deducted from your package if you proceed.
           </p>
         </details>
         <details class="glass rounded-2xl p-5 border border-white/10">
           <summary class="flex items-center justify-between cursor-pointer list-none">
-            <span class="lang" data-en="Can the bot handle multiple languages?" data-de="Kann der Bot mehrere Sprachen?">Can the bot handle multiple languages?</span>
+            <span class="lang" data-en="Can the bot handle multiple languages?"
+              data-de="Kann der Bot mehrere Sprachen?">Can the bot handle multiple languages?</span>
             <svg class="w-5 h-5 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M6 9l6 6 6-6" />
             </svg>
           </summary>
-          <p class="mt-3 text-zinc-300/90 lang" data-en="Yes. Auto-detection (e.g., EN/DE) and answers in the right tone. More languages on request." data-de="Ja. Auto-Erkennung (z. B. DE/EN) und Antworten im passenden Ton. Weitere Sprachen auf Wunsch.">
+          <p class="mt-3 text-zinc-300/90 lang"
+            data-en="Yes. Auto-detection (e.g., EN/DE) and answers in the right tone. More languages on request."
+            data-de="Ja. Auto-Erkennung (z. B. DE/EN) und Antworten im passenden Ton. Weitere Sprachen auf Wunsch.">
             Yes. Auto-detection (e.g., EN/DE) and answers in the right tone. More languages on request.
           </p>
         </details>
         <details class="glass rounded-2xl p-5 border border-white/10">
           <summary class="flex items-center justify-between cursor-pointer list-none">
-            <span class="lang" data-en="How fast is setup?" data-de="Wie schnell ist die Einrichtung?">How fast is setup?</span>
+            <span class="lang" data-en="How fast is setup?" data-de="Wie schnell ist die Einrichtung?">How fast is
+              setup?</span>
             <svg class="w-5 h-5 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M6 9l6 6 6-6" />
             </svg>
           </summary>
-          <p class="mt-3 text-zinc-300/90 lang" data-en="Starter in a few days, Pro/Enterprise depends on integrations. We provide clear step-by-step guides." data-de="Starter in wenigen Tagen, Pro/Enterprise abhängig von Integrationen. Wir liefern klare Schritt-für-Schritt-Guides.">
+          <p class="mt-3 text-zinc-300/90 lang"
+            data-en="Starter in a few days, Pro/Enterprise depends on integrations. We provide clear step-by-step guides."
+            data-de="Starter in wenigen Tagen, Pro/Enterprise abhängig von Integrationen. Wir liefern klare Schritt-für-Schritt-Guides.">
             Starter in a few days, Pro/Enterprise depends on integrations. We provide clear step-by-step guides.
           </p>
         </details>
         <details class="glass rounded-2xl p-5 border border-white/10">
           <summary class="flex items-center justify-between cursor-pointer list-none">
-            <span class="lang" data-en="What are ongoing costs?" data-de="Welche laufenden Kosten entstehen?">What are ongoing costs?</span>
+            <span class="lang" data-en="What are ongoing costs?" data-de="Welche laufenden Kosten entstehen?">What are
+              ongoing costs?</span>
             <svg class="w-5 h-5 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M6 9l6 6 6-6" />
             </svg>
           </summary>
-          <p class="mt-3 text-zinc-300/90 lang" data-en="e.g., hosting (Render), Twilio (WhatsApp), possible API costs. We optimize for volume to keep ROI positive." data-de="z. B. Hosting (Render), Twilio (WhatsApp), ggf. API-Kosten. Wir optimieren nach Volumen, damit es sich rechnet.">
+          <p class="mt-3 text-zinc-300/90 lang"
+            data-en="e.g., hosting (Render), Twilio (WhatsApp), possible API costs. We optimize for volume to keep ROI positive."
+            data-de="z. B. Hosting (Render), Twilio (WhatsApp), ggf. API-Kosten. Wir optimieren nach Volumen, damit es sich rechnet.">
             e.g., hosting (Render), Twilio (WhatsApp), possible API costs. We optimize for volume to keep ROI positive.
           </p>
         </details>
@@ -717,15 +1098,29 @@
       <h2 class="text-2xl sm:text-3xl font-bold mb-4">
         <span class="lang" data-en="Get started with your custom bot" data-de="So passt du deinen Bot an"></span>
       </h2>
-      <p class="text-zinc-300/90 lang max-w-4xl" data-en="To tailor KabutoAI to your business, please provide the following information when you reach out. This ensures that we can prepare a precise offer and training materials for you." data-de="Damit wir KabutoAI passgenau für dein Unternehmen einrichten können, sende uns bei deiner Anfrage bitte folgende Informationen. So können wir ein präzises Angebot und Trainingsmaterial für dich vorbereiten.">
-        To tailor KabutoAI to your business, please provide the following information when you reach out. This ensures that we can prepare a precise offer and training materials for you.
+      <p class="text-zinc-300/90 lang max-w-4xl"
+        data-en="To tailor KabutoAI to your business, please provide the following information when you reach out. This ensures that we can prepare a precise offer and training materials for you."
+        data-de="Damit wir KabutoAI passgenau für dein Unternehmen einrichten können, sende uns bei deiner Anfrage bitte folgende Informationen. So können wir ein präzises Angebot und Trainingsmaterial für dich vorbereiten.">
+        To tailor KabutoAI to your business, please provide the following information when you reach out. This ensures
+        that we can prepare a precise offer and training materials for you.
       </p>
       <ol class="mt-6 space-y-3 list-decimal list-inside text-zinc-300/90">
-        <li class="lang" data-en="A short description of your company and services." data-de="Eine kurze Beschreibung deines Unternehmens und deiner Dienstleistungen.">A short description of your company and services.</li>
-        <li class="lang" data-en="Your goals: do you want to generate leads, offer support or sell products/services via chat?" data-de="Deine Ziele: Möchtest du Leads generieren, Support leisten oder Produkte/Dienstleistungen per Chat verkaufen?">Your goals: do you want to generate leads, offer support or sell products/services via chat?</li>
-        <li class="lang" data-en="Tone and style: how should the bot speak (friendly, formal, humorous)?" data-de="Ton und Stil: Wie soll der Bot sprechen (freundlich, formell, humorvoll)?">Tone and style: how should the bot speak (friendly, formal, humorous)?</li>
-        <li class="lang" data-en="Examples of frequently asked questions and your preferred answers." data-de="Beispiele für häufig gestellte Fragen und deine bevorzugten Antworten.">Examples of frequently asked questions and your preferred answers.</li>
-        <li class="lang" data-en="Special requirements: integrations (CRM, booking tools), workflows or languages." data-de="Besondere Anforderungen: Integrationen (CRM, Buchungssysteme), Workflows oder Sprachen.">Special requirements: integrations (CRM, booking tools), workflows or languages.</li>
+        <li class="lang" data-en="A short description of your company and services."
+          data-de="Eine kurze Beschreibung deines Unternehmens und deiner Dienstleistungen.">A short description of your
+          company and services.</li>
+        <li class="lang"
+          data-en="Your goals: do you want to generate leads, offer support or sell products/services via chat?"
+          data-de="Deine Ziele: Möchtest du Leads generieren, Support leisten oder Produkte/Dienstleistungen per Chat verkaufen?">
+          Your goals: do you want to generate leads, offer support or sell products/services via chat?</li>
+        <li class="lang" data-en="Tone and style: how should the bot speak (friendly, formal, humorous)?"
+          data-de="Ton und Stil: Wie soll der Bot sprechen (freundlich, formell, humorvoll)?">Tone and style: how should
+          the bot speak (friendly, formal, humorous)?</li>
+        <li class="lang" data-en="Examples of frequently asked questions and your preferred answers."
+          data-de="Beispiele für häufig gestellte Fragen und deine bevorzugten Antworten.">Examples of frequently asked
+          questions and your preferred answers.</li>
+        <li class="lang" data-en="Special requirements: integrations (CRM, booking tools), workflows or languages."
+          data-de="Besondere Anforderungen: Integrationen (CRM, Buchungssysteme), Workflows oder Sprachen.">Special
+          requirements: integrations (CRM, booking tools), workflows or languages.</li>
       </ol>
     </div>
   </section>
@@ -735,29 +1130,43 @@
       <div class="rounded-3xl glass border border-white/10 p-8">
         <div class="grid md:grid-cols-2 gap-8 items-center">
           <div>
-            <h3 class="text-2xl font-bold lang" data-en="Ready to activate autopilot?" data-de="Bereit, den Autopiloten zu aktivieren?">Ready to activate autopilot?</h3>
-            <p class="mt-3 text-zinc-300/90 lang" data-en="Write me briefly what you want to achieve — I'll reply with a concrete plan." data-de="Schreib mir kurz, was du erreichen willst – ich melde mich mit einem konkreten Plan.">
+            <h3 class="text-2xl font-bold lang" data-en="Ready to activate autopilot?"
+              data-de="Bereit, den Autopiloten zu aktivieren?">Ready to activate autopilot?</h3>
+            <p class="mt-3 text-zinc-300/90 lang"
+              data-en="Write me briefly what you want to achieve — I'll reply with a concrete plan."
+              data-de="Schreib mir kurz, was du erreichen willst – ich melde mich mit einem konkreten Plan.">
               Write me briefly what you want to achieve — I'll reply with a concrete plan.
             </p>
             <ul class="mt-5 space-y-2 text-sm text-zinc-300/90">
-              <li class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-fuchsia-400"></i> kabuto.ai.business@gmail.com</li>
+              <li class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-fuchsia-400"></i>
+                kabuto.ai.business@gmail.com</li>
             </ul>
           </div>
-          <form class="bg-black/30 rounded-2xl border border-white/10 p-6 space-y-4" onsubmit="event.preventDefault(); alert(currentLang==='en' ? 'Thanks! I will get back to you shortly.' : 'Danke! Ich melde mich in Kürze.');">
+          <form class="bg-black/30 rounded-2xl border border-white/10 p-6 space-y-4"
+            onsubmit="event.preventDefault(); alert(currentLang==='en' ? 'Thanks! I will get back to you shortly.' : 'Danke! Ich melde mich in Kürze.');">
             <div>
               <label class="text-sm text-zinc-400 lang" data-en="Your name" data-de="Dein Name">Your name</label>
-              <input required class="mt-1 w-full px-3 py-2 rounded-xl bg-white/5 border border-white/10 outline-none focus:border-fuchsia-400/60" placeholder="" />
+              <input required
+                class="mt-1 w-full px-3 py-2 rounded-xl bg-white/5 border border-white/10 outline-none focus:border-fuchsia-400/60"
+                placeholder="" />
             </div>
             <div>
               <label class="text-sm text-zinc-400">E-Mail</label>
-              <input type="email" required class="mt-1 w-full px-3 py-2 rounded-xl bg-white/5 border border-white/10 outline-none focus:border-fuchsia-400/60" placeholder="you@email.com" />
+              <input type="email" required
+                class="mt-1 w-full px-3 py-2 rounded-xl bg-white/5 border border-white/10 outline-none focus:border-fuchsia-400/60"
+                placeholder="you@email.com" />
             </div>
             <div>
-              <label class="text-sm text-zinc-400 lang" data-en="What do you need?" data-de="Was brauchst du?">What do you need?</label>
-              <textarea rows="4" class="mt-1 w-full px-3 py-2 rounded-xl bg-white/5 border border-white/10 outline-none focus:border-fuchsia-400/60" placeholder=""></textarea>
+              <label class="text-sm text-zinc-400 lang" data-en="What do you need?" data-de="Was brauchst du?">What do
+                you need?</label>
+              <textarea rows="4"
+                class="mt-1 w-full px-3 py-2 rounded-xl bg-white/5 border border-white/10 outline-none focus:border-fuchsia-400/60"
+                placeholder=""></textarea>
             </div>
-            <button class="w-full px-4 py-2 rounded-xl bg-fuchsia-600 hover:bg-fuchsia-500 transition lang" data-en="Send" data-de="Absenden">Send</button>
-            <p class="text-xs text-zinc-500 lang" data-en="By submitting you agree to be contacted by email." data-de="Mit dem Absenden stimmst du zu, dass wir dich per E-Mail kontaktieren dürfen.">
+            <button class="w-full px-4 py-2 rounded-xl bg-fuchsia-600 hover:bg-fuchsia-500 transition lang"
+              data-en="Send" data-de="Absenden">Send</button>
+            <p class="text-xs text-zinc-500 lang" data-en="By submitting you agree to be contacted by email."
+              data-de="Mit dem Absenden stimmst du zu, dass wir dich per E-Mail kontaktieren dürfen.">
               By submitting you agree to be contacted by email.
             </p>
           </form>
@@ -769,7 +1178,8 @@
   <footer class="relative border-t border-white/10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 text-sm text-zinc-400">
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <p>© <span id="year"></span> KabutoAI — <span class="lang" data-en="All rights reserved." data-de="Alle Rechte vorbehalten.">All rights reserved.</span></p>
+        <p>© <span id="year"></span> KabutoAI — <span class="lang" data-en="All rights reserved."
+            data-de="Alle Rechte vorbehalten.">All rights reserved.</span></p>
         <div class="flex items-center gap-4">
           <a href="imprint.html" class="hover:text-fuchsia-300 lang" data-en="Imprint" data-de="Impressum">Imprint</a>
           <a href="privacy.html" class="hover:text-fuchsia-300 lang" data-en="Privacy" data-de="Datenschutz">Privacy</a>
@@ -781,19 +1191,24 @@
   <!-- Floating Action Buttons: Stacked WhatsApp & Telegram demos -->
   <div class="fixed right-4 bottom-24 z-60 flex flex-col gap-2" id="fab-wrapper">
     <!-- New button to trigger the chat widget and (on mobile) toggle demo links -->
-    <button id="open-chat-btn" class="flex items-center gap-2 px-5 py-3 rounded-full bg-violet-600 hover:bg-violet-500 transition shadow-xl border border-white/10">
+    <button id="open-chat-btn"
+      class="flex items-center gap-2 px-5 py-3 rounded-full bg-violet-600 hover:bg-violet-500 transition shadow-xl border border-white/10">
       <i data-lucide="message-square" class="w-4 h-4"></i>
       <span class="text-sm font-semibold lang" data-en="Website Chat" data-de="Website-Chat">Website Chat</span>
     </button>
     <!-- Container for external demo links (WhatsApp & Telegram).  On mobile, this is hidden by default and toggled by the chat button. -->
     <div id="demo-links" class="flex flex-col gap-2">
-      <a href="https://wa.me/12185793912" target="_blank" class="flex items-center gap-2 px-5 py-3 rounded-full bg-green-600 hover:bg-green-500 transition shadow-xl border border-white/10">
+      <a href="https://wa.me/12185793912" target="_blank"
+        class="flex items-center gap-2 px-5 py-3 rounded-full bg-green-600 hover:bg-green-500 transition shadow-xl border border-white/10">
         <i data-lucide="phone" class="w-4 h-4"></i>
-        <span class="text-sm font-semibold lang" data-en="Demo on WhatsApp" data-de="Demo auf WhatsApp">Demo on WhatsApp</span>
+        <span class="text-sm font-semibold lang" data-en="Demo on WhatsApp" data-de="Demo auf WhatsApp">Demo on
+          WhatsApp</span>
       </a>
-      <a href="https://t.me/kabutomediabot" target="_blank" class="flex items-center gap-2 px-5 py-3 rounded-full bg-fuchsia-600 hover:bg-fuchsia-500 transition shadow-xl border border-white/10">
+      <a href="https://t.me/kabutomediabot" target="_blank"
+        class="flex items-center gap-2 px-5 py-3 rounded-full bg-fuchsia-600 hover:bg-fuchsia-500 transition shadow-xl border border-white/10">
         <i data-lucide="send" class="w-4 h-4"></i>
-        <span class="text-sm font-semibold lang" data-en="Demo on Telegram" data-de="Demo auf Telegram">Demo on Telegram</span>
+        <span class="text-sm font-semibold lang" data-en="Demo on Telegram" data-de="Demo auf Telegram">Demo on
+          Telegram</span>
       </a>
     </div>
   </div>
@@ -803,82 +1218,82 @@
     window.addEventListener('DOMContentLoaded', () => {
       if (window.lucide) lucide.createIcons();
       document.getElementById('year').textContent = new Date().getFullYear();
-      AOS.init({ once:true, offset:80 });
+      AOS.init({ once: true, offset: 80 });
     });
     // 🔹 Always start with English as default, or load saved language
-let currentLang = localStorage.getItem('kabutoLang') || 'en';
+    let currentLang = localStorage.getItem('kabutoLang') || 'en';
 
-const toggleBtn = document.getElementById('toggleLang');
-const langText = document.getElementById('langText');
-const flag = document.getElementById('flag');
-const elements = document.querySelectorAll('.lang');
-const priceEls = document.querySelectorAll('.price');
-const paypalForms = document.querySelectorAll('.paypal-form');
+    const toggleBtn = document.getElementById('toggleLang');
+    const langText = document.getElementById('langText');
+    const flag = document.getElementById('flag');
+    const elements = document.querySelectorAll('.lang');
+    const priceEls = document.querySelectorAll('.price');
+    const paypalForms = document.querySelectorAll('.paypal-form');
 
-function updateLanguage(lang){
-  document.body.classList.add('fade');
-  setTimeout(() => {
-    elements.forEach(el => {
-      const t = el.dataset[lang];
-      if (typeof t === 'string') el.textContent = t;
-    });
+    function updateLanguage(lang) {
+      document.body.classList.add('fade');
+      setTimeout(() => {
+        elements.forEach(el => {
+          const t = el.dataset[lang];
+          if (typeof t === 'string') el.textContent = t;
+        });
 
-    // --- Currency Switch ---
-    priceEls.forEach(p => {
-      const eur = parseFloat(p.dataset.eur);
-      const usd = (eur * 1.08).toFixed(0);
-      if(lang === 'en'){
-        p.textContent = "$" + Number(usd).toLocaleString() + " USD";
+        // --- Currency Switch ---
+        priceEls.forEach(p => {
+          const eur = parseFloat(p.dataset.eur);
+          const usd = (eur * 1.08).toFixed(0);
+          if (lang === 'en') {
+            p.textContent = "$" + Number(usd).toLocaleString() + " USD";
+          } else {
+            p.textContent = "€ " + eur.toLocaleString('de-DE');
+          }
+        });
+
+        // --- Update PayPal form hidden values ---
+        paypalForms.forEach(form => {
+          const eurVal = parseFloat(form.dataset.eur);
+          const usdVal = (eurVal * 1.08).toFixed(2);
+          const amountFields = form.querySelectorAll('input[name="amount"], input[name="a3"]');
+          amountFields.forEach(input => {
+            input.value = (lang === 'en') ? usdVal : eurVal.toFixed(2);
+          });
+          const currencyInput = form.querySelector('input[name="currency_code"]');
+          if (currencyInput) {
+            currencyInput.value = (lang === 'en') ? 'USD' : 'EUR';
+          }
+        });
+
+        // 💾 Sprache speichern
+        localStorage.setItem('kabutoLang', lang);
+
+        document.documentElement.lang = lang;
+        document.body.classList.remove('fade');
+      }, 150);
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      if (currentLang === 'en') {
+        currentLang = 'de';
+        langText.textContent = 'English';
+        flag.textContent = '🇬🇧';
       } else {
-        p.textContent = "€ " + eur.toLocaleString('de-DE');
+        currentLang = 'en';
+        langText.textContent = 'Deutsch';
+        flag.textContent = '🇩🇪';
       }
+      updateLanguage(currentLang);
     });
 
-    // --- Update PayPal form hidden values ---
-    paypalForms.forEach(form => {
-      const eurVal = parseFloat(form.dataset.eur);
-      const usdVal = (eurVal * 1.08).toFixed(2);
-      const amountFields = form.querySelectorAll('input[name="amount"], input[name="a3"]');
-      amountFields.forEach(input => {
-        input.value = (lang === 'en') ? usdVal : eurVal.toFixed(2);
-      });
-      const currencyInput = form.querySelector('input[name="currency_code"]');
-      if (currencyInput) {
-        currencyInput.value = (lang === 'en') ? 'USD' : 'EUR';
-      }
-    });
-
-    // 💾 Sprache speichern
-    localStorage.setItem('kabutoLang', lang);
-
-    document.documentElement.lang = lang;
-    document.body.classList.remove('fade');
-  },150);
-}
-
-toggleBtn.addEventListener('click', () => {
-  if (currentLang === 'en'){
-    currentLang = 'de';
-    langText.textContent = 'English';
-    flag.textContent = '🇬🇧';
-  } else {
-    currentLang = 'en';
-    langText.textContent = 'Deutsch';
-    flag.textContent = '🇩🇪';
-  }
-  updateLanguage(currentLang);
-});
-
-// 🏁 Initial Setup
-if (currentLang === 'de') {
-  langText.textContent = 'English';
-  flag.textContent = '🇬🇧';
-} else {
-  langText.textContent = 'Deutsch';
-  flag.textContent = '🇩🇪';
-}
-updateLanguage(currentLang);
-</script>
+    // 🏁 Initial Setup
+    if (currentLang === 'de') {
+      langText.textContent = 'English';
+      flag.textContent = '🇬🇧';
+    } else {
+      langText.textContent = 'Deutsch';
+      flag.textContent = '🇩🇪';
+    }
+    updateLanguage(currentLang);
+  </script>
 
   <!-- Custom chat logic: Connect the Website Chat button to the server API and manage mobile demo links. -->
   <script>
@@ -990,4 +1405,5 @@ updateLanguage(currentLang);
     });
   </script>
 </body>
+
 </html>
