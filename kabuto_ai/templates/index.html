@@ -32,6 +32,19 @@
       --amethyst-glow: rgba(155, 99, 255, .35);
     }
 
+    html,
+    body {
+      overflow-x: hidden;
+      /* horizontales Scrollen aus */
+      max-width: 100%;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /* verhindert „Aufpumpen“ durch Padding */
+
     html {
       scroll-behavior: smooth;
     }
@@ -77,6 +90,37 @@
       100% {
         transform: translate(2%, -2%) scale(1);
         opacity: 0.5;
+      }
+    }
+
+    /* === Reflex Shader über dem gesamten Body === */
+    .reflex-shader {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(120deg,
+          rgba(93, 173, 255, 0.04) 0%,
+          rgba(155, 99, 255, 0.07) 40%,
+          rgba(93, 173, 255, 0.04) 80%);
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      animation: reflexFlow 10s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes reflexFlow {
+      0% {
+        transform: translateX(-5%) rotate(0deg);
+        opacity: 0.4;
+      }
+
+      50% {
+        transform: translateX(5%) rotate(1deg);
+        opacity: 0.6;
+      }
+
+      100% {
+        transform: translateX(-5%) rotate(0deg);
+        opacity: 0.4;
       }
     }
 
@@ -291,11 +335,28 @@
       box-shadow: 0 0 25px rgba(93, 173, 255, .35), 0 0 40px rgba(155, 99, 255, .25);
       transform: translateY(-2px);
     }
+
+    /* === Text Glow Akzent für große Überschriften === */
+    h1,
+    h2 {
+      text-shadow:
+        0 0 10px rgba(93, 173, 255, 0.3),
+        0 0 20px rgba(155, 99, 255, 0.25);
+      transition: text-shadow .5s ease;
+    }
+
+    h1:hover,
+    h2:hover {
+      text-shadow:
+        0 0 20px rgba(93, 173, 255, 0.5),
+        0 0 40px rgba(155, 99, 255, 0.4);
+    }
   </style>
 </head>
 
 <body class="noise text-zinc-100 selection:bg-fuchsia-500/40 selection:text-white">
   <div class="energy-layer"></div>
+  <div class="reflex-shader"></div>
 
   <!-- Orbs -->
   <div class="orb orb-1"></div>
