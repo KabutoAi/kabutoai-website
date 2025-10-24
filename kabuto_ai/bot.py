@@ -470,6 +470,15 @@ def privacy_html():
 def terms_html():
     return render_template("terms.html")
 
+# ---------------------------------------------------------------------------
+# Overview / Brand Documentation Page
+# ---------------------------------------------------------------------------
+@app.route("/overview")
+def overview():
+    """Renders the KabutoAI overview & brand document page."""
+    return render_template("overview.html")
+
+
 
 # ---------------------------------------------------------------------------
 # Optional helper to send proactive WhatsApp messages via Twilio
