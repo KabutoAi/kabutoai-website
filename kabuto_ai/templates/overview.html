@@ -177,7 +177,23 @@
     </div>
   </div>
 
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>AOS.init({ once: true, offset: 80 });</script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  // Initialisiere AOS normal
+  AOS.init({ once: true, offset: 80 });
+
+  // 🟣 Stelle sicher, dass alle animierten Elemente sofort sichtbar werden,
+  // auch wenn AOS (Animate On Scroll) noch nicht initialisiert ist.
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      AOS.init({ once: true, offset: 80 });
+      document.querySelectorAll("[data-aos]").forEach(el => {
+        el.style.opacity = "1";
+        el.style.transform = "none";
+      });
+    }, 150);
+  });
+</script>
 </body>
 </html>
+
