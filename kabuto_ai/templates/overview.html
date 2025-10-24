@@ -1,199 +1,108 @@
 <!DOCTYPE html>
-<html lang="{{ lang }}">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KabutoAI – Overview</title>
   <link rel="icon" type="image/png" href="/static/favicon.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     body {
-      background: radial-gradient(circle at top, #0f0b1e 0%, #080611 100%);
-      color: #e5e5e5;
+      background-color: #0F1122;
+      color: #e5e7eb;
       font-family: 'Inter', sans-serif;
     }
     .glass {
-      background: rgba(17, 17, 27, 0.6);
+      background: rgba(255,255,255,0.05);
       backdrop-filter: blur(10px);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255,255,255,0.08);
     }
-    .btn-primary {
-      background: linear-gradient(135deg, #9d4edd, #5f0cff);
-      color: white;
-      border-radius: 10px;
-      padding: 12px 24px;
-      font-weight: 600;
-      transition: all 0.25s ease;
-    }
-    .btn-primary:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(157, 78, 221, 0.6);
-    }
-    .gradient-text {
-      background: linear-gradient(90deg, #9d4edd, #5f0cff);
+    h1, h2 {
+      background: linear-gradient(90deg, #b26fff, #8b5cf6);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+    a.btn {
+      background: linear-gradient(135deg, #9d4edd, #5f0cff);
+      padding: 12px 22px;
+      border-radius: 10px;
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    a.btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(157,78,221,0.6);
+    }
   </style>
 </head>
-<body>
-  <div class="max-w-5xl mx-auto px-6 py-16" data-aos="fade-up">
-    
-    <!-- 🟣 Header -->
-    <h1 class="text-4xl font-bold text-center mb-6">
-      <span class="lang" data-en="KabutoAI Setup Overview" data-de="KabutoAI Einrichtungsübersicht"></span>
-    </h1>
-    <p class="text-center text-zinc-400 max-w-2xl mx-auto mb-12 lang"
-       data-en="Here’s everything you need to know about how your AI Agent is set up, launched, and optimized."
-       data-de="Hier erfährst du alles über die Einrichtung, den Launch und die Optimierung deines KI-Agenten.">
-    </p>
 
-    <!-- 🧭 Step-by-step process -->
-    <div class="grid md:grid-cols-4 gap-6 mb-16">
-      <div class="glass p-5" data-aos="fade-up" data-aos-delay="0">
-        <div class="text-sm text-fuchsia-400 font-bold lang" data-en="Step 1" data-de="Schritt 1"></div>
-        <h3 class="font-semibold text-lg mb-2 lang"
-            data-en="Goal & Branding" data-de="Ziele & Branding"></h3>
-        <p class="text-zinc-300 text-sm lang"
-           data-en="We clarify your tone, focus and use-case: lead generation, support, or sales."
-           data-de="Wir klären Ton, Fokus und Ziel: Leadgenerierung, Support oder Verkauf."></p>
-      </div>
-      <div class="glass p-5" data-aos="fade-up" data-aos-delay="100">
-        <div class="text-sm text-fuchsia-400 font-bold lang" data-en="Step 2" data-de="Schritt 2"></div>
-        <h3 class="font-semibold text-lg mb-2 lang"
-            data-en="Setup & Training" data-de="Einrichtung & Training"></h3>
-        <p class="text-zinc-300 text-sm lang"
-           data-en="We connect Telegram & WhatsApp, build your knowledge base and train your bot answers."
-           data-de="Wir verbinden Telegram & WhatsApp, bauen deine Wissensbasis auf und trainieren die Antworten deines Bots."></p>
-      </div>
-      <div class="glass p-5" data-aos="fade-up" data-aos-delay="200">
-        <div class="text-sm text-fuchsia-400 font-bold lang" data-en="Step 3" data-de="Schritt 3"></div>
-        <h3 class="font-semibold text-lg mb-2 lang"
-            data-en="Testing & Launch" data-de="Testphase & Launch"></h3>
-        <p class="text-zinc-300 text-sm lang"
-           data-en="We test chat accuracy, privacy, and design before launch."
-           data-de="Wir testen Antwortqualität, DSGVO-Hinweise und Design vor dem Launch."></p>
-      </div>
-      <div class="glass p-5" data-aos="fade-up" data-aos-delay="300">
-        <div class="text-sm text-fuchsia-400 font-bold lang" data-en="Step 4" data-de="Schritt 4"></div>
-        <h3 class="font-semibold text-lg mb-2 lang"
-            data-en="Scale & Optimize" data-de="Skalieren & Optimieren"></h3>
-        <p class="text-zinc-300 text-sm lang"
-           data-en="We monitor performance, add automations and optimize for conversions."
-           data-de="Wir überwachen die Leistung, fügen Automationen hinzu und optimieren auf Conversions."></p>
-      </div>
+<body class="min-h-screen flex flex-col items-center px-6 py-10">
+  <div class="max-w-5xl glass p-10 rounded-3xl" data-aos="fade-up" data-aos-duration="900">
+    <h1 class="text-3xl font-bold text-center mb-6 lang" data-en="KabutoAI – Mystic Automation Bots" data-de="KabutoAI – Mystische Automations-Bots"></h1>
+    <p class="text-center text-gray-300 mb-8 italic lang" data-en="“In silence, we build. In precision, we conquer.”" data-de="„In der Stille erschaffen wir. Mit Präzision erobern wir.“"></p>
+
+    <div class="space-y-6 text-gray-200 leading-relaxed">
+
+      <p class="lang" data-en="<strong>What is KabutoAI?</strong><br>KabutoAI combines artificial intelligence with business automation. The bots operate on Telegram, WhatsApp, or your website – they write, sell, and support your clients like a real team member." data-de="<strong>Was ist KabutoAI?</strong><br>KabutoAI verbindet künstliche Intelligenz mit Business-Automatisierung. Die Bots agieren auf Telegram, WhatsApp oder deiner Website – sie schreiben, verkaufen und betreuen deine Kunden, als wären sie dein persönliches Teammitglied."></p>
+
+      <p class="lang" data-en="<strong>Who is KabutoAI for?</strong><br>For coaches & mentors, agencies & companies, influencers & creators, and e-commerce stores – for automation, lead generation, and support." data-de="<strong>Für wen ist KabutoAI gemacht?</strong><br>Für Coaches & Mentoren, Agenturen & Firmen, Influencer & Creator sowie E-Commerce-Shops – für Automatisierung, Lead-Generierung und Support."></p>
+
+      <h2 class="text-2xl font-semibold mt-10 lang" data-en="One-time Setup Packages (AI Launch Kits)" data-de="Einmalige Einrichtungspakete (AI Launch Kits)"></h2>
+      <ul class="list-disc ml-6">
+        <li class="lang" data-en="<strong>Starter Kit – 1,079 USD:</strong> Telegram bot, basic AI, speech detection, hosting, GDPR compliant." data-de="<strong>Starter Kit – 1.079 USD:</strong> Telegram-Bot, Basis-KI, Spracherkennung, Hosting, DSGVO-konform."></li>
+        <li class="lang" data-en="<strong>Pro Kit – 2,159 USD:</strong> Telegram + WhatsApp, branding, knowledge base, custom commands, monitoring, premium hosting." data-de="<strong>Pro Kit – 2.159 USD:</strong> Telegram + WhatsApp, Branding, Knowledge-Base, Custom-Kommandos, Monitoring, Premium-Hosting."></li>
+        <li class="lang" data-en="<strong>Enterprise Kit – 3,239 USD:</strong> Telegram + WhatsApp + Website, workflows, CRM, reports, database, priority support." data-de="<strong>Enterprise Kit – 3.239 USD:</strong> Telegram + WhatsApp + Website, Workflows, CRM, Reports, Datenbanken, Prior-Support."></li>
+      </ul>
+
+      <h2 class="text-2xl font-semibold mt-10 lang" data-en="Monthly Support Plans (Growth Packages)" data-de="Monatliche Betreuungspakete (Growth Plans)"></h2>
+      <ul class="list-disc ml-6">
+        <li class="lang" data-en="<strong>Starter Growth – 107 USD / month:</strong> Hosting, monitoring, minor updates, basic reports." data-de="<strong>Starter Growth – 107 USD / Monat:</strong> Hosting, Überwachung, kleine Anpassungen, Basis-Reports."></li>
+        <li class="lang" data-en="<strong>Pro Growth – 179 USD / month:</strong> Everything from Starter + prompt optimization, training, statistics & review call." data-de="<strong>Pro Growth – 179 USD / Monat:</strong> Alles aus Starter + Prompt-Optimierung, Training, Statistik & Review-Call."></li>
+        <li class="lang" data-en="<strong>Enterprise Growth – 259 USD / month:</strong> Everything from Pro + weekly reviews, API integrations, strategy analysis." data-de="<strong>Enterprise Growth – 259 USD / Monat:</strong> Alles aus Pro + wöchentliche Reviews, API-Integrationen, Strategieanalysen."></li>
+      </ul>
+
+      <h2 class="text-2xl font-semibold mt-10 lang" data-en="Setup Process After Purchase" data-de="Setup-Prozess nach dem Kauf"></h2>
+      <ol class="list-decimal ml-6 space-y-2">
+        <li class="lang" data-en="<strong>Order Confirmation & Contact:</strong> You will receive a confirmation and a welcome email." data-de="<strong>Bestellbestätigung & Kontaktaufnahme:</strong> Nach dem Kauf erhältst du eine Bestätigung sowie eine Begrüßungs-Mail."></li>
+        <li class="lang" data-en="<strong>Information Submission:</strong> Send your business name, platforms, email, logo, and tone examples to <a href='mailto:kabuto.ai.business@gmail.com' class='text-fuchsia-400 underline'>kabuto.ai.business@gmail.com</a>." data-de="<strong>Daten & Informationen:</strong> Sende bitte Unternehmensname, Plattformen, E-Mail, Logo und Ton-Beispiele an <a href='mailto:kabuto.ai.business@gmail.com' class='text-fuchsia-400 underline'>kabuto.ai.business@gmail.com</a>."></li>
+        <li class="lang" data-en="<strong>Setup & Preview:</strong> Within 2–5 business days, your bot is built and previewed for approval." data-de="<strong>Setup & Feedback:</strong> Innerhalb von 2–5 Werktagen wird dein Bot aufgebaut. Danach erhältst du eine Vorschau zur Abnahme."></li>
+        <li class="lang" data-en="<strong>Go-Live:</strong> Once approved, your system goes live and you’ll receive all credentials." data-de="<strong>Go-Live & Übergabe:</strong> Nach Freigabe wird dein System aktiviert und du erhältst alle Zugangsdaten."></li>
+      </ol>
+
+      <h2 class="text-2xl font-semibold mt-10 lang" data-en="Work Process" data-de="Ablauf der Zusammenarbeit"></h2>
+      <p class="lang" data-en="Analysis, setup, launch, optimization – your bot will be ready in 3–5 days." data-de="Analyse, Setup, Launch, Optimierung – dein Bot ist in 3–5 Tagen einsatzbereit."></p>
+
+      <h2 class="text-2xl font-semibold mt-10 lang" data-en="Test KabutoAI Live" data-de="Teste KabutoAI live"></h2>
+      <p><a href="https://kabutoai-website.onrender.com" class="text-fuchsia-400 underline">kabutoai-website.onrender.com</a></p>
+
+      <h2 class="text-2xl font-semibold mt-10 lang" data-en="Contact" data-de="Kontakt"></h2>
+      <p>E-Mail: <a href="mailto:kabuto.ai.business@gmail.com" class="text-fuchsia-400 underline">kabuto.ai.business@gmail.com</a><br>
+      <span class="lang" data-en="Founder:" data-de="Ansprechpartner:"></span> <strong>Kevin Brusch</strong></p>
+
+      <h2 class="text-2xl font-semibold mt-10 lang" data-en="Final Words" data-de="Schlusswort"></h2>
+      <p class="italic lang" data-en="KabutoAI is not a chatbot toy. It’s your silent, relentless partner: automation with soul. Strategy with silence. Precision with purpose." data-de="KabutoAI ist kein Spielzeug-Chatbot. Es ist dein stiller, unermüdlicher Verbündeter: Automation mit Seele. Strategie mit Stille. Präzision mit Ziel."></p>
     </div>
 
-    <!-- 💸 Pricing breakdown -->
-    <h2 class="text-3xl font-bold text-center mb-8 gradient-text">
-      <span class="lang" data-en="Setup Packages" data-de="Einrichtungspakete"></span>
-    </h2>
-    <div class="grid md:grid-cols-3 gap-6 mb-16">
-      <div class="glass p-6">
-        <h3 class="text-xl font-bold mb-2">Starter</h3>
-        <ul class="text-zinc-300 text-sm space-y-2">
-          <li>• 1 Channel (Telegram <i>or</i> WhatsApp)</li>
-          <li>• 10 FAQ answers + 1 base prompt</li>
-          <li>• Simple integration + instant setup guide</li>
-          <li>• Support via Email</li>
-        </ul>
-        <p class="mt-4 text-fuchsia-400 font-semibold">$1.079 USD</p>
-      </div>
-      <div class="glass p-6 border-fuchsia-500">
-        <h3 class="text-xl font-bold mb-2">Pro</h3>
-        <ul class="text-zinc-300 text-sm space-y-2">
-          <li>• Telegram & WhatsApp integration</li>
-          <li>• Multilingual answers + lead forms</li>
-          <li>• Full brand customization</li>
-          <li>• 30 FAQ answers + training session</li>
-        </ul>
-        <p class="mt-4 text-fuchsia-400 font-semibold">$2.159 USD</p>
-      </div>
-      <div class="glass p-6">
-        <h3 class="text-xl font-bold mb-2">Enterprise</h3>
-        <ul class="text-zinc-300 text-sm space-y-2">
-          <li>• Telegram, WhatsApp & Web Widget</li>
-          <li>• CRM workflows + automations</li>
-          <li>• Ongoing reporting + SLA performance care</li>
-          <li>• Dedicated account support</li>
-        </ul>
-        <p class="mt-4 text-fuchsia-400 font-semibold">$3.239 USD</p>
-      </div>
-    </div>
-
-    <!-- 🔁 Monthly plans -->
-    <h2 class="text-3xl font-bold text-center mb-8 gradient-text">
-      <span class="lang" data-en="Monthly Support Plans" data-de="Monatliche Betreuungspläne"></span>
-    </h2>
-    <div class="grid md:grid-cols-3 gap-6 mb-20">
-      <div class="glass p-6">
-        <h3 class="text-lg font-bold mb-2">Starter</h3>
-        <ul class="text-zinc-300 text-sm space-y-2">
-          <li>• Hosting & maintenance on Render</li>
-          <li>• Small fixes + system checks</li>
-          <li>• Email support within 48h</li>
-        </ul>
-        <p class="mt-4 text-fuchsia-400 font-semibold">$107 USD / month</p>
-      </div>
-      <div class="glass p-6 border-fuchsia-500">
-        <h3 class="text-lg font-bold mb-2">Pro</h3>
-        <ul class="text-zinc-300 text-sm space-y-2">
-          <li>• Performance reports + AI tuning</li>
-          <li>• Prompt updates + quick bug fixes</li>
-          <li>• Priority email response within 24h</li>
-        </ul>
-        <p class="mt-4 text-fuchsia-400 font-semibold">$215 USD / month</p>
-      </div>
-      <div class="glass p-6">
-        <h3 class="text-lg font-bold mb-2">Enterprise</h3>
-        <ul class="text-zinc-300 text-sm space-y-2">
-          <li>• SLA & high-priority optimization</li>
-          <li>• Feature updates & custom workflows</li>
-          <li>• Monthly performance consulting</li>
-        </ul>
-        <p class="mt-4 text-fuchsia-400 font-semibold">$431 USD / month</p>
-      </div>
-    </div>
-
-    <!-- 🛒 Purchase flow explanation -->
-    <h2 class="text-3xl font-bold text-center mb-6 gradient-text">
-      <span class="lang" data-en="Purchase & Setup Flow" data-de="Kauf- & Einrichtungsablauf"></span>
-    </h2>
-    <p class="text-zinc-300 text-center max-w-2xl mx-auto mb-12 lang"
-       data-en="After purchasing your setup or subscription, you’ll receive a short form to submit your business details, goals, and preferred tone. This helps us prepare your bot’s unique configuration faster."
-       data-de="Nach dem Kauf erhältst du ein kurzes Formular, um deine Geschäftsdaten, Ziele und den gewünschten Ton einzutragen. So können wir deinen Bot schneller vorbereiten.">
-    </p>
-    <p class="text-center text-zinc-400 mb-12 lang"
-       data-en="You can also send this information directly to: kabuto.ai.business@gmail.com"
-       data-de="Du kannst diese Informationen auch direkt an kabuto.ai.business@gmail.com senden.">
-    </p>
-
-    <div class="text-center">
-      <a href="/" class="btn-primary">
-        <span class="lang" data-en="Back to Homepage" data-de="Zurück zur Startseite"></span>
-      </a>
+    <div class="text-center mt-10">
+      <a href="/" class="btn lang" data-en="Back to Homepage" data-de="Zurück zur Startseite"></a>
     </div>
   </div>
 
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  // Initialisiere AOS normal
-  AOS.init({ once: true, offset: 80 });
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, offset: 80 });
 
-  // 🟣 Stelle sicher, dass alle animierten Elemente sofort sichtbar werden,
-  // auch wenn AOS (Animate On Scroll) noch nicht initialisiert ist.
-  document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(() => {
-      AOS.init({ once: true, offset: 80 });
-      document.querySelectorAll("[data-aos]").forEach(el => {
-        el.style.opacity = "1";
-        el.style.transform = "none";
+    // 🟣 Sprache aus LocalStorage übernehmen
+    document.addEventListener("DOMContentLoaded", () => {
+      const lang = localStorage.getItem("kabutoLang") || "en";
+      document.querySelectorAll(".lang").forEach(el => {
+        const text = el.getAttribute(`data-${lang}`);
+        if (text) el.innerHTML = text;
       });
-    }, 150);
-  });
-</script>
+      document.documentElement.lang = lang;
+    });
+  </script>
 </body>
 </html>
-
