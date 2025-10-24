@@ -89,7 +89,13 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 # Telegram bot and Flask app
 #
 bot = telebot.TeleBot(TELEGRAM_API_TOKEN, parse_mode="HTML")
+
+# --- Flask app ---
 app = Flask(__name__)
+
+# 🟣 Secret key für Sessions (notwendig für Sprachspeicher & Login)
+app.secret_key = os.getenv("FLASK_SECRET_KEY", "kabuto_fallback_secret_2025")
+
 
 # --- Language helper (very small i18n) ---
 from flask import g, session, request
