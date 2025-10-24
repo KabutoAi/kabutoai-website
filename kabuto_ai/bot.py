@@ -91,6 +91,67 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 bot = telebot.TeleBot(TELEGRAM_API_TOKEN, parse_mode="HTML")
 app = Flask(__name__)
 
+# --- Language helper (very small i18n) ---
+from flask import g, session, request
+
+TRANSLATIONS = {
+    "cta_title": {
+        "en": "Learn how KabutoAI works",
+        "de": "Erfahre, wie KabutoAI funktioniert",
+    },
+    "cta_subtitle": {
+        "en": "See the full step-by-step setup, what’s included and how we launch your AI agent.",
+        "de": "Sieh dir den kompletten Schritt-für-Schritt-Ablauf an – inklusive Setup und Launch deines AI-Agents.",
+    },
+    "cta_button": {
+        "en": "Open Overview",
+        "de": "Zur Übersicht",
+    },
+    # ---- overview page strings ----
+    "ov_title": {
+        "en": "KabutoAI — Step-by-step Overview",
+        "de": "KabutoAI — Übersicht Schritt für Schritt",
+    },
+    "ov_intro": {
+        "en": "This page explains exactly how your AI agent is set up, tested and launched — clear, fast, predictable.",
+        "de": "Diese Seite erklärt genau, wie dein AI-Agent eingerichtet, getestet und gelauncht wird — klar, schnell, planbar.",
+    },
+    "ov_s1_title": {"en": "Step 1 — Goals & Branding", "de": "Schritt 1 — Ziele & Branding"},
+    "ov_s1_body": {
+        "en": "We clarify tone, goals and examples. Decide what matters first: leads, support or sales. We collect FAQs and key flows.",
+        "de": "Wir klären Tonalität, Ziele und Beispiele. Fokus festlegen: Leads, Support oder Sales. Wir sammeln FAQs und Schlüssel-Flows.",
+    },
+    "ov_s2_title": {"en": "Step 2 — Setup & Training", "de": "Schritt 2 — Setup & Training"},
+    "ov_s2_body": {
+        "en": "Connect channels (Telegram/WhatsApp/Web), build knowledge base and train prompts. Data privacy defaults included.",
+        "de": "Kanäle verbinden (Telegram/WhatsApp/Web), Knowledge Base aufbauen und Prompts trainieren. Datenschutz by default.",
+    },
+    "ov_s3_title": {"en": "Step 3 — Launch & Tests", "de": "Schritt 3 — Launch & Tests"},
+    "ov_s3_body": {
+        "en": "Test chats, polish answers, set privacy notes and go live with your branding.",
+        "de": "Test-Chats, Antworten feinschleifen, Hinweise setzen und mit deinem Branding live gehen.",
+    },
+    "ov_s4_title": {"en": "Step 4 — Scale", "de": "Schritt 4 — Skalieren"},
+    "ov_s4_body": {
+        "en": "Reporting, A/B testing, funnels — we optimize continuously.",
+        "de": "Reporting, A/B-Tests, Funnels — kontinuierliche Optimierung.",
+    },
+}
+
+@app.before_request
+def detect_lang():
+    lang = request.args.get("lang") or session.get("lang") or "en"
+    if lang not in ("de", "en"):
+        lang = "en"
+    g.lang = lang
+    session["lang"] = lang
+
+@app.context_processor
+def inject_i18n():
+    def t(key):
+        return TRANSLATIONS.get(key, {}).get(getattr(g, "lang", "en"), key)
+    return {"t": t, "lang": getattr(g, "lang", "en")}
+
 # ✨ CORS aktivieren, damit auch kabutoai-website.onrender.com Zugriff hat
 CORS(app, resources={r"/*": {"origins": "*"}})
 

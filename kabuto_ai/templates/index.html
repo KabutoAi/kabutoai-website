@@ -798,54 +798,38 @@
   </section>
   <!-- HOW -->
   <section id="how" class="relative" data-aos="fade-up" data-aos-duration="900">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-      <div class="rounded-3xl glass border border-white/10 p-8">
-        <h2 class="text-2xl sm:text-3xl font-bold">
-          <span class="lang" data-en="This is how" data-de="So läuft’s mit"></span>
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12 text-center">
+      <div class="rounded-3xl glass border border-white/10 p-10">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-3">
+          <span class="lang" data-en="Learn how" data-de="Erfahre, wie">Learn how</span>
           <span class="text-fuchsia-400">KabutoAI</span>
+          <span class="lang" data-en="works" data-de="funktioniert">works</span>
         </h2>
-        <div class="mt-6 grid md:grid-cols-4 gap-6">
-          <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-            <div class="text-sm text-zinc-400 lang" data-en="Step 1" data-de="Schritt 1">Step 1</div>
-            <div class="font-semibold mt-1 lang" data-en="Goals & Branding" data-de="Ziele & Branding">Goals & Branding
-            </div>
-            <p class="text-zinc-300/90 mt-2 lang"
-              data-en="We clarify goals & tone, collect examples and decide focus: leads, support or sales."
-              data-de="Wir klären Ziele & Ton, sammeln Beispiele und legen den Fokus fest: Leads, Support oder Verkauf.">
-              We clarify goals & tone, collect examples and decide focus: leads, support or sales.
-            </p>
-          </div>
-          <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-            <div class="text-sm text-zinc-400 lang" data-en="Step 2" data-de="Schritt 2">Step 2</div>
-            <div class="font-semibold mt-1 lang" data-en="Setup & Training" data-de="Setup & Trainings">Setup & Training
-            </div>
-            <p class="text-zinc-300/90 mt-2 lang"
-              data-en="Connect channels (Telegram/WhatsApp), build knowledge base and train answers."
-              data-de="Kanäle verbinden (Telegram/WhatsApp), Wissensbasis aufbauen und Antworten trainieren.">
-              Connect channels (Telegram/WhatsApp), build knowledge base and train answers.
-            </p>
-          </div>
-          <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-            <div class="text-sm text-zinc-400 lang" data-en="Step 3" data-de="Schritt 3">Step 3</div>
-            <div class="font-semibold mt-1 lang" data-en="Launch & Tests" data-de="Launch & Tests">Launch & Tests</div>
-            <p class="text-zinc-300/90 mt-2 lang"
-              data-en="Test chats, polish, privacy notes and go live with your branding."
-              data-de="Test-Chats, Feinschliff, DSGVO-Hinweise und Go-Live mit deinem Branding.">
-              Test chats, polish, privacy notes and go live with your branding.
-            </p>
-          </div>
-          <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-            <div class="text-sm text-zinc-400 lang" data-en="Step 4" data-de="Schritt 4">Step 4</div>
-            <div class="font-semibold mt-1 lang" data-en="Scale" data-de="Skalierung">Scale</div>
-            <p class="text-zinc-300/90 mt-2 lang" data-en="Reporting, A/B prompts, funnels – we optimize continuously."
-              data-de="Reporting, A/B-Prompts, Funnels – wir optimieren laufend.">
-              Reporting, A/B prompts, funnels – we optimize continuously.
-            </p>
-          </div>
-        </div>
+
+        <p class="text-zinc-300/90 mb-8 lang"
+          data-en="See the full setup process, all pricing options and what happens after your purchase."
+          data-de="Sieh dir den vollständigen Ablauf, alle Preisoptionen und die nächsten Schritte nach dem Kauf an.">
+          See the full setup process, all pricing options and what happens after your purchase.
+        </p>
+
+        <a href="{{ url_for('overview') }}?lang={{ lang }}"
+          class="btn btn-primary inline-flex items-center justify-center gap-2 px-8 py-3 text-lg font-semibold rounded-xl transition-all duration-300"
+          data-aos="zoom-in" data-aos-delay="150">
+          <span class="lang" data-en="Open Overview" data-de="Zur Übersicht">Open Overview</span> ↗
+        </a>
+        <script>
+          // 🟣 Keep overview link synced with selected language
+          document.addEventListener("DOMContentLoaded", () => {
+            const lang = localStorage.getItem("kabutoLang") || "en";
+            const link = document.querySelector('a[href*="overview"]');
+            if (link) link.href = `/overview?lang=${lang}`;
+          });
+        </script>
+
       </div>
     </div>
   </section>
+
   <!-- PRICING (Einmal) -->
   <section id="pricing" class="relative" data-aos="fade-up" data-aos-duration="900">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
