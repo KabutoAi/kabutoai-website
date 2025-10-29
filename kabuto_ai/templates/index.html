@@ -378,72 +378,158 @@
         0 0 40px rgba(155, 99, 255, 0.4);
     }
 
-/* === Kabuto Floating Buttons === */
-.kabuto-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  background: linear-gradient(135deg, rgba(93, 173, 255, 0.25), rgba(155, 99, 255, 0.25));
-  border: 1px solid rgba(155, 99, 255, 0.35);
-  color: white;
-  padding: 12px 22px;
-  border-radius: 9999px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  text-decoration: none;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 12px rgba(155, 99, 255, 0.25);
-  transition: all 0.3s ease;
-  min-width: 210px;
-  text-align: center;
-}
+    /* === Kabuto Floating Buttons === */
+    .kabuto-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: linear-gradient(135deg, rgba(93, 173, 255, 0.25), rgba(155, 99, 255, 0.25));
+      border: 1px solid rgba(155, 99, 255, 0.35);
+      color: white;
+      padding: 12px 22px;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 12px rgba(155, 99, 255, 0.25);
+      transition: all 0.3s ease;
+      min-width: 210px;
+      text-align: center;
+    }
 
-/* 🔹 Feinschliff für gleichmäßige Buttonhöhen unten */
-#fab-wrapper .kabuto-btn {
-  min-width: 220px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.95rem;
-}
+    /* 🔹 Feinschliff für gleichmäßige Buttonhöhen unten */
+    #fab-wrapper .kabuto-btn {
+      min-width: 220px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+    }
 
-#fab-wrapper .kabuto-btn i {
-  margin-right: 8px;
-  width: 18px;
-  height: 18px;
-}
+    #fab-wrapper .kabuto-btn i {
+      margin-right: 8px;
+      width: 18px;
+      height: 18px;
+    }
 
-.kabuto-btn i {
-  flex-shrink: 0;
-  opacity: 0.85;
-  transition: opacity 0.3s ease;
-}
+    .kabuto-btn i {
+      flex-shrink: 0;
+      opacity: 0.85;
+      transition: opacity 0.3s ease;
+    }
 
-.kabuto-btn span {
-  white-space: nowrap;
-}
+    .kabuto-btn span {
+      white-space: nowrap;
+    }
 
-/* Hover */
-.kabuto-btn:hover {
-  background: linear-gradient(135deg, rgba(93, 173, 255, 0.35), rgba(155, 99, 255, 0.45));
-  box-shadow: 0 0 25px rgba(155, 99, 255, 0.5), 0 0 50px rgba(93, 173, 255, 0.4);
-  transform: translateY(-2px);
-}
+    /* Hover */
+    .kabuto-btn:hover {
+      background: linear-gradient(135deg, rgba(93, 173, 255, 0.35), rgba(155, 99, 255, 0.45));
+      box-shadow: 0 0 25px rgba(155, 99, 255, 0.5), 0 0 50px rgba(93, 173, 255, 0.4);
+      transform: translateY(-2px);
+    }
 
-.kabuto-btn:hover i {
-  opacity: 1;
-}
+    .kabuto-btn:hover i {
+      opacity: 1;
+    }
 
-/* 📱 Mobile */
-@media (max-width: 640px) {
-  .kabuto-btn {
-    width: 100%;
-    min-width: unset;
-  }
-}
+    /* 📱 Mobile */
+    @media (max-width: 640px) {
+      .kabuto-btn {
+        width: 100%;
+        min-width: unset;
+      }
+    }
 
+    /* === 🌌 Kabuto Floating Action Button === */
+    #kabuto-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+    }
+
+    #fab-main {
+      background: linear-gradient(135deg, rgba(93, 173, 255, 0.35), rgba(155, 99, 255, 0.5));
+      border: 1px solid rgba(155, 99, 255, 0.6);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 25px rgba(155, 99, 255, 0.5), 0 0 60px rgba(93, 173, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      animation: kabutoPulse 2.5s infinite ease-in-out;
+      transition: all 0.3s ease;
+    }
+
+    #fab-main:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 40px rgba(155, 99, 255, 0.8);
+    }
+
+    @keyframes kabutoPulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(155, 99, 255, 0.4);
+      }
+
+      50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 40px rgba(155, 99, 255, 0.8);
+      }
+    }
+
+    /* 📤 Versteckte Optionen */
+    #fab-options {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+    }
+
+    /* 🔓 Sichtbar, wenn aktiv */
+    #kabuto-fab.active #fab-options {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    /* ✨ Buttons im FAB-Menü */
+    #fab-options .kabuto-btn {
+      min-width: 180px;
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      box-shadow: 0 0 15px rgba(155, 99, 255, 0.4);
+    }
+
+    /* 📱 Mobile Anpassung */
+    @media (max-width: 640px) {
+      #fab-main {
+        width: 55px;
+        height: 55px;
+      }
+
+      #fab-options .kabuto-btn {
+        min-width: 160px;
+        font-size: 0.8rem;
+      }
+    }
   </style>
 </head>
 
@@ -1333,21 +1419,6 @@
       </div>
     </div>
   </footer>
-  <!-- Floating Action Buttons: Stacked WhatsApp & Telegram demos -->
-  <div id="fab-wrapper" class="fixed right-4 bottom-24 z-60 flex flex-col gap-2 items-end">
-    <a href="#demo" class="kabuto-btn">
-      <i data-lucide="globe" class="w-4 h-4 mr-2"></i>
-      Website-Chat
-    </a>
-    <a href="https://wa.me/12185793912" target="_blank" class="kabuto-btn">
-      <i data-lucide="message-square" class="w-4 h-4 mr-2"></i>
-      Demo auf WhatsApp
-    </a>
-    <a href="https://t.me/kabutomediabot" target="_blank" class="kabuto-btn">
-      <i data-lucide="send" class="w-4 h-4 mr-2"></i>
-      Demo auf Telegram
-    </a>
-  </div>
   <!-- Init & Language Toggle with currency -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
@@ -1538,6 +1609,29 @@
           chatPlaceholder.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
       }
+    });
+  </script>
+  <!-- 🌌 Kabuto Floating Button -->
+  <div id="kabuto-fab">
+    <button id="fab-main">
+      <i class="lucide-messages-square"></i>
+    </button>
+    <div id="fab-options">
+      <a href="#demo" class="kabuto-btn"><i class="lucide-globe"></i><span>Website-Chat</span></a>
+      <a href="https://wa.me/12185793912" target="_blank" class="kabuto-btn"><i
+          class="lucide-message-circle"></i><span>Demo auf WhatsApp</span></a>
+      <a href="https://t.me/kabutomediabot" target="_blank" class="kabuto-btn"><i class="lucide-send"></i><span>Demo auf
+          Telegram</span></a>
+    </div>
+  </div>
+
+  <!-- JS für Button-Funktion -->
+  <script>
+    const fab = document.getElementById("kabuto-fab");
+    const fabMain = document.getElementById("fab-main");
+
+    fabMain.addEventListener("click", () => {
+      fab.classList.toggle("active");
     });
   </script>
 </body>
