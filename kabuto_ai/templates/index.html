@@ -378,38 +378,72 @@
         0 0 40px rgba(155, 99, 255, 0.4);
     }
 
-    /* === Kabuto Floating Buttons === */
-    .kabuto-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: linear-gradient(135deg, rgba(93, 173, 255, 0.25), rgba(155, 99, 255, 0.25));
-      border: 1px solid rgba(155, 99, 255, 0.35);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 9999px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 12px rgba(155, 99, 255, 0.25);
-      transition: all 0.3s ease;
-    }
+/* === Kabuto Floating Buttons === */
+.kabuto-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: linear-gradient(135deg, rgba(93, 173, 255, 0.25), rgba(155, 99, 255, 0.25));
+  border: 1px solid rgba(155, 99, 255, 0.35);
+  color: white;
+  padding: 12px 22px;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 12px rgba(155, 99, 255, 0.25);
+  transition: all 0.3s ease;
+  min-width: 210px;
+  text-align: center;
+}
 
-    .kabuto-btn:hover {
-      background: linear-gradient(135deg, rgba(93, 173, 255, 0.35), rgba(155, 99, 255, 0.45));
-      box-shadow: 0 0 25px rgba(155, 99, 255, 0.5), 0 0 50px rgba(93, 173, 255, 0.4);
-      transform: translateY(-2px);
-    }
+/* 🔹 Feinschliff für gleichmäßige Buttonhöhen unten */
+#fab-wrapper .kabuto-btn {
+  min-width: 220px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
 
-    .kabuto-btn i {
-      opacity: 0.85;
-      transition: opacity 0.3s ease;
-    }
+#fab-wrapper .kabuto-btn i {
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+}
 
-    .kabuto-btn:hover i {
-      opacity: 1;
-    }
+.kabuto-btn i {
+  flex-shrink: 0;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.kabuto-btn span {
+  white-space: nowrap;
+}
+
+/* Hover */
+.kabuto-btn:hover {
+  background: linear-gradient(135deg, rgba(93, 173, 255, 0.35), rgba(155, 99, 255, 0.45));
+  box-shadow: 0 0 25px rgba(155, 99, 255, 0.5), 0 0 50px rgba(93, 173, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.kabuto-btn:hover i {
+  opacity: 1;
+}
+
+/* 📱 Mobile */
+@media (max-width: 640px) {
+  .kabuto-btn {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
   </style>
 </head>
 
