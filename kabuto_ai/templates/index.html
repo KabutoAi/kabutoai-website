@@ -530,6 +530,26 @@
         font-size: 0.8rem;
       }
     }
+
+    /* === Icon im Kabuto Floating Button === */
+    #fab-main .fab-icon {
+      width: 26px;
+      /* Größe des Icons */
+      height: 26px;
+      opacity: 0.9;
+      /* leicht transparent, wirkt edler */
+      filter: drop-shadow(0 0 8px rgba(155, 99, 255, 0.7));
+      /* mystischer Glow */
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      /* sanfte Bewegung beim Hover */
+    }
+
+    #fab-main:hover .fab-icon {
+      transform: scale(1.15);
+      /* Icon wächst leicht beim Darüberfahren */
+      opacity: 1;
+      /* wird minimal heller */
+    }
   </style>
 </head>
 
@@ -1614,7 +1634,7 @@
   <!-- 🌌 Kabuto Floating Button -->
   <div id="kabuto-fab">
     <button id="fab-main">
-      <i class="lucide-messages-square"></i>
+      <i class="lucide-message-circle fab-icon"></i>
     </button>
     <div id="fab-options">
       <a href="#demo" class="kabuto-btn"><i class="lucide-globe"></i><span>Website-Chat</span></a>
